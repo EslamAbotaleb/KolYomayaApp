@@ -108,11 +108,13 @@ extension DetailTafserBookSelectViewController: ToolbarPickerViewDelegate {
         }
         self.viewModel?.detailTafserBookBySurahAndAyah(bookId: (self.delgateBook?.bookId)!, surahId: (self.surahIdNumber)!, ayah: self.numberAyat.uniques[rowNumberAyat], completionHandler: { [weak self] (bookTafsirBySurahAndAyah) in
             self?.bookByPageNumberModel = bookTafsirBySurahAndAyah
-          
-            if let pageNum = self?.bookByPageNumberModel?.page?.pageNumber {
-                self?.pageNumberTextField.text  = "\(pageNum)"
-               
+            if self?.pageNumberSelected ==  false {
+                       if let pageNum = self?.bookByPageNumberModel?.page?.pageNumber {
+                                     self?.pageNumberTextField.text  = "\(pageNum)"
+                                 }
+                
             }
+          
                     if self?.bookByPageNumberModel?.previousPage == nil {
                         self?.previousPageBtn.isHidden = true
                     } else {
