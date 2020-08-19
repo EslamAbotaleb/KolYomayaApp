@@ -43,14 +43,11 @@ class HomeViewController: BaseViewController {
         KeyAndValue.getSura_Name()
         KeyAndValue.getSura_Number()
         
-//        let reader_values = Bundle.main.infoDictionary!["reader_values"] as! NSArray
       
-        
-      
-
         ayaView.roundCorners([.topLeft, .topRight], radius: 25.0)
         
         NetworkReachability.shared.reach.whenReachable = { _ in
+            self.hideLoader()
             self.viewModel?.cordinator?.didFinish()
             
             self.viewModel?.todayAyaApi() { [weak self] todayAyaModel in
@@ -69,14 +66,17 @@ class HomeViewController: BaseViewController {
         self.shareButton.addTarget(self, action: #selector(share), for: .touchUpInside)
         
         NetworkReachability.shared.reach.whenUnreachable = { _ in
+            self.showLoader()
             self.view.endEditing(true)
             let errorServiceLocalizations = ErrorServiceLocalizations.init(httpStatus: 0, errorType: .server)
             let errorTitle = errorServiceLocalizations.errorTitle
             let errorDescription = errorServiceLocalizations.errorDescription
             self.showErrorView(errorTitle: errorTitle, errorDescription: errorDescription)
-            
+            self.view.isUserInteractionEnabled = false
         }
         NetworkReachability.isReachable { _ in
+            self.hideLoader()
+
             self.viewModel?.cordinator?.didFinish()
             self.viewModel?.todayAyaApi() { [weak self] todayAyaModel in
                 
@@ -90,11 +90,14 @@ class HomeViewController: BaseViewController {
             }
         }
         NetworkReachability.isUnreachable { _ in
+//            self.showLoader()
             self.view.endEditing(true)
             let errorServiceLocalizations = ErrorServiceLocalizations.init(httpStatus: 0, errorType: .server)
             let errorTitle = errorServiceLocalizations.errorTitle
             let errorDescription = errorServiceLocalizations.errorDescription
             self.showErrorView(errorTitle: errorTitle, errorDescription: errorDescription)
+//            self.view.isUserInteractionEnabled = false
+
         }
     }
     
@@ -119,8 +122,8 @@ class HomeViewController: BaseViewController {
             
             let textToShare = todayAyaModel.ayaObject!.suraName
             
-            if let myWebsite = URL(string: "http://bit.ly/2OF1tyg") {//Enter link to your app here
-                let objectsToShare = [textToShare, myWebsite, image ?? #imageLiteral(resourceName: "app-logo")] as [Any]
+            if let url = URL(string: "http://bit.ly/2OF1tyg") {//Enter link to your app here
+                let objectsToShare = [textToShare, url, image ?? #imageLiteral(resourceName: "app-logo")] as [Any]
                 let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
                 
                 //Excluded Activities

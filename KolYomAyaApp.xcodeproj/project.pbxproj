@@ -179,6 +179,8 @@
 		A66EBE8324E00D22001E26A9 /* QuraanRead + PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66EBE8224E00D22001E26A9 /* QuraanRead + PickerView.swift */; };
 		A679204024E1E219003030EA /* quraanReadAllJson.json in Resources */ = {isa = PBXBuildFile; fileRef = A679203F24E1E219003030EA /* quraanReadAllJson.json */; };
 		A68AD05E24DDF71A00121E11 /* ToolbarPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68AD05D24DDF71A00121E11 /* ToolbarPickerView.swift */; };
+		A6C0637024EBEEAA00B2B5B5 /* NotificationCenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C0636F24EBEEAA00B2B5B5 /* NotificationCenterDelegate.swift */; };
+		A6C0637224EBEF4D00B2B5B5 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C0637124EBEF4D00B2B5B5 /* PushNotificationSender.swift */; };
 		A6D4A29024D0315700769AB5 /* QuarnReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D4A28E24D0315700769AB5 /* QuarnReadViewController.swift */; };
 		A6D4A29124D0315700769AB5 /* QuarnReadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6D4A28F24D0315700769AB5 /* QuarnReadViewController.xib */; };
 		A6D4A29424D0339900769AB5 /* QuraanPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D4A29324D0339900769AB5 /* QuraanPageModel.swift */; };
@@ -221,7 +223,7 @@
 		A606FC9B24CB7A4500C80D9E /* SurahListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurahListModel.swift; sourceTree = "<group>"; };
 		A606FC9D24CB7A8A00C80D9E /* DetailTafserBookSelectedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTafserBookSelectedCoordinator.swift; sourceTree = "<group>"; };
 		A606FC9F24CB7D1D00C80D9E /* DetailTafserBookSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTafserBookSelectViewModel.swift; sourceTree = "<group>"; };
-		A61304E224CB175200CE00B3 /* KolYoumAya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KolYoumAya.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A61304E224CB175200CE00B3 /* كل يوم آية.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "كل يوم آية.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61304E524CB175200CE00B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A61304E924CB175200CE00B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A61304EC24CB175200CE00B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -376,6 +378,8 @@
 		A66EBE8224E00D22001E26A9 /* QuraanRead + PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuraanRead + PickerView.swift"; sourceTree = "<group>"; };
 		A679203F24E1E219003030EA /* quraanReadAllJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = quraanReadAllJson.json; sourceTree = "<group>"; };
 		A68AD05D24DDF71A00121E11 /* ToolbarPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPickerView.swift; sourceTree = "<group>"; };
+		A6C0636F24EBEEAA00B2B5B5 /* NotificationCenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterDelegate.swift; sourceTree = "<group>"; };
+		A6C0637124EBEF4D00B2B5B5 /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
 		A6D4A28E24D0315700769AB5 /* QuarnReadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarnReadViewController.swift; sourceTree = "<group>"; };
 		A6D4A28F24D0315700769AB5 /* QuarnReadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuarnReadViewController.xib; sourceTree = "<group>"; };
 		A6D4A29324D0339900769AB5 /* QuraanPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuraanPageModel.swift; sourceTree = "<group>"; };
@@ -507,7 +511,7 @@
 		A61304E324CB175200CE00B3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A61304E224CB175200CE00B3 /* KolYoumAya.app */,
+				A61304E224CB175200CE00B3 /* كل يوم آية.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -791,6 +795,7 @@
 		A613052A24CB176200CE00B3 /* Common Layer */ = {
 			isa = PBXGroup;
 			children = (
+				A6C0636E24EBEE9300B2B5B5 /* NotificationLayer */,
 				A6F6334624DECF47003E5C6F /* Extenstion + Array */,
 				A68AD05C24DDF70900121E11 /* PickerView */,
 				A6330BC024CEDC96000075EF /* obj-c-files */,
@@ -1325,6 +1330,15 @@
 			path = PickerView;
 			sourceTree = "<group>";
 		};
+		A6C0636E24EBEE9300B2B5B5 /* NotificationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				A6C0636F24EBEEAA00B2B5B5 /* NotificationCenterDelegate.swift */,
+				A6C0637124EBEF4D00B2B5B5 /* PushNotificationSender.swift */,
+			);
+			path = NotificationLayer;
+			sourceTree = "<group>";
+		};
 		A6D4A28D24D0312A00769AB5 /* QuaranReadViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1429,7 +1443,7 @@
 			);
 			name = KolYomAyaApp;
 			productName = KolYomAyaApp;
-			productReference = A61304E224CB175200CE00B3 /* KolYoumAya.app */;
+			productReference = A61304E224CB175200CE00B3 /* كل يوم آية.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1617,10 +1631,12 @@
 				A6D4A29824D035CE00769AB5 /* QuraanReadCoordinator.swift in Sources */,
 				A6330BC924CEDD6D000075EF /* QuarnListenCollectionViewCell.swift in Sources */,
 				A6D4A29624D0348500769AB5 /* PageReadQuraan.swift in Sources */,
+				A6C0637224EBEF4D00B2B5B5 /* PushNotificationSender.swift in Sources */,
 				A6255B3824CE0175008BC6AD /* ElsharawyViewController.swift in Sources */,
 				A61305A024CB176200CE00B3 /* BaseViewController.swift in Sources */,
 				A61304EA24CB175200CE00B3 /* ViewController.swift in Sources */,
 				A613058424CB176200CE00B3 /* TafserBookViewController.swift in Sources */,
+				A6C0637024EBEEAA00B2B5B5 /* NotificationCenterDelegate.swift in Sources */,
 				A613058F24CB176200CE00B3 /* InviaLoadingIndicator.swift in Sources */,
 				A61305BF24CB176200CE00B3 /* AyaObjectModel.swift in Sources */,
 				A613058E24CB176200CE00B3 /* LocalizationKeys.swift in Sources */,
@@ -1860,6 +1876,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XL85HZE9S5;
 				INFOPLIST_FILE = KolYomAyaApp/Info.plist;
@@ -1869,7 +1886,8 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shehabsalah.aya;
-				PRODUCT_NAME = KolYoumAya;
+				PRODUCT_NAME = "كل يوم آية";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "KolYomAyaApp/Layers/UI Layer/UI ViewControllers/ModulesViewController/QiblaLocationViewController/KolYomAyaApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1883,6 +1901,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XL85HZE9S5;
 				INFOPLIST_FILE = KolYomAyaApp/Info.plist;
@@ -1892,7 +1911,8 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shehabsalah.aya;
-				PRODUCT_NAME = KolYoumAya;
+				PRODUCT_NAME = "كل يوم آية";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "KolYomAyaApp/Layers/UI Layer/UI ViewControllers/ModulesViewController/QiblaLocationViewController/KolYomAyaApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

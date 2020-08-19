@@ -11,4 +11,6 @@ target 'KolYomAyaApp' do
    pod 'Kingfisher'
    pod 'ReachabilitySwift'
    pod 'NVActivityIndicatorView'
+pod 'Firebase/Core'
+pod 'Firebase/Messaging'
 end

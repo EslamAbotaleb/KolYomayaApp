@@ -7,25 +7,74 @@
 //
 
 import UIKit
+import Firebase
 import AVFoundation
+import UserNotifications
+import FirebaseMessaging
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
+    var TOPIC_GLOBAL: String = "kolyoumaya_v1_4"
+
     var appCoordinator: AppCoordinator?
-    
+    let notificationDelegate = NotificationCenterDelegate()
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+      
+        print(tokenString(deviceToken))
+    }
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        printError(error, location: "Remote Notification registration")
+    }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        if #available(iOS 10.0, *) {
+            
+            
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in
+                    //                    self.printError(error, location: "Request Authorization")
+                    DispatchQueue.main.async {
+                        application.registerForRemoteNotifications()
+                    }
+            })
+        } else {
+       
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            
+            application.registerUserNotificationSettings(settings)
+        }
+        UNUserNotificationCenter.current().delegate = notificationDelegate
+        FirebaseApp.configure()
+
+        Messaging.messaging().delegate = notificationDelegate
         
-               let audioSession = AVAudioSession.sharedInstance()
-               do {
-                   try audioSession.setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default)
-               } catch let error as NSError {
-                   print("Setting category to AVAudioSessionCategoryPlayback failed: \(error)")
-               }
+        Messaging.messaging().subscribe(toTopic: TOPIC_GLOBAL) { error in
+            print("Subscribed to TOPIC_GLOBAL topic")
+            
+        }
+        // will be create notification channel not found in ios soon
+        let viewModel: HomeViewModel? = HomeViewModel()
+
+        viewModel?.todayAyaApi() { [weak self] todayAyaModel in
+          let content = self?.notificationContent(title: todayAyaModel.ayaObject?.suraName ?? "Notification title", body: todayAyaModel.ayaObject?.tafsir ?? "Notification body")
+            print("Content\(content)")
+                   }
+        application.registerForRemoteNotifications()
+
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default)
+        } catch let error as NSError {
+            print("Setting category to AVAudioSessionCategoryPlayback failed: \(error)")
+        }
+
         window?.rootViewController = nil
         UIViewController.swizzlePresent()
         
@@ -39,21 +88,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-//    func setupSideMenu(viewNavigationContoller: UINavigationController) -> UIViewController {
-//        let sideMenuController = PGSideMenu(animationType: .slideOver)
-//        sideMenuController.addContentController(viewNavigationContoller)
-//        sideMenuController.hideMenu(animated: false)
-//        sideMenuController.isLeftMenu = Localizer.isArabic()
-//        let rightMenuController = SideMenuViewController()
-//        sideMenuController.addRightMenuController(rightMenuController)
-//        let leftMenuController = SideMenuViewController()
-//        sideMenuController.addLeftMenuController(leftMenuController)
-//        return sideMenuController
-//    }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        
+    func notificationContent(title:String,body:String)->UNMutableNotificationContent{
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        content.userInfo = ["step":0]
+        return content
     }
+    
+    func tokenString(_ deviceToken:Data) -> String{
+        //code to make a token string
+        let bytes = [UInt8](deviceToken)
+        var token = ""
+        for byte in bytes{
+            token += String(format: "%02x",byte)
+        }
+        return token
+    }
+    // A function to print errors to the console
+    func printError(_ error:Error?,location:String){
+        if let error = error{
+            print("Error: \(error.localizedDescription) in \(location)")
+        }
+    }
+    
     
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -77,20 +136,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    //    // MARK: UISceneSession Lifecycle
-    //
-    //    @available(iOS 13.0, *)
-    //    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-    //        // Called when a new scene session is being created.
-    //        // Use this method to select a configuration to create the new scene with.
-    //        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    //    }
-    //    @available(iOS 13.0, *)
-    //    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-    //        // Called when the user discards a scene session.
-    //        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-    //        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    //    }
-    
+ 
     
 }
