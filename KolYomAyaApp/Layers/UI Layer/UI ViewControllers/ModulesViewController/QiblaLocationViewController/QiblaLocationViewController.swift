@@ -11,7 +11,7 @@
 import UIKit
 import MapKit
 import CoreLocation
-
+import GoogleMobileAds
 func DegreesToRadians (value:Double) -> Double {
     return value * Double.pi / 180.0
 }
@@ -33,7 +33,8 @@ class QiblaLocationViewController: BaseViewController , CLLocationManagerDelegat
     var distanceFromKabah : Double?
     
     let locationManger = CLLocationManager()
-    
+    var interstitial: GADInterstitial!
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.initializeNavigationBarAppearanceWithBack(viewController: HomeViewController(), titleHeader: "اتجاه القبلة")
@@ -53,6 +54,11 @@ class QiblaLocationViewController: BaseViewController , CLLocationManagerDelegat
         self.locationManger.startUpdatingLocation()
         self.locationManger.startUpdatingHeading()
         
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-5809306835538408/9594496790")
+        interstitial.delegate = self
+        let request = GADRequest()
+        interstitial.load(request)
+        print(#function, "shouldDisplayAd", self.shouldDisplayAd, "isAdReady", self.isAdReady)
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,9 +133,59 @@ class QiblaLocationViewController: BaseViewController , CLLocationManagerDelegat
      func viewDidDisappear(animated: Bool) {
         self.locationManger.delegate = nil
     }
+    private var shouldDisplayAd = true
     
+    private var isAdReady:Bool = false {
+        didSet {
+            if isAdReady && shouldDisplayAd {
+                displayAd()
+            }
+        }
+    }
+ 
+    private func displayAd() {
+        print(#function, "ad ready", interstitial.isReady)
+        if (interstitial.isReady) {
+            shouldDisplayAd = false
+            interstitial.present(fromRootViewController: self)
+        }
+    }
+    func createAndLoadInterstitial() -> GADInterstitial {
+        interstitial = GADInterstitial(adUnitID: Keys.adsInterstitial)
+        interstitial.delegate = self
+        interstitial.load(GADRequest())
+        shouldDisplayAd = false
+        return interstitial
+    }
     
     
 
 }
 
+
+
+extension QiblaLocationViewController: GADInterstitialDelegate {
+    /// Tells the delegate an ad request failed.
+    func interstitialDidFail(toPresentScreen ad: GADInterstitial) {
+        print(#function, "ad ready", interstitial.isReady)
+    }
+    
+    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+        print(#function, "ad ready", interstitial.isReady)
+        isAdReady = true
+    }
+    
+    //Tells the delegate the interstitial is to be animated off the screen.
+    func interstitialWillDismissScreen(_ ad: GADInterstitial) {
+        print("interstitialWillDismissScreen")
+    }
+    
+    //Tells the delegate the interstitial had been animated off the screen.
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        print("interstitialDidDismissScreen")
+        //        present(self, animated: true)
+        dismiss(animated: true, completion: nil)
+        interstitial = createAndLoadInterstitial()
+        print(#function, "shouldDisplayAd", shouldDisplayAd, "isAdReady", isAdReady)
+    }
+}

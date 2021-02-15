@@ -170,15 +170,16 @@
 		A63BCD9824E5357F002CBC60 /* NameRecitersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63BCD9624E5357F002CBC60 /* NameRecitersTableViewCell.swift */; };
 		A63BCD9924E5357F002CBC60 /* NameRecitersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A63BCD9724E5357F002CBC60 /* NameRecitersTableViewCell.xib */; };
 		A63BCD9C24E536B2002CBC60 /* Setttings + Tableview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63BCD9B24E536B2002CBC60 /* Setttings + Tableview.swift */; };
+		A644ADB125A7BD8000166CF1 /* ImageViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A644ADB025A7BD8000166CF1 /* ImageViewService.swift */; };
 		A645C0A524E49FFE0085C2B7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A645C0A324E49FFE0085C2B7 /* SettingsViewController.swift */; };
 		A645C0A624E49FFE0085C2B7 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A645C0A424E49FFE0085C2B7 /* SettingsViewController.xib */; };
 		A645C0A924E4A2840085C2B7 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A645C0A824E4A2840085C2B7 /* SettingsCoordinator.swift */; };
 		A65EC13124CC483A0081270A /* key + Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65EC13024CC483A0081270A /* key + Value.swift */; };
-		A6679D4C24E427A000F25F2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6679D4B24E427A000F25F2C /* GoogleService-Info.plist */; };
 		A66EBE8024E0085F001E26A9 /* DetailTafserBook + Pickerview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66EBE7F24E0085F001E26A9 /* DetailTafserBook + Pickerview.swift */; };
 		A66EBE8324E00D22001E26A9 /* QuraanRead + PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66EBE8224E00D22001E26A9 /* QuraanRead + PickerView.swift */; };
 		A679204024E1E219003030EA /* quraanReadAllJson.json in Resources */ = {isa = PBXBuildFile; fileRef = A679203F24E1E219003030EA /* quraanReadAllJson.json */; };
 		A68AD05E24DDF71A00121E11 /* ToolbarPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68AD05D24DDF71A00121E11 /* ToolbarPickerView.swift */; };
+		A6AB9B00259FA83600D6F95D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6AB9AFF259FA83600D6F95D /* GoogleService-Info.plist */; };
 		A6C0637024EBEEAA00B2B5B5 /* NotificationCenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C0636F24EBEEAA00B2B5B5 /* NotificationCenterDelegate.swift */; };
 		A6C0637224EBEF4D00B2B5B5 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C0637124EBEF4D00B2B5B5 /* PushNotificationSender.swift */; };
 		A6D4A29024D0315700769AB5 /* QuarnReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D4A28E24D0315700769AB5 /* QuarnReadViewController.swift */; };
@@ -187,6 +188,16 @@
 		A6D4A29624D0348500769AB5 /* PageReadQuraan.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D4A29524D0348500769AB5 /* PageReadQuraan.swift */; };
 		A6D4A29824D035CE00769AB5 /* QuraanReadCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D4A29724D035CE00769AB5 /* QuraanReadCoordinator.swift */; };
 		A6D4A29A24D0374100769AB5 /* QuraanReadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D4A29924D0374100769AB5 /* QuraanReadViewModel.swift */; };
+		A6D8F41425DA85BB00F3C219 /* PrivacyPoliceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8F41225DA85BB00F3C219 /* PrivacyPoliceViewController.swift */; };
+		A6D8F41525DA85BB00F3C219 /* PrivacyPoliceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6D8F41325DA85BB00F3C219 /* PrivacyPoliceViewController.xib */; };
+		A6D8F41925DA863900F3C219 /* PrivacyPoliceCoordiantor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8F41825DA863900F3C219 /* PrivacyPoliceCoordiantor.swift */; };
+		A6D8F41C25DA866400F3C219 /* TermsAndConditionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8F41B25DA866400F3C219 /* TermsAndConditionCoordinator.swift */; };
+		A6D8F42225DA86B600F3C219 /* TermsAndConidtionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8F42025DA86B600F3C219 /* TermsAndConidtionViewController.swift */; };
+		A6D8F42325DA86B600F3C219 /* TermsAndConidtionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6D8F42125DA86B600F3C219 /* TermsAndConidtionViewController.xib */; };
+		A6D8F42B25DA904800F3C219 /* SupportAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8F42925DA904800F3C219 /* SupportAppViewController.swift */; };
+		A6D8F42C25DA904800F3C219 /* SupportAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6D8F42A25DA904800F3C219 /* SupportAppViewController.xib */; };
+		A6D8F43025DA907300F3C219 /* SupportAppCoordiantor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8F42F25DA907300F3C219 /* SupportAppCoordiantor.swift */; };
+		A6D8F46C25DAC2A400F3C219 /* Extension + TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8F46B25DAC2A400F3C219 /* Extension + TextField.swift */; };
 		A6F1DEE624E14A2900F18D08 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F1DEE424E14A2900F18D08 /* PlayerViewController.swift */; };
 		A6F1DEE724E14A2900F18D08 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DEE524E14A2900F18D08 /* PlayerViewController.xib */; };
 		A6F6334824DECF64003E5C6F /* ArrayExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F6334724DECF64003E5C6F /* ArrayExtenstion.swift */; };
@@ -369,15 +380,17 @@
 		A63BCD9624E5357F002CBC60 /* NameRecitersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameRecitersTableViewCell.swift; sourceTree = "<group>"; };
 		A63BCD9724E5357F002CBC60 /* NameRecitersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NameRecitersTableViewCell.xib; sourceTree = "<group>"; };
 		A63BCD9B24E536B2002CBC60 /* Setttings + Tableview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Setttings + Tableview.swift"; sourceTree = "<group>"; };
+		A644ADB025A7BD8000166CF1 /* ImageViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewService.swift; sourceTree = "<group>"; };
 		A645C0A324E49FFE0085C2B7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A645C0A424E49FFE0085C2B7 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		A645C0A824E4A2840085C2B7 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		A65EC13024CC483A0081270A /* key + Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "key + Value.swift"; sourceTree = "<group>"; };
-		A6679D4B24E427A000F25F2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A66EBE7F24E0085F001E26A9 /* DetailTafserBook + Pickerview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailTafserBook + Pickerview.swift"; sourceTree = "<group>"; };
 		A66EBE8224E00D22001E26A9 /* QuraanRead + PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuraanRead + PickerView.swift"; sourceTree = "<group>"; };
 		A679203F24E1E219003030EA /* quraanReadAllJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = quraanReadAllJson.json; sourceTree = "<group>"; };
 		A68AD05D24DDF71A00121E11 /* ToolbarPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPickerView.swift; sourceTree = "<group>"; };
+		A6AB9AFF259FA83600D6F95D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A6AB9B03259FAAD200D6F95D /* كل يوم آية.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "كل يوم آية.entitlements"; sourceTree = "<group>"; };
 		A6C0636F24EBEEAA00B2B5B5 /* NotificationCenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterDelegate.swift; sourceTree = "<group>"; };
 		A6C0637124EBEF4D00B2B5B5 /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
 		A6D4A28E24D0315700769AB5 /* QuarnReadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarnReadViewController.swift; sourceTree = "<group>"; };
@@ -386,6 +399,16 @@
 		A6D4A29524D0348500769AB5 /* PageReadQuraan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageReadQuraan.swift; sourceTree = "<group>"; };
 		A6D4A29724D035CE00769AB5 /* QuraanReadCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuraanReadCoordinator.swift; sourceTree = "<group>"; };
 		A6D4A29924D0374100769AB5 /* QuraanReadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuraanReadViewModel.swift; sourceTree = "<group>"; };
+		A6D8F41225DA85BB00F3C219 /* PrivacyPoliceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPoliceViewController.swift; sourceTree = "<group>"; };
+		A6D8F41325DA85BB00F3C219 /* PrivacyPoliceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivacyPoliceViewController.xib; sourceTree = "<group>"; };
+		A6D8F41825DA863900F3C219 /* PrivacyPoliceCoordiantor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPoliceCoordiantor.swift; sourceTree = "<group>"; };
+		A6D8F41B25DA866400F3C219 /* TermsAndConditionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionCoordinator.swift; sourceTree = "<group>"; };
+		A6D8F42025DA86B600F3C219 /* TermsAndConidtionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConidtionViewController.swift; sourceTree = "<group>"; };
+		A6D8F42125DA86B600F3C219 /* TermsAndConidtionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermsAndConidtionViewController.xib; sourceTree = "<group>"; };
+		A6D8F42925DA904800F3C219 /* SupportAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportAppViewController.swift; sourceTree = "<group>"; };
+		A6D8F42A25DA904800F3C219 /* SupportAppViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SupportAppViewController.xib; sourceTree = "<group>"; };
+		A6D8F42F25DA907300F3C219 /* SupportAppCoordiantor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportAppCoordiantor.swift; sourceTree = "<group>"; };
+		A6D8F46B25DAC2A400F3C219 /* Extension + TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + TextField.swift"; sourceTree = "<group>"; };
 		A6F1DEE424E14A2900F18D08 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		A6F1DEE524E14A2900F18D08 /* PlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 		A6F6334724DECF64003E5C6F /* ArrayExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtenstion.swift; sourceTree = "<group>"; };
@@ -519,7 +542,8 @@
 		A61304E424CB175200CE00B3 /* KolYomAyaApp */ = {
 			isa = PBXGroup;
 			children = (
-				A6679D4B24E427A000F25F2C /* GoogleService-Info.plist */,
+				A6AB9B03259FAAD200D6F95D /* كل يوم آية.entitlements */,
+				A6AB9AFF259FA83600D6F95D /* GoogleService-Info.plist */,
 				A61304F924CB176200CE00B3 /* Layers */,
 				A61304E524CB175200CE00B3 /* AppDelegate.swift */,
 				A61304E924CB175200CE00B3 /* ViewController.swift */,
@@ -576,6 +600,9 @@
 				A6D4A29724D035CE00769AB5 /* QuraanReadCoordinator.swift */,
 				A6FE5C9824D06369001A2F3F /* GetAllBooksPageCoordiantor.swift */,
 				A645C0A824E4A2840085C2B7 /* SettingsCoordinator.swift */,
+				A6D8F41825DA863900F3C219 /* PrivacyPoliceCoordiantor.swift */,
+				A6D8F41B25DA866400F3C219 /* TermsAndConditionCoordinator.swift */,
+				A6D8F42F25DA907300F3C219 /* SupportAppCoordiantor.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -642,6 +669,9 @@
 		A613050D24CB176200CE00B3 /* ModulesViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A6D8F42725DA902E00F3C219 /* SupportAppController */,
+				A6D8F41E25DA869400F3C219 /* TermsAndCondtionController */,
+				A6D8F41025DA820C00F3C219 /* PrivacyPolicyController */,
 				A645C0A224E49FE60085C2B7 /* SettingsViewController */,
 				A6F1DEE224E14A0700F18D08 /* PlayerViewController */,
 				A6FE5C8D24D060F9001A2F3F /* BookGetAllByPageNumberViewController */,
@@ -726,6 +756,9 @@
 		A613051D24CB176200CE00B3 /* Modules UIView */ = {
 			isa = PBXGroup;
 			children = (
+				A6D8F42825DA903700F3C219 /* SupportAppView */,
+				A6D8F41F25DA869E00F3C219 /* TermsAndConditionView */,
+				A6D8F40F25DA81F800F3C219 /* PrivacyPolicyView */,
 				A645C0A724E4A0380085C2B7 /* SettingsView */,
 				A6F1DEE324E14A0F00F18D08 /* PlayerView */,
 				A6FE5C9224D0611D001A2F3F /* BookGetAllByPageNumberView */,
@@ -795,6 +828,8 @@
 		A613052A24CB176200CE00B3 /* Common Layer */ = {
 			isa = PBXGroup;
 			children = (
+				A6D8F46A25DAC29400F3C219 /* Extension + TextField */,
+				A644ADAF25A7BD6B00166CF1 /* Extenstion + Imageview */,
 				A6C0636E24EBEE9300B2B5B5 /* NotificationLayer */,
 				A6F6334624DECF47003E5C6F /* Extenstion + Array */,
 				A68AD05C24DDF70900121E11 /* PickerView */,
@@ -1288,6 +1323,14 @@
 			path = "TableView + Extenstion ";
 			sourceTree = "<group>";
 		};
+		A644ADAF25A7BD6B00166CF1 /* Extenstion + Imageview */ = {
+			isa = PBXGroup;
+			children = (
+				A644ADB025A7BD8000166CF1 /* ImageViewService.swift */,
+			);
+			path = "Extenstion + Imageview";
+			sourceTree = "<group>";
+		};
 		A645C0A224E49FE60085C2B7 /* SettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1354,6 +1397,62 @@
 				A6D4A28F24D0315700769AB5 /* QuarnReadViewController.xib */,
 			);
 			path = QuaranReadView;
+			sourceTree = "<group>";
+		};
+		A6D8F40F25DA81F800F3C219 /* PrivacyPolicyView */ = {
+			isa = PBXGroup;
+			children = (
+				A6D8F41325DA85BB00F3C219 /* PrivacyPoliceViewController.xib */,
+			);
+			path = PrivacyPolicyView;
+			sourceTree = "<group>";
+		};
+		A6D8F41025DA820C00F3C219 /* PrivacyPolicyController */ = {
+			isa = PBXGroup;
+			children = (
+				A6D8F41225DA85BB00F3C219 /* PrivacyPoliceViewController.swift */,
+			);
+			path = PrivacyPolicyController;
+			sourceTree = "<group>";
+		};
+		A6D8F41E25DA869400F3C219 /* TermsAndCondtionController */ = {
+			isa = PBXGroup;
+			children = (
+				A6D8F42025DA86B600F3C219 /* TermsAndConidtionViewController.swift */,
+			);
+			path = TermsAndCondtionController;
+			sourceTree = "<group>";
+		};
+		A6D8F41F25DA869E00F3C219 /* TermsAndConditionView */ = {
+			isa = PBXGroup;
+			children = (
+				A6D8F42125DA86B600F3C219 /* TermsAndConidtionViewController.xib */,
+			);
+			path = TermsAndConditionView;
+			sourceTree = "<group>";
+		};
+		A6D8F42725DA902E00F3C219 /* SupportAppController */ = {
+			isa = PBXGroup;
+			children = (
+				A6D8F42925DA904800F3C219 /* SupportAppViewController.swift */,
+			);
+			path = SupportAppController;
+			sourceTree = "<group>";
+		};
+		A6D8F42825DA903700F3C219 /* SupportAppView */ = {
+			isa = PBXGroup;
+			children = (
+				A6D8F42A25DA904800F3C219 /* SupportAppViewController.xib */,
+			);
+			path = SupportAppView;
+			sourceTree = "<group>";
+		};
+		A6D8F46A25DAC29400F3C219 /* Extension + TextField */ = {
+			isa = PBXGroup;
+			children = (
+				A6D8F46B25DAC2A400F3C219 /* Extension + TextField.swift */,
+			);
+			path = "Extension + TextField";
 			sourceTree = "<group>";
 		};
 		A6F1DEE224E14A0700F18D08 /* PlayerViewController */ = {
@@ -1432,6 +1531,7 @@
 			buildConfigurationList = A61304F624CB175400CE00B3 /* Build configuration list for PBXNativeTarget "KolYomAyaApp" */;
 			buildPhases = (
 				C3D26DA664E712C4382347C0 /* [CP] Check Pods Manifest.lock */,
+				A3CEF456C58991287F1B967B /* [CP] Prepare Artifacts */,
 				A61304DE24CB175200CE00B3 /* Sources */,
 				A61304DF24CB175200CE00B3 /* Frameworks */,
 				A61304E024CB175200CE00B3 /* Resources */,
@@ -1494,6 +1594,8 @@
 				A61305C624CB17B200CE00B3 /* Localizable.strings in Resources */,
 				A61305AE24CB176200CE00B3 /* monadi.ttf in Resources */,
 				A6330BE724CF0754000075EF /* AlbumReciterViewController.xib in Resources */,
+				A6D8F42C25DA904800F3C219 /* SupportAppViewController.xib in Resources */,
+				A6D8F42325DA86B600F3C219 /* TermsAndConidtionViewController.xib in Resources */,
 				A613058C24CB176200CE00B3 /* TafserBookCollectionViewCell.xib in Resources */,
 				A6330BCA24CEDD6D000075EF /* QuarnListenCollectionViewCell.xib in Resources */,
 				A61304EF24CB175400CE00B3 /* Assets.xcassets in Resources */,
@@ -1503,6 +1605,7 @@
 				A606FC6F24CB18ED00C80D9E /* LaunchScreen.storyboard in Resources */,
 				A6330BF024CF0861000075EF /* AlbumReciterTableViewCell.xib in Resources */,
 				A606FC7524CB1D9500C80D9E /* PreviousAyatViewController.xib in Resources */,
+				A6AB9B00259FA83600D6F95D /* GoogleService-Info.plist in Resources */,
 				A6255B3924CE0175008BC6AD /* ElsharawyViewController.xib in Resources */,
 				A6255B3E24CE064B008BC6AD /* ElsharawyTableViewCell.xib in Resources */,
 				A6255B6924CE35C0008BC6AD /* DetailMediaProgramSelectedController.xib in Resources */,
@@ -1510,6 +1613,7 @@
 				A6330BC524CEDCCA000075EF /* QuarnListenViewController.xib in Resources */,
 				A61305B024CB176200CE00B3 /* ge_ss_two_medium.otf in Resources */,
 				A679204024E1E219003030EA /* quraanReadAllJson.json in Resources */,
+				A6D8F41525DA85BB00F3C219 /* PrivacyPoliceViewController.xib in Resources */,
 				A61305A624CB176200CE00B3 /* kitab_b.ttf in Resources */,
 				A606FC7A24CB1EB900C80D9E /* PreviousAyatTableViewCell.xib in Resources */,
 				A6330BFB24CF19F7000075EF /* ListAyatSpesficReciterViewController.xib in Resources */,
@@ -1517,7 +1621,6 @@
 				A6255B5D24CE20FF008BC6AD /* ElsharawyMediaProgramIdTableViewCell.xib in Resources */,
 				A61305AF24CB176200CE00B3 /* ge_ss_two_light.otf in Resources */,
 				A61304ED24CB175200CE00B3 /* Main.storyboard in Resources */,
-				A6679D4C24E427A000F25F2C /* GoogleService-Info.plist in Resources */,
 				A6FE5C9124D06117001A2F3F /* BookGetAllByPageNumberViewController.xib in Resources */,
 				A606FC9524CB6FED00C80D9E /* DetailTafserBookSelectViewController.xib in Resources */,
 				A61305AC24CB176200CE00B3 /* ge_ss_two_bold.otf in Resources */,
@@ -1542,6 +1645,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		A3CEF456C58991287F1B967B /* [CP] Prepare Artifacts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KolYomAyaApp/Pods-KolYomAyaApp-artifacts-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Prepare Artifacts";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KolYomAyaApp/Pods-KolYomAyaApp-artifacts-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KolYomAyaApp/Pods-KolYomAyaApp-artifacts.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AB4906A32BA688F6B9709E4B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1638,6 +1758,7 @@
 				A613058424CB176200CE00B3 /* TafserBookViewController.swift in Sources */,
 				A6C0637024EBEEAA00B2B5B5 /* NotificationCenterDelegate.swift in Sources */,
 				A613058F24CB176200CE00B3 /* InviaLoadingIndicator.swift in Sources */,
+				A6D8F41925DA863900F3C219 /* PrivacyPoliceCoordiantor.swift in Sources */,
 				A61305BF24CB176200CE00B3 /* AyaObjectModel.swift in Sources */,
 				A613058E24CB176200CE00B3 /* LocalizationKeys.swift in Sources */,
 				A613058224CB176200CE00B3 /* TafserBookCollectionViewCell.swift in Sources */,
@@ -1647,12 +1768,15 @@
 				A645C0A524E49FFE0085C2B7 /* SettingsViewController.swift in Sources */,
 				A613059E24CB176200CE00B3 /* Extension + UIView.swift in Sources */,
 				A6255B3D24CE064B008BC6AD /* ElsharawyTableViewCell.swift in Sources */,
+				A6D8F41425DA85BB00F3C219 /* PrivacyPoliceViewController.swift in Sources */,
 				A6330C1424CF5B27000075EF /* ListAyatSpesficReciterViewController.swift in Sources */,
 				A6330BCF24CEE169000075EF /* ReciterModel.swift in Sources */,
 				A6255B6824CE35C0008BC6AD /* DetailMediaProgramSelectedController.swift in Sources */,
+				A6D8F42B25DA904800F3C219 /* SupportAppViewController.swift in Sources */,
 				A6330BCD24CEE0AD000075EF /* QuaranListen + CollectionView.swift in Sources */,
 				A6255B5524CE20AE008BC6AD /* ElsharawyMediaProgramIdViewController.swift in Sources */,
 				A613059324CB176200CE00B3 /* PGSideMenuSlideOverAnimator.swift in Sources */,
+				A644ADB125A7BD8000166CF1 /* ImageViewService.swift in Sources */,
 				A613058624CB176200CE00B3 /* HomeViewController.swift in Sources */,
 				A613057D24CB176200CE00B3 /* SideMenuListViewModel.swift in Sources */,
 				A613059124CB176200CE00B3 /* TypeAlias.swift in Sources */,
@@ -1663,6 +1787,7 @@
 				A6330BE624CF0754000075EF /* AlbumReciterViewController.swift in Sources */,
 				A613059224CB176200CE00B3 /* CardView.swift in Sources */,
 				A6255B5C24CE20FF008BC6AD /* ElsharawyMediaProgramIdTableViewCell.swift in Sources */,
+				A6D8F41C25DA866400F3C219 /* TermsAndConditionCoordinator.swift in Sources */,
 				A606FC9E24CB7A8A00C80D9E /* DetailTafserBookSelectedCoordinator.swift in Sources */,
 				A61305BD24CB176200CE00B3 /* BooksTafserModel.swift in Sources */,
 				A6330BE024CF05D5000075EF /* ResultAlbumReciter.swift in Sources */,
@@ -1690,6 +1815,7 @@
 				A613058124CB176200CE00B3 /* SideMenuViewController.swift in Sources */,
 				A645C0A924E4A2840085C2B7 /* SettingsCoordinator.swift in Sources */,
 				A6330BC424CEDCCA000075EF /* QuarnListenViewController.swift in Sources */,
+				A6D8F46C25DAC2A400F3C219 /* Extension + TextField.swift in Sources */,
 				A61305B924CB176200CE00B3 /* NetworkService.swift in Sources */,
 				A68AD05E24DDF71A00121E11 /* ToolbarPickerView.swift in Sources */,
 				A613059924CB176200CE00B3 /* PGSideMenu.swift in Sources */,
@@ -1707,11 +1833,13 @@
 				A6330BF624CF0BB4000075EF /* AlbumReciterViewModel.swift in Sources */,
 				A6D4A29424D0339900769AB5 /* QuraanPageModel.swift in Sources */,
 				A6FE5C9B24D06442001A2F3F /* GetAllBooksByPageViewModel.swift in Sources */,
+				A6D8F43025DA907300F3C219 /* SupportAppCoordiantor.swift in Sources */,
 				A6D4A29A24D0374100769AB5 /* QuraanReadViewModel.swift in Sources */,
 				A613057F24CB176200CE00B3 /* SideMenuCell.swift in Sources */,
 				A61305B824CB176200CE00B3 /* NetworkServiceResult.swift in Sources */,
 				A6255B4024CE07AF008BC6AD /* ElsharawyCoordinator.swift in Sources */,
 				A606FC8824CB502F00C80D9E /* DetailAyaSelectedCoordinator.swift in Sources */,
+				A6D8F42225DA86B600F3C219 /* TermsAndConidtionViewController.swift in Sources */,
 				A6F6334824DECF64003E5C6F /* ArrayExtenstion.swift in Sources */,
 				A6255B6024CE2589008BC6AD /* ElsharawyMediaProgramIdViewModel.swift in Sources */,
 				A613059C24CB176200CE00B3 /* AppColor.swift in Sources */,
@@ -1876,16 +2004,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "KolYomAyaApp/كل يوم آية.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XL85HZE9S5;
+				DEVELOPMENT_TEAM = N4F74WQYX7;
 				INFOPLIST_FILE = KolYomAyaApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shehabsalah.aya;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shehabsalah.kolyoumaya;
 				PRODUCT_NAME = "كل يوم آية";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "KolYomAyaApp/Layers/UI Layer/UI ViewControllers/ModulesViewController/QiblaLocationViewController/KolYomAyaApp-Bridging-Header.h";
@@ -1901,16 +2030,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "KolYomAyaApp/كل يوم آية.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XL85HZE9S5;
+				DEVELOPMENT_TEAM = N4F74WQYX7;
 				INFOPLIST_FILE = KolYomAyaApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shehabsalah.aya;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shehabsalah.kolyoumaya;
 				PRODUCT_NAME = "كل يوم آية";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "KolYomAyaApp/Layers/UI Layer/UI ViewControllers/ModulesViewController/QiblaLocationViewController/KolYomAyaApp-Bridging-Header.h";

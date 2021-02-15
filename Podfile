@@ -11,6 +11,7 @@ target 'KolYomAyaApp' do
    pod 'Kingfisher'
    pod 'ReachabilitySwift'
    pod 'NVActivityIndicatorView'
-pod 'Firebase/Core'
-pod 'Firebase/Messaging'
+   pod 'Firebase/Core'
+   pod 'Firebase/Messaging'
+   pod 'Google-Mobile-Ads-SDK'
 end

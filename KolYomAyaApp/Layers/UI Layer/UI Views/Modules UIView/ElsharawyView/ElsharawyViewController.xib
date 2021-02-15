@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ElsharawyViewController" customModule="KolYoumAya" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ElsharawyViewController" customModule="كل_يوم_آية" customModuleProvider="target">
             <connections>
+                <outlet property="bannerView" destination="2yh-y9-TFQ" id="tBq-O6-kPA"/>
                 <outlet property="tableView" destination="k2Z-vn-8rs" id="Gpc-Ni-bhZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,23 +22,38 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k2Z-vn-8rs">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <rect key="frame" x="0.0" y="68" width="414" height="668"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="eL5-vv-liZ"/>
                         <outlet property="delegate" destination="-1" id="HHK-Dy-QqC"/>
                     </connections>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yh-y9-TFQ" customClass="GADBannerView">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="fNu-8n-21E"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="k2Z-vn-8rs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4co-k5-SVf"/>
+                <constraint firstItem="k2Z-vn-8rs" firstAttribute="top" secondItem="2yh-y9-TFQ" secondAttribute="bottom" constant="8" symbolic="YES" id="6sl-js-RnF"/>
+                <constraint firstItem="2yh-y9-TFQ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="7Ih-bI-uNM"/>
+                <constraint firstItem="2yh-y9-TFQ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="BTE-VI-QUd"/>
                 <constraint firstAttribute="trailing" secondItem="k2Z-vn-8rs" secondAttribute="trailing" id="Bav-jP-Yyr"/>
+                <constraint firstItem="2yh-y9-TFQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="IYU-0A-OKX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="k2Z-vn-8rs" secondAttribute="bottom" id="NVC-aZ-g9v"/>
                 <constraint firstItem="k2Z-vn-8rs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="c8B-Sg-VNT"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="136.875" y="152.5"/>
+            <point key="canvasLocation" x="136.23188405797103" y="152.44565217391306"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

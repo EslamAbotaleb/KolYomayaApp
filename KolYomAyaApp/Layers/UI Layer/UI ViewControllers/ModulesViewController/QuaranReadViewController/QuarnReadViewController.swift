@@ -14,7 +14,7 @@ class QuarnReadViewController: BaseViewController {
     @IBOutlet weak var viewPickerView: UIView!
     var viewModel: QuraanReadViewModel?
     var quraanReadModel: QuraanPageModel?
-    var surahIdNumber: Int?
+    var surahIdNumber: Int? = 0 
     var ayahNumber: Int?
     var pageNumber: Int = 1
     var numberAyat: [Int] = [Int]()
@@ -45,8 +45,7 @@ class QuarnReadViewController: BaseViewController {
         viewModel = QuraanReadViewModel()
         KeyAndValue.getSura_Name()
         KeyAndValue.getSura_Number()
-        
-        
+      
         self.ayaNameTextField.inputView = self.ayaNameList
         self.ayaNameTextField.inputAccessoryView = self.ayaNameList.toolbar
         self.numberAyatTextField.inputView = self.numberOfAyaList
@@ -66,13 +65,10 @@ class QuarnReadViewController: BaseViewController {
         self.view.addGestureRecognizer(tap)
         viewModel?.surahAyaByPageNumberApi(pageNumber: pageNumber, completionHandler: { (resultQuraanPageModel) in
             self.quraanReadModel = resultQuraanPageModel
-            
             self.suraImage.imageFromURL(urlString: (self.quraanReadModel?.quraanPage?.image)!)
             self.quraanReadModel?.quraanPage?.surahList?.forEach { surahObject in
                 self.surahIdNumber = surahObject.id
-                //                            self?.numberAyat.uniques.app
                 self.numberAyat.append(contentsOf: (surahObject.ayat)!)
-                
                 surahObject.ayat?.forEach { ayatObjects in
                     self.ayahNumber = ayatObjects
                 }
@@ -88,7 +84,7 @@ class QuarnReadViewController: BaseViewController {
         })
         for indexPageNumber in 1..<665 {
                    CounterPageNumber.append(indexPageNumber)
-               }
+        }
         let swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
         let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
         swipeRightGesture.direction = UISwipeGestureRecognizer.Direction.right
@@ -113,7 +109,8 @@ class QuarnReadViewController: BaseViewController {
             self.navigationController?.navigationBar.isHidden = false
 //            self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
             self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
-            self.heightView.constant = 100.0
+            self.heightView.constant = 50.0
+//            self.heightView.constant = 100.0
 
 
         }
@@ -122,10 +119,10 @@ class QuarnReadViewController: BaseViewController {
     @objc func handleSwipe(_ gesture: UISwipeGestureRecognizer) {
 
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
+            print("user swipe to right")
             //MARK:- will increase pageNumber by 1
             if pageNumberSelected == false {
                             self.pageNumber = Int(self.pageNumberTextField.text!)! + 1
-                print("vmrlijvriljhrihvierr\(Int(self.pageNumberTextField.text!)!)")
                            self.pageNumberTextField.text = "\(self.pageNumber)"
                        } else {
                            self.pageNumber += self.CounterPageNumber[self.counter ]  - self.counter
@@ -136,17 +133,21 @@ class QuarnReadViewController: BaseViewController {
                 self.quraanReadModel = resultQuraanPageModel
                 
                 if resultQuraanPageModel.previousPage == nil {
+                    print("previous page is nil")
                     self.suraImage.imageFromURL(urlString: (resultQuraanPageModel.quraanPage?.image)!)
                     
                 } else {
+                    print("previouPage not empty")
                     self.suraImage.imageFromURL(urlString: (resultQuraanPageModel.quraanPage?.image)!)
                 }
-                for index in 0..<(self.quraanReadModel?.quraanPage?.surahList!.count)! {
+                for index in 0..<(self.quraanReadModel?.quraanPage?.surahList!.count ?? 0) {
                     KeyAndValue.SURA_NAME[0].name = self.quraanReadModel!.quraanPage!.surahList![index].name!
                     
                     self.ayaNameTextField.text = self.quraanReadModel!.quraanPage!.surahList![index].name!
-                    print("femwngwhekuhekughewgrweg\(self.quraanReadModel!.quraanPage!.surahList![index])")
                     self.numberAyatTextField.text = "\(self.quraanReadModel!.quraanPage!.surahList![index].ayat![0])"
+                    self.numberAyat = self.quraanReadModel!.quraanPage!.surahList![index].ayat!
+//                    self.numberAyat.append(contentsOf: self.quraanReadModel!.quraanPage!.surahList![index].ayat!)
+                    print("displayNUMAYAT\(self.numberAyat)")
                 }
                 DispatchQueue.main.async {
                     self.ayaNameList.reloadAllComponents()
@@ -156,6 +157,8 @@ class QuarnReadViewController: BaseViewController {
                           }
             })
         } else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
+            print("user swipe to left")
+
             //MARK:- will decrease pageNumber by 1
             if pageNumberSelected == false {
                         self.pageNumber = Int(self.pageNumberTextField.text!)! - 1
@@ -173,18 +176,18 @@ class QuarnReadViewController: BaseViewController {
                     if resultQuraanPageModel.quraanPage?.image == nil {
                         print("Not there image swipe as right")
                     }
-                    self.suraImage.imageFromURL(urlString: (resultQuraanPageModel.quraanPage?.image)!)
+                    self.suraImage.imageFromURL(urlString: (resultQuraanPageModel.quraanPage?.image) ?? "")
                     
                 } else {
-                    self.suraImage.imageFromURL(urlString: (resultQuraanPageModel.quraanPage?.image)!)
+                    self.suraImage.imageFromURL(urlString: (resultQuraanPageModel.quraanPage?.image) ?? "")
                     
                 }
-                for index in 0..<(self.quraanReadModel?.quraanPage?.surahList!.count)! {
+                for index in 0..<(self.quraanReadModel?.quraanPage?.surahList!.count ?? 0) {
                                KeyAndValue.SURA_NAME[0].name = self.quraanReadModel!.quraanPage!.surahList![index].name!
                     
                     self.ayaNameTextField.text = self.quraanReadModel!.quraanPage!.surahList![index].name!
                     self.numberAyatTextField.text = "\(self.quraanReadModel!.quraanPage!.surahList![index].ayat![0])"
-
+                    self.numberAyat = self.quraanReadModel!.quraanPage!.surahList![index].ayat!
                            }
                 DispatchQueue.main.async {
                               self.ayaNameList.reloadAllComponents()

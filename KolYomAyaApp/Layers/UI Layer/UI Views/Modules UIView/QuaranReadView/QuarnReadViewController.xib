@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuarnReadViewController" customModule="KolYoumAya" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuarnReadViewController" customModule="كل_يوم_آية" customModuleProvider="target">
             <connections>
                 <outlet property="ayaNameTextField" destination="R7B-rV-1nM" id="BiM-zR-IEw"/>
                 <outlet property="heightView" destination="T2r-6k-mnC" id="gil-i4-c7g"/>
@@ -59,12 +60,14 @@
                         <constraint firstAttribute="bottom" secondItem="F0y-Eb-Iny" secondAttribute="bottom" id="BMF-0r-YNb"/>
                         <constraint firstAttribute="height" constant="50" id="T2r-6k-mnC"/>
                         <constraint firstItem="F0y-Eb-Iny" firstAttribute="leading" secondItem="gbC-K0-ak3" secondAttribute="leading" constant="10" id="jUv-xe-4uR"/>
+                        <constraint firstItem="F0y-Eb-Iny" firstAttribute="height" secondItem="gbC-K0-ak3" secondAttribute="height" id="mxx-xh-Asf"/>
                         <constraint firstItem="F0y-Eb-Iny" firstAttribute="top" secondItem="gbC-K0-ak3" secondAttribute="top" id="s0O-EX-1lN"/>
                         <constraint firstAttribute="trailing" secondItem="F0y-Eb-Iny" secondAttribute="trailing" constant="10" id="wd2-dq-utH"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="gbC-K0-ak3" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="QRF-QX-HUP"/>
                 <constraint firstItem="gbC-K0-ak3" firstAttribute="top" secondItem="OIS-RA-PYM" secondAttribute="bottom" constant="5" id="R7W-P6-9Ph"/>
@@ -74,8 +77,12 @@
                 <constraint firstItem="OIS-RA-PYM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="XeD-9y-FvG"/>
                 <constraint firstItem="OIS-RA-PYM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="pgq-h5-UdM"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="-201" y="169"/>
+            <point key="canvasLocation" x="-90" y="94"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

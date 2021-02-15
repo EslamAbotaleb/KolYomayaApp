@@ -21,8 +21,11 @@ class QuarnListenCollectionViewCell: UICollectionViewCell {
     }
     func configure(viewModel: ResultReciter) {
         
-        imageReciter.imageFromURL(urlString: viewModel.image!)
+//        imageReciter.imageFromURL(urlString: viewModel.image!)
 
+        ImageService.downloadImage(withURL: URL(string: viewModel.image!)!) { (image) in
+            self.imageReciter.image = image
+        }
 //        imageReciter.imageFromURL(urlString: viewModel.image!)
         nameReciterLabel.text = viewModel.name
     }

@@ -25,8 +25,10 @@ final class TafserBookCollectionViewCell: UICollectionViewCell {
     
             self.subTitleBookTafserLbl.text = viewModel.title
 
-            imageBook.imageFromURL(urlString:viewModel.cover!)
+//            imageBook.imageFromURL(urlString:viewModel.cover!)
             
-        
+            ImageService.downloadImage(withURL: URL(string: viewModel.cover!)!) { (image) in
+                self.imageBook.image = image
+            }
         }
 }

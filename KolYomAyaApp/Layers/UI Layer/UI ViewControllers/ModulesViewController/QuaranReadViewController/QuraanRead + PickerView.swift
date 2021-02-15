@@ -27,7 +27,8 @@ extension QuarnReadViewController: UIPickerViewDataSource, UIPickerViewDelegate 
           
         } else if pickerView == numberOfAyaList {
 
-            return self.numberAyat.uniques.count
+//            return self.numberAyat.uniques.count
+            return self.numberAyat.count
 
         } else if pickerView == pageNumberContent {
 
@@ -43,8 +44,10 @@ extension QuarnReadViewController: UIPickerViewDataSource, UIPickerViewDelegate 
             return KeyAndValue.SURA_NAME[row].name
 
         } else if pickerView == numberOfAyaList {
+            print("numberOFAya\(self.numberAyat.count)")
 
-            return   "\(self.numberAyat.uniques[row])"
+//            return   "\(self.numberAyat.uniques[row])"
+            return   "\(self.numberAyat[row])"
 
         } else if pickerView == pageNumberContent {
                     
@@ -69,7 +72,11 @@ extension QuarnReadViewController: UIPickerViewDataSource, UIPickerViewDelegate 
               
           } else if pickerView == numberOfAyaList {
               pageNumberSelected = false
-              self.numberAyatTextField.text = "\(self.numberAyat.uniques[row])"
+            print("numberofayaytPickerView\(numberAyat)")
+            print("numberofayaytPickerViewuniquesuniques\(numberAyat.uniques)")
+
+//              self.numberAyatTextField.text = "\(self.numberAyat.uniques[row])"
+            self.numberAyatTextField.text = "\(self.numberAyat[row])"
 
           }
       }
@@ -89,21 +96,37 @@ extension QuarnReadViewController: ToolbarPickerViewDelegate {
         self.numberAyatTextField.resignFirstResponder()
         self.ayaNameTextField.resignFirstResponder()
         self.pageNumberTextField.resignFirstResponder()
-        if row == 0 {
-            self.surahIdNumber = 1
-            self.ayahNumber = 1
-        } else {
-            self.surahIdNumber = row + 1
-        }
         
-        self.numberRowAya = self.numberAyat.uniques[rowNumberAyat]
-       
+//        if row == 0 {
+//            print("rowequalzero")
+//            self.surahIdNumber = 1
+//            self.ayahNumber = 1
+//        } else {
+//            print("rownotzeroo")
+//            self.surahIdNumber = row + 1
+//            print("surahIdNumber\(self.surahIdNumber)")
+//        }
+        self.surahIdNumber! +=  1
+//        if row == 0 {
+//            print("rowequalzero")
+//            self.surahIdNumber = 1
+//            self.ayahNumber = 1
+//        } else {
+//            print("rownotzeroo")
+////            self.surahIdNumber = row + 1
+//            self.surahIdNumber +=  1
+//
+//            print("surahIdNumber\(self.surahIdNumber)")
+//        }
+//        self.numberRowAya = self.numberAyat.uniques[rowNumberAyat]
+        self.numberRowAya = self.numberAyat[rowNumberAyat]
+
         if pageNumberSelected ==  false {
             self.numberAyatTextField.text = "\(self.numberRowAya)"
         }
         
-
-        self.viewModel?.quraanReadBySurahAndAyah(surahId: (self.surahIdNumber)!, ayah: self.numberAyat.uniques[rowNumberAyat], completionHandler: {[weak self] (resultQuraanPageModel) in
+//        self.numberAyat.uniques
+        self.viewModel?.quraanReadBySurahAndAyah(surahId: (self.surahIdNumber)!, ayah: self.numberAyat[rowNumberAyat], completionHandler: {[weak self] (resultQuraanPageModel) in
             self?.quraanReadModel = resultQuraanPageModel
             
             
@@ -121,10 +144,11 @@ extension QuarnReadViewController: ToolbarPickerViewDelegate {
 //             }
               //Mark:- in this will be add surah ayat
 //            self?.suraImage.imageFromURL(urlString: (self?.quraanReadModel?.quraanPage?.image)!)
-             for indexAya in 0..<(self?.quraanReadModel?.quraanPage?.surahList!.count)! {
+             for indexAya in 0..<(self?.quraanReadModel?.quraanPage?.surahList?.count ?? 0)  {
                  self?.surahIdNumber = self?.quraanReadModel?.quraanPage?.surahList?[indexAya].id
 
-                 self?.numberAyat.append(contentsOf: (self?.quraanReadModel?.quraanPage?.surahList?[indexAya].ayat)!)
+//                 self?.numberAyat.append(contentsOf: (self?.quraanReadModel?.quraanPage?.surahList?[indexAya].ayat)!)
+                self?.numberAyat = (self?.quraanReadModel?.quraanPage?.surahList?[indexAya].ayat)!
              }
              self?.ayaNameList.reloadAllComponents()
              self?.numberOfAyaList.reloadAllComponents()

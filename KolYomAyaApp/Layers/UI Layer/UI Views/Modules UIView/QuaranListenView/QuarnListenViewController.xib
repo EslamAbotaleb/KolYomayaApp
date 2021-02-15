@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuarnListenViewController" customModule="KolYoumAya" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuarnListenViewController" customModule="كل_يوم_آية" customModuleProvider="target">
             <connections>
+                <outlet property="bannerView" destination="NRB-GG-vL9" id="Bik-5e-MBV"/>
                 <outlet property="collectionView" destination="R3h-X5-3Fx" id="EC8-a0-mh6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,8 +22,8 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="R3h-X5-3Fx">
-                    <rect key="frame" x="2" y="46" width="410" height="850"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <rect key="frame" x="2" y="112" width="410" height="784"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tAQ-bi-iUb">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -29,16 +31,31 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NRB-GG-vL9" customClass="GADBannerView">
+                    <rect key="frame" x="0.0" y="44" width="414" height="60"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="OAM-O0-QHQ"/>
+                    </constraints>
+                </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="R3h-X5-3Fx" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="2" id="9kG-zv-F4Q"/>
                 <constraint firstItem="R3h-X5-3Fx" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="BsU-Wo-zzT"/>
                 <constraint firstItem="R3h-X5-3Fx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="2" id="CYQ-hg-6fO"/>
+                <constraint firstItem="R3h-X5-3Fx" firstAttribute="top" secondItem="NRB-GG-vL9" secondAttribute="bottom" constant="8" symbolic="YES" id="LC1-Ci-HAx"/>
+                <constraint firstItem="NRB-GG-vL9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="N1B-AV-Foq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NRB-GG-vL9" secondAttribute="trailing" id="dXI-y6-2Gq"/>
+                <constraint firstItem="NRB-GG-vL9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="iWW-AJ-Xu5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="R3h-X5-3Fx" secondAttribute="trailing" constant="2" id="vu2-m4-U8R"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="154"/>
+            <point key="canvasLocation" x="137.68115942028987" y="153.34821428571428"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

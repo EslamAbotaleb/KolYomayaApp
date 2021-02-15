@@ -58,11 +58,13 @@ final class SideMenuListViewModel {
         let nib = UINib(nibName: name, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: SideMenuCell.reuseIdentifier)
     }
+    
     func selectRow(indexPath row: Int) {
         switch row {
         case 0:
             let tafserBookCoordinator = TafserBookCoordinator(viewController: TafserBookViewController())
             tafserBookCoordinator.start()
+            
         case 1:
             let getAllBooksCoordinator = GetAllBooksPageCoordinator(viewController: BookGetAllByPageNumberViewController())
             getAllBooksCoordinator.start()
@@ -81,8 +83,17 @@ final class SideMenuListViewModel {
         case 6:
             let qiblaLocationCoordinator = QiblaLocationCoordinator(viewController: QiblaLocationViewController())
             qiblaLocationCoordinator.start()
+        case 7:
+            let supportAppCoordinator = SupportAppCoordinator(viewController: SupportAppViewController())
+            supportAppCoordinator.start()
         case 8:
             let settingsCoordinator = SettingsCoordinator(viewController: SettingsViewController())
+            settingsCoordinator.start()
+        case 9:
+            let settingsCoordinator = TermsAndConditionsCoordinator(viewController: TermsAndConidtionViewController())
+            settingsCoordinator.start()
+        case 10:
+            let settingsCoordinator = PrivacyPoliceCoordinator(viewController: PrivacyPoliceViewController())
             settingsCoordinator.start()
         default:
             print("")

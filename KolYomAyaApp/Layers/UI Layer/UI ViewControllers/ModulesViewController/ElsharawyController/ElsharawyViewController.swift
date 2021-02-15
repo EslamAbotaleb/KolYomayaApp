@@ -7,19 +7,21 @@
 //
 
 import UIKit
+import GoogleMobileAds
 protocol DelegateElsharawayMediaSelect {
     var programId: Int? { get set }
     var programName: String? { get set }
 
 }
 
-class ElsharawyViewController: BaseViewController, UIScrollViewDelegate {
-    
+class ElsharawyViewController: BaseViewController, UIScrollViewDelegate,GADBannerViewDelegate  {
+    var banner: GADBannerView!
     var coordinator: ElsharawyMediaProgramIdCoordinator?
     var viewModel: ElsharawySectionProgramViewModel?
     var elsharawyProgramModel: ElsharawyProgramModel?
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var bannerView: GADBannerView!
+    
     var headerView: HeaderView = {
            let nib = UINib(nibName: "HeaderView", bundle: nil)
            return nib.instantiate(withOwner: self, options: nil).first as! HeaderView
@@ -64,6 +66,13 @@ class ElsharawyViewController: BaseViewController, UIScrollViewDelegate {
                 self.tableView.reloadData()
             }
         })
+        banner = GADBannerView(adSize: kGADAdSizeBanner)
+        //Banner One
+        self.bannerView.addSubview(banner)
+        bannerView.adUnitID = Keys.BannerOne
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
     }
     override func viewSafeAreaInsetsDidChange() {
            super.viewSafeAreaInsetsDidChange()
@@ -87,7 +96,40 @@ class ElsharawyViewController: BaseViewController, UIScrollViewDelegate {
            headerView.updatePosition()
        }
 
+    /// Tells the delegate an ad request loaded an ad.
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("adViewDidReceiveAd")
+        self.bannerView.addSubview(banner)
+        
+    }
     
+    /// Tells the delegate an ad request failed.
+    func adView(_ bannerView: GADBannerView,
+                didFailToReceiveAdWithError error: GADRequestError) {
+        print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+    
+    /// Tells the delegate that a full-screen view will be presented in response
+    /// to the user clicking on an ad.
+    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+        print("adViewWillPresentScreen")
+    }
+    
+    /// Tells the delegate that the full-screen view will be dismissed.
+    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
+        print("adViewWillDismissScreen")
+    }
+    
+    /// Tells the delegate that the full-screen view has been dismissed.
+    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+        print("adViewDidDismissScreen")
+    }
+    
+    /// Tells the delegate that a user click will open another app (such as
+    /// the App Store), backgrounding the current app.
+    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+        print("adViewWillLeaveApplication")
+    }
     /*
     // MARK: - Navigation
 
