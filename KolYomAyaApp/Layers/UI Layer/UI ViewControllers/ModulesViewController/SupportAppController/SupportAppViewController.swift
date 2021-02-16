@@ -8,16 +8,32 @@
 
 import UIKit
 import GoogleMobileAds
+
+extension UILabel {
+
+    func heightForLabel(text:String, font:UIFont, width:CGFloat) -> CGFloat {
+        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = font
+        label.text = text
+
+        label.sizeToFit()
+        return label.frame.height
+    }
+
+}
+
 class SupportAppViewController: BaseViewController, GADRewardedAdDelegate {
    
    
-    
+
     var rewardedAd: GADRewardedAd?
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-        self.initializeNavigationBarAppearanceWithBack(viewController: PreviousAyatViewController(), titleHeader: "كل يوم آية")
+        self.initializeNavigationBarAppearanceWithBack(viewController: HomeViewController(), titleHeader: "كل يوم آية")
     }
 
     override func viewDidLoad() {
@@ -39,6 +55,9 @@ class SupportAppViewController: BaseViewController, GADRewardedAdDelegate {
                 print("Loading failed: \(error)")
               } else {
                 print("Loading Succeeded")
+                if self.rewardedAd?.isReady == true {
+                    self.rewardedAd?.present(fromRootViewController: self, delegate:self)
+                }
               }
             }
         }

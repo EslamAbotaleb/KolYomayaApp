@@ -35,7 +35,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QCV-XQ-BcH">
-                            <rect key="frame" x="0.0" y="10" width="414" height="852"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vKE-Re-MeD" customClass="GADBannerView">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
@@ -194,13 +194,14 @@
                             </constraints>
                         </view>
                     </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="QCV-XQ-BcH" secondAttribute="bottom" id="5wX-9Y-rJV"/>
                         <constraint firstAttribute="trailing" secondItem="QCV-XQ-BcH" secondAttribute="trailing" id="8T3-eH-oa6"/>
-                        <constraint firstItem="QCV-XQ-BcH" firstAttribute="top" secondItem="jSg-Cp-SEN" secondAttribute="top" constant="10" id="Jid-2e-f7B"/>
+                        <constraint firstItem="QCV-XQ-BcH" firstAttribute="top" secondItem="jSg-Cp-SEN" secondAttribute="top" id="Jid-2e-f7B"/>
+                        <constraint firstItem="QCV-XQ-BcH" firstAttribute="height" secondItem="jSg-Cp-SEN" secondAttribute="height" id="Xe6-m5-LmE"/>
                         <constraint firstItem="QCV-XQ-BcH" firstAttribute="leading" secondItem="jSg-Cp-SEN" secondAttribute="leading" id="cCF-NS-I0Z"/>
                         <constraint firstItem="QCV-XQ-BcH" firstAttribute="width" secondItem="jSg-Cp-SEN" secondAttribute="width" id="gfE-8R-lIC"/>
-                        <constraint firstItem="QCV-XQ-BcH" firstAttribute="height" secondItem="jSg-Cp-SEN" secondAttribute="height" id="iDG-EK-ETV"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" id="idt-um-mpf"/>
                     </constraints>
                 </scrollView>
@@ -213,7 +214,7 @@
                 <constraint firstItem="jSg-Cp-SEN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="S7n-by-gRp"/>
                 <constraint firstAttribute="bottom" secondItem="jSg-Cp-SEN" secondAttribute="bottom" id="pR2-uV-i7W"/>
             </constraints>
-            <point key="canvasLocation" x="-1994.2028985507247" y="141.96428571428569"/>
+            <point key="canvasLocation" x="-2754" y="196"/>
         </view>
     </objects>
     <resources>

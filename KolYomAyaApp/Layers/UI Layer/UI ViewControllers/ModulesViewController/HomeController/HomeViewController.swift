@@ -76,7 +76,6 @@ class HomeViewController: BaseViewController, GADBannerViewDelegate {
                 
                 self?.descriptionAyaTodayText.sizeToFit()
                 self?.descriptionAyaTodayText.text = todayAyaModel.ayaObject?.tafsir
-                print("aya\(todayAyaModel.ayaObject?.tafsir)")
                 self?.fullNameAyaText.text = todayAyaModel.ayaObject?.aya
                 self?.tafserNameLabel.text =  "تفسير:" + todayAyaModel.ayaObject!.tafsirAuthor
             }

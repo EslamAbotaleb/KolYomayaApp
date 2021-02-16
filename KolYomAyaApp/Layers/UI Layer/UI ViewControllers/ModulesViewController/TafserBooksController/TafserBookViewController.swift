@@ -53,7 +53,6 @@ class TafserBookViewController: BaseViewController, DelegateDetailTafserBookSele
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         bannerView.delegate = self
-        
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-5809306835538408/9594496790")
         interstitial.delegate = self
         let request = GADRequest()
