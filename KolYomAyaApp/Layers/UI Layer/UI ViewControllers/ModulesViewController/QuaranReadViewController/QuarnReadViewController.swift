@@ -167,8 +167,9 @@ class QuarnReadViewController: BaseViewController {
                     self.suraImage.imageFromURL(urlString: (resultQuraanPageModel.quraanPage?.image)!)
                 }
                 self.surahIdNumber = resultQuraanPageModel.quraanPage?.id
+                self.ayaNameList.selectRow(self.surahIdNumber! - 1 , inComponent: 0, animated: false)
                 for index in 0..<(self.quraanReadModel?.quraanPage?.surahList!.count ?? 0) {
-                    KeyAndValue.SURA_NAME[0].name = self.quraanReadModel!.quraanPage!.surahList![index].name!
+//                    KeyAndValue.SURA_NAME[0].name = self.quraanReadModel!.quraanPage!.surahList![index].name!
                         
                     self.ayaNameTextField.text = self.quraanReadModel!.quraanPage!.surahList![index].name!
                     self.numberAyatTextField.text = "\(self.quraanReadModel!.quraanPage!.surahList![index].ayat![0])"
@@ -188,7 +189,8 @@ class QuarnReadViewController: BaseViewController {
                 self?.allSurahModel?.results.forEach {
                     
                     surahObject in
-                    print("surahId\(surahObject.id)")
+                    
+                    
                     if self?.surahIdNumber == surahObject.id {
                         self?.numberAyat.append(contentsOf: (surahObject.ayat)!)
                         print("surahObject.ayat\(surahObject.ayat)")
@@ -224,8 +226,12 @@ class QuarnReadViewController: BaseViewController {
                     self.suraImage.imageFromURL(urlString: (resultQuraanPageModel.quraanPage?.image) ?? "")
                     
                 }
+                
+                self.surahIdNumber = resultQuraanPageModel.quraanPage?.id
+                self.ayaNameList.selectRow(self.surahIdNumber! - 1 , inComponent: 0, animated: false)
+                
                 for index in 0..<(self.quraanReadModel?.quraanPage?.surahList!.count ?? 0) {
-                               KeyAndValue.SURA_NAME[0].name = self.quraanReadModel!.quraanPage!.surahList![index].name!
+//                               KeyAndValue.SURA_NAME[0].name = self.quraanReadModel!.quraanPage!.surahList![index].name!
                     
                     self.ayaNameTextField.text = self.quraanReadModel!.quraanPage!.surahList![index].name!
                     self.numberAyatTextField.text = "\(self.quraanReadModel!.quraanPage!.surahList![index].ayat![0])"

@@ -14,18 +14,14 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        self.tableView.isScrollEnabled = false
         return "Section \(section)"
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         let img = UIImage(named:"imageSplash")
 
         let imageView : UIImageView = UIImageView()
         imageView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 120.0)
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0.0),
-//        ])
         imageView.contentMode = UIView.ContentMode.scaleToFill
         imageView.frame.size.width = self.view.frame.size.width
         imageView.frame.size.height = 200

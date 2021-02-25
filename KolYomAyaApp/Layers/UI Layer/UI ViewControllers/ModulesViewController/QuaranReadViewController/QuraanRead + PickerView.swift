@@ -134,7 +134,7 @@ extension QuarnReadViewController: ToolbarPickerViewDelegate {
               })
             
         } else if ayaNameSelected == true {
-  
+                
             pageNumberSelected  = false
             ayaNumberSelected = false
 //|| ayaNumberSelected != true
