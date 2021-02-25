@@ -24,7 +24,7 @@ class ListAyatSpesficReciterTableViewCell: UITableViewCell {
     }
     
     func configure(viewModel: AudioList) {
-        print("fwkeofjwelfjewfijweifhweflhewioew\(viewModel.audioTime)")
+     
         self.suraNameLabel.text = viewModel.name
     }
 }

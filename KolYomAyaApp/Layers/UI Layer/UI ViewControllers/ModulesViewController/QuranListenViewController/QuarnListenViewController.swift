@@ -34,12 +34,12 @@ class QuarnListenViewController: BaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         recitersListViewModel = RecitersPageListViewModel()
-        coordinator = AlbumReciterCoordinator(viewController: self)
+        coordinator = AlbumReciterCoordinator(viewController: self, statusListen: "QuranListen")
         recitersListViewModel?.registerCollectionViewCell(nibName: "QuarnListenCollectionViewCell", collectionView: collectionView!)
             self.collectionView.register(UINib(nibName: "CustomFooterView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerViewReuseIdentifier)
         recitersListViewModel?.getReciters(pageNumber: pageNumber, completionHandler: { (reciterResult) in

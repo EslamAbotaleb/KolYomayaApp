@@ -29,7 +29,7 @@ final class DetailTafserBookSelectCoordinator: Coordinator, DelegateDetailTafser
         
         let viewController = DetailTafserBookSelectViewController.init(nibName: "DetailTafserBookSelectViewController", bundle: nil)
         viewController.delgateBook = self
-        
+
         viewController.delgateBook?.bookId = bookId
         viewController.delgateBook?.numberOfPages = numberOfPages
         viewController.delgateBook?.bookName = bookName

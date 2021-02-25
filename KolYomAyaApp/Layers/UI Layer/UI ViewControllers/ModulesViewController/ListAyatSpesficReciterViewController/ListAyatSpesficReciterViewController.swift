@@ -18,6 +18,7 @@ class ListAyatSpesficReciterViewController: BaseViewController {
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var viewPlayer: UIView!
     var isSelectOnAya: Bool = false
+    
     var headerView: HeaderViewReciter = {
         
         let nib = UINib(nibName: "HeaderViewReciter", bundle: nil)
@@ -35,7 +36,7 @@ class ListAyatSpesficReciterViewController: BaseViewController {
            super.viewSafeAreaInsetsDidChange()
 
            tableView.contentInset = UIEdgeInsets(top: 250 + tableView.safeAreaInsets.top,
-                                                 left: 0, bottom: 0, right: 0)
+left: 0, bottom: 0, right: 0)
            headerView.updatePosition()
        }
        
@@ -53,6 +54,8 @@ class ListAyatSpesficReciterViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(self.delegateAudioListProtocol?.audioListReciter)
+        
         // Do any additional setup after loading the view.
         let nib = UINib(nibName: "ListAyatSpesficReciterTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: ListAyatSpesficReciterTableViewCell.reuseIdentifier)

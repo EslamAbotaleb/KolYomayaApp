@@ -27,21 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     var appCoordinator: AppCoordinator?
 //    let notificationDelegate = NotificationCenterDelegate()
     
-    func showAdmobInterstitial()
-     {
-        let kGoogleFullScreenAppUnitID = Keys.adsInterstitial
-             self.mInterstitial = GADInterstitial.init(adUnitID:kGoogleFullScreenAppUnitID )
-             
-             mInterstitial.delegate = self
-             let request  = GADRequest()
-           
-        mInterstitial.load(request)
-     }
-     
-     func interstitialDidReceiveAd(ad: GADInterstitial!)
-     {
-        ad.present(fromRootViewController: self.gViewController!)
-     }
+  
     
     // Receive displayed notifications for iOS 10 devices.
     func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -103,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         GADMobileAds.sharedInstance().start(completionHandler: nil)
      
         GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers =
-            [ "d8e301fd8e1586814a4929564ce8b288" ]
+            [ "e9065fe7c6def84f2f1923ff90933c95" ]
       //  d8e301fd8e1586814a4929564ce8b288
 //        2077ef9a63d2b398840261c8221a0c9b
         FirebaseApp.configure()

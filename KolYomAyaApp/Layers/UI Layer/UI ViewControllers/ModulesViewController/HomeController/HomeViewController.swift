@@ -13,10 +13,12 @@ import AVFoundation
 import GoogleMobileAds
 class HomeViewController: BaseViewController, GADBannerViewDelegate {
     var ayaStr: String?
+    @IBOutlet weak var heightBanner: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
     var player: AVPlayer? = AVPlayer()
     var isPlaying: Bool = false
     var appendNumberAya: String?
+    @IBOutlet weak var heightBottomBanner: NSLayoutConstraint!
     var banner: GADBannerView!
     @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var bottomBannerView: GADBannerView!
@@ -30,8 +32,7 @@ class HomeViewController: BaseViewController, GADBannerViewDelegate {
     @IBOutlet weak var ayaView: UIView!
     @IBOutlet weak var tafserNameLabel: UILabel!
     var viewModel: HomeViewModel?
-    // @IBOutlet weak var fullNameDescriptionAyaText: UITextView!
-    
+//     @IBOutlet weak var fullNameDescriptionAyaText: UITextView!
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -42,21 +43,26 @@ class HomeViewController: BaseViewController, GADBannerViewDelegate {
 
     }
     override func viewDidAppear(_ animated: Bool) {
-        
-        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 75)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+//        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height )
 //        UIScreen.main.bounds.height- 140s
 //        +300
 
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+//        heightBanner.constant = 0.0
+        heightBanner.constant = 0.0
+//        heightBottomBanner.constant = 0.0
         self.intialnavigationBarAppearaceWithmenu(checkflag: false)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // with auto layout
         viewModel = HomeViewModel()
         KeyAndValue.getSura_Name()
@@ -71,12 +77,16 @@ class HomeViewController: BaseViewController, GADBannerViewDelegate {
             self.viewModel?.todayAyaApi() { [weak self] todayAyaModel in
                 
                 self?.numberAyaText.text =  "آية:" + "\(todayAyaModel.ayaObject!.ayaNumber)"
-                
+                self?.nameAyaText.font = UIFont(name: "monadi", size: 22)
+
                 self?.nameAyaText.text = "سورة:" + (todayAyaModel.ayaObject!.suraName)
                 
                 self?.descriptionAyaTodayText.sizeToFit()
+                self?.descriptionAyaTodayText.font = UIFont(name: "ge_ss_two_light", size: 20)
                 self?.descriptionAyaTodayText.text = todayAyaModel.ayaObject?.tafsir
                 self?.fullNameAyaText.text = todayAyaModel.ayaObject?.aya
+                self?.tafserNameLabel.font = UIFont(name: "barselona", size: 30)
+
                 self?.tafserNameLabel.text =  "تفسير:" + todayAyaModel.ayaObject!.tafsirAuthor
             }
         }
@@ -247,6 +257,8 @@ class HomeViewController: BaseViewController, GADBannerViewDelegate {
     /// Tells the delegate an ad request loaded an ad.
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
         print("adViewDidReceiveAd")
+        heightBanner.constant = 60.0
+//        heightBottomBanner.constant = 60.0
         self.bannerView.addSubview(banner)
         self.bottomBannerView.addSubview(banner)
         
@@ -256,6 +268,8 @@ class HomeViewController: BaseViewController, GADBannerViewDelegate {
     func adView(_ bannerView: GADBannerView,
                 didFailToReceiveAdWithError error: GADRequestError) {
         print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+        heightBanner.constant = 0.0
+//        heightBottomBanner.constant = 0.0
     }
     
     /// Tells the delegate that a full-screen view will be presented in response

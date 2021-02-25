@@ -16,6 +16,7 @@ extension ListAyatSpesficReciterViewController: UITableViewDelegate, UITableView
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ListAyatSpesficReciterTableViewCell.reuseIdentifier, for: indexPath) as? ListAyatSpesficReciterTableViewCell else {
             fatalError("Not Found List Ayat Cell")
         }
+       
         cell.configure(viewModel: (delegateAudioListProtocol?.audioListReciter?[indexPath.row])!)
         
         return cell

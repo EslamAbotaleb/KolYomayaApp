@@ -20,8 +20,10 @@ class BookGetAllByPageNumberCollectionViewCell: UICollectionViewCell {
                imageBook.layer.cornerRadius = 7.0
        }
    
-    func configure(viewModel: Result) {
-        self.imageBook.imageFromURL(urlString: viewModel.cover!)
-        self.nameBookLabel.text = viewModel.title
+    func configure(viewModel: ResultReciter) {
+//        self.imageBook.imageFromURL(urlString: viewModel.cover!)
+//        self.nameBookLabel.text = viewModel.title
+        self.nameBookLabel.text = viewModel.name
+        self.imageBook.imageFromURL(urlString: viewModel.image!)
     }
 }

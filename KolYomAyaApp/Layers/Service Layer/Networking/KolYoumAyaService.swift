@@ -22,6 +22,7 @@ enum ApiService {
     case readQuraanPage(page: Int)
     case readQuraanBySurahAndAya(ayaNumber: Int, surahId: Int)
     case getAllBooksPage(page: Int)
+    case getAllSurah
 }
 
 extension ApiService: TargetType {
@@ -34,6 +35,8 @@ extension ApiService: TargetType {
         switch self {
         case .todayAya:
             return "get/today/aya"
+        case .getAllSurah:
+            return "quraan/surah/get/all"
         case .tafserBooks(let page):
             return "books/get/list/\(page)"
         case .previousAya(page: let page):
@@ -85,12 +88,16 @@ extension ApiService: TargetType {
             return .post
         case .getAllBooksPage:
             return .get
+        case .getAllSurah:
+            return .get
        
         }
     }
     
     var sampleData: Data {
         switch self {
+        case .getAllSurah:
+            return Data()
         case .todayAya:
             return Data()
         case .tafserBooks:
@@ -120,6 +127,8 @@ extension ApiService: TargetType {
     }
     var task: Task {
         switch self {
+        case .getAllSurah:
+            return .requestPlain
         case .todayAya:
             return .requestPlain
         case .tafserBooks(let page):

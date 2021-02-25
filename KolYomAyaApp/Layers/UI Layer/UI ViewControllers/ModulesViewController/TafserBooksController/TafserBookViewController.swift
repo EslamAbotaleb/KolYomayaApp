@@ -11,6 +11,7 @@ import Moya
 import GoogleMobileAds
 class TafserBookViewController: BaseViewController, DelegateDetailTafserBookSelect {
     var numberOfPages: Int?
+    @IBOutlet weak var bannerHeighjt: NSLayoutConstraint!
     
     var bookId: Int?
     
@@ -28,6 +29,7 @@ class TafserBookViewController: BaseViewController, DelegateDetailTafserBookSele
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.initializeNavigationBarAppearanceWithBack(viewController: HomeViewController(), titleHeader: "كتب التفسير")
+        bannerHeighjt.constant = 0.0
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,12 +136,19 @@ extension TafserBookViewController: GADBannerViewDelegate {
     func adView(_ bannerView: GADBannerView,
                 didFailToReceiveAdWithError error: GADRequestError) {
         print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+        bannerHeighjt.constant = 0.0
+
     }
-    
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        bannerHeighjt.constant = 60.0
+        self.bannerView.addSubview(banner)
+
+    }
     /// Tells the delegate that a full-screen view will be presented in response
     /// to the user clicking on an ad.
     func adViewWillPresentScreen(_ bannerView: GADBannerView) {
         print("adViewWillPresentScreen")
+        
     }
     
     /// Tells the delegate that the full-screen view will be dismissed.

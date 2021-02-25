@@ -11,6 +11,7 @@ final class GetAllBooksPageCoordinator: Coordinator {
     private(set) var childCoordinators: [Coordinator] = []
     var parentCoordinator: Coordinator?
     private var viewController: UIViewController?
+    var statusListen: String?
     init(viewController: UIViewController) {
         self.viewController = viewController
     }

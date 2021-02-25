@@ -67,7 +67,9 @@ final class SideMenuListViewModel {
             
         case 1:
             let getAllBooksCoordinator = GetAllBooksPageCoordinator(viewController: BookGetAllByPageNumberViewController())
+            
             getAllBooksCoordinator.start()
+            
         case 2:
             let quraanReadCoordinator = QuraanReadCoordinator(viewController: QuarnReadViewController())
             quraanReadCoordinator.start()

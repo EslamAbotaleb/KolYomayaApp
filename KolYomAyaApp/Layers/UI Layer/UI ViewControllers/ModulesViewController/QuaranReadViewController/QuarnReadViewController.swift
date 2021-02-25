@@ -13,8 +13,11 @@ class QuarnReadViewController: BaseViewController {
     @IBOutlet weak var suraImage: UIImageView!
     @IBOutlet weak var viewPickerView: UIView!
     var viewModel: QuraanReadViewModel?
+    var viewModelAllSurah: GetAllSurahAyatViewModel?
+    
+    var allSurahModel: AllSurahModel?
     var quraanReadModel: QuraanPageModel?
-    var surahIdNumber: Int? = 0 
+    var surahIdNumber: Int? = 1
     var ayahNumber: Int?
     var pageNumber: Int = 1
     var numberAyat: [Int] = [Int]()
@@ -22,11 +25,13 @@ class QuarnReadViewController: BaseViewController {
     var numberRowAya: Int = 0
     var contentpageNumber: Int = 0
     var counter = 1
+    
     var itemISSelect: Bool = false
     var ayaNumberSelected: Bool = false
     var pageNumberSelected: Bool = false
+    var ayaNameSelected: Bool = false 
     var viewIsSelected: Bool = false
-    
+    var rowAyaName: Int = 0
     @IBOutlet weak var ayaNameTextField: UITextField!
     @IBOutlet weak var pageNumberTextField: UITextField!
     @IBOutlet weak var numberAyatTextField: UITextField!
@@ -43,9 +48,12 @@ class QuarnReadViewController: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         viewModel = QuraanReadViewModel()
-        KeyAndValue.getSura_Name()
-        KeyAndValue.getSura_Number()
-      
+        viewModelAllSurah = GetAllSurahAyatViewModel()
+        KeyAndValue.getSuraName()
+
+        KeyAndValue.getSuraNumber()
+//        KeyAndValue.getSura_Name()
+//               KeyAndValue.getSura_Number()
         self.ayaNameTextField.inputView = self.ayaNameList
         self.ayaNameTextField.inputAccessoryView = self.ayaNameList.toolbar
         self.numberAyatTextField.inputView = self.numberOfAyaList
@@ -63,24 +71,39 @@ class QuarnReadViewController: BaseViewController {
         pageNumberContent.toolbarDelegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         self.view.addGestureRecognizer(tap)
+        
+        
+        
         viewModel?.surahAyaByPageNumberApi(pageNumber: pageNumber, completionHandler: { (resultQuraanPageModel) in
             self.quraanReadModel = resultQuraanPageModel
             self.suraImage.imageFromURL(urlString: (self.quraanReadModel?.quraanPage?.image)!)
             self.quraanReadModel?.quraanPage?.surahList?.forEach { surahObject in
                 self.surahIdNumber = surahObject.id
-                self.numberAyat.append(contentsOf: (surahObject.ayat)!)
-                surahObject.ayat?.forEach { ayatObjects in
-                    self.ayahNumber = ayatObjects
-                }
-                
+//                self.numberAyat.append(contentsOf: (surahObject.ayat)!)
+//                surahObject.ayat?.forEach { ayatObjects in
+//                    self.ayahNumber = ayatObjects
+//                }
+
             }
-            
+
             DispatchQueue.main.async {
                 self.ayaNameList.reloadAllComponents()
                 self.pageNumberContent.reloadAllComponents()
                 self.numberOfAyaList.reloadAllComponents()
 
             }
+        })
+        viewModelAllSurah?.getAllSurahApi(completionHandler: { [weak self] (resultGetAllSurahModel) in
+            self?.allSurahModel = resultGetAllSurahModel
+            self?.allSurahModel?.results.forEach {
+                surahObject in
+                if self?.surahIdNumber == surahObject.id {
+                    self?.numberAyat.append(contentsOf: (surahObject.ayat)!)
+                }
+            }
+            DispatchQueue.main.async {
+                self?.numberOfAyaList.reloadAllComponents()
+                }
         })
         for indexPageNumber in 1..<665 {
                    CounterPageNumber.append(indexPageNumber)
@@ -120,6 +143,9 @@ class QuarnReadViewController: BaseViewController {
 
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
             print("user swipe to right")
+//            if self.numberAyat.count > 0 {
+//                self.numberAyat.removeAll()
+//            }
             //MARK:- will increase pageNumber by 1
             if pageNumberSelected == false {
                             self.pageNumber = Int(self.pageNumberTextField.text!)! + 1
@@ -140,21 +166,37 @@ class QuarnReadViewController: BaseViewController {
                     print("previouPage not empty")
                     self.suraImage.imageFromURL(urlString: (resultQuraanPageModel.quraanPage?.image)!)
                 }
+                self.surahIdNumber = resultQuraanPageModel.quraanPage?.id
                 for index in 0..<(self.quraanReadModel?.quraanPage?.surahList!.count ?? 0) {
                     KeyAndValue.SURA_NAME[0].name = self.quraanReadModel!.quraanPage!.surahList![index].name!
-                    
+                        
                     self.ayaNameTextField.text = self.quraanReadModel!.quraanPage!.surahList![index].name!
                     self.numberAyatTextField.text = "\(self.quraanReadModel!.quraanPage!.surahList![index].ayat![0])"
-                    self.numberAyat = self.quraanReadModel!.quraanPage!.surahList![index].ayat!
-//                    self.numberAyat.append(contentsOf: self.quraanReadModel!.quraanPage!.surahList![index].ayat!)
+//                    self.numberAyat = self.quraanReadModel!.quraanPage!.surahList![index].ayat!
+                    self.numberAyat.append(contentsOf: self.quraanReadModel!.quraanPage!.surahList![index].ayat!.uniques)
                     print("displayNUMAYAT\(self.numberAyat)")
                 }
                 DispatchQueue.main.async {
                     self.ayaNameList.reloadAllComponents()
                     self.pageNumberContent.reloadAllComponents()
-                    self.numberOfAyaList.reloadAllComponents()
+//                    self.numberOfAyaList.reloadAllComponents()
 
-                          }
+                    }
+            })
+            viewModelAllSurah?.getAllSurahApi(completionHandler: { [weak self] (resultGetAllSurahModel) in
+                self?.allSurahModel = resultGetAllSurahModel
+                self?.allSurahModel?.results.forEach {
+                    
+                    surahObject in
+                    print("surahId\(surahObject.id)")
+                    if self?.surahIdNumber == surahObject.id {
+                        self?.numberAyat.append(contentsOf: (surahObject.ayat)!)
+                        print("surahObject.ayat\(surahObject.ayat)")
+                    }
+                }
+                DispatchQueue.main.async {
+                    self?.numberOfAyaList.reloadAllComponents()
+                    }
             })
         } else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
             print("user swipe to left")
@@ -192,9 +234,35 @@ class QuarnReadViewController: BaseViewController {
                 DispatchQueue.main.async {
                               self.ayaNameList.reloadAllComponents()
                               self.pageNumberContent.reloadAllComponents()
-                              self.numberOfAyaList.reloadAllComponents()
+//                              self.numberOfAyaList.reloadAllComponents()
 
                           }
+            })
+            
+            viewModelAllSurah?.getAllSurahApi(completionHandler: { [weak self] (resultGetAllSurahModel) in
+                self?.allSurahModel = resultGetAllSurahModel
+                self?.allSurahModel?.results.forEach {
+                    
+                    surahObject in
+                    print("surahId\(surahObject.id)")
+                    if self?.pageNumber == surahObject.id {
+                        
+                        self?.numberAyat.append(contentsOf: (surahObject.ayat)!)
+                    } else {
+                     
+
+                    }
+//                    if self?.surahIdNumber == surahObject.id {
+                     
+//                        print("prevsurahObject.ayat\(surahObject.ayat)")
+//
+//                        self?.numberAyat.append(contentsOf: (surahObject.ayat)!)
+//
+//                    }
+                }
+                DispatchQueue.main.async {
+                    self?.numberOfAyaList.reloadAllComponents()
+                    }
             })
         }
     }

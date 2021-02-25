@@ -107,8 +107,11 @@ class BaseViewController: UIViewController {
         
         let titleMenuKolYoumAya = UILabel()
         titleMenuKolYoumAya.text = "   كل يوم آية"
+
         titleMenuKolYoumAya.textColor = UIColor.white
-        titleMenuKolYoumAya.font = titleMenuKolYoumAya.font.withSize(20)
+//        titleMenuKolYoumAya.font = titleMenuKolYoumAya.font.withSize(20)
+        titleMenuKolYoumAya.font = UIFont(name: "monadi", size: 40)
+
 //             anothericonMenu.setImage(UIImage(named: "icons8-menu-24"), for: .normal)
              titleMenuKolYoumAya.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
 //             anothericonMenu.addTarget(self, action: #selector(toggleMenu), for: .touchUpInside)
@@ -191,7 +194,8 @@ class BaseViewController: UIViewController {
         let titleMenuKolYoumAya = UILabel(frame: CGRect(x: 100, y: 400, width: 550, height: 50))
         titleMenuKolYoumAya.text = titleHeader
         titleMenuKolYoumAya.textColor = UIColor.white
-        titleMenuKolYoumAya.font = titleMenuKolYoumAya.font.withSize(20)
+        titleMenuKolYoumAya.font = UIFont(name: "barselona", size: 40)
+//        titleMenuKolYoumAya.font = titleMenuKolYoumAya.font.withSize(20)
         //             anothericonMenu.setImage(UIImage(named: "icons8-menu-24"), for: .normal)
 //        titleMenuKolYoumAya.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
         
@@ -294,7 +298,7 @@ class BaseViewController: UIViewController {
                      let coordinator = DetailAyaCoordiantor(viewController: DetailAyaViewController())
                      coordinator.start()
                  } else if viewController is AlbumReciterViewController {
-                     let coordinator = AlbumReciterCoordinator(viewController: AlbumReciterViewController())
+                    let coordinator = AlbumReciterCoordinator(viewController: AlbumReciterViewController(), statusListen: "")
                      coordinator.start()
                  } else if viewController is ListAyatSpesficReciterViewController {
                      let coordinator = ListAyatSpesficReciterCooridnator(viewController: ListAyatSpesficReciterViewController())

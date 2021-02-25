@@ -16,9 +16,13 @@ protocol DelegateAudioListProtocol {
 }
 class AlbumReciterViewController: BaseViewController {
     @IBOutlet weak var bannerView: GADBannerView!
+    var statusListen: String?
     var banner: GADBannerView!
     var interstitial: GADInterstitial!
     @IBOutlet weak var tableView: UITableView!
+    var folderName: String? = ""
+    var audioList = [AudioList]()
+    var results = [ResultAlbumReciter]()
     var delgateQuarnListenProtcol: DelegateQuarnListenProtcol?
     var viewModel: AlbumReciterViewModel?
     var albumReciterModel: AlbumReciterModel?
@@ -55,14 +59,56 @@ class AlbumReciterViewController: BaseViewController {
         super.viewDidAppear(animated)
         self.initializeNavigationBarAppearanceWithBack(viewController: QuarnListenViewController(), titleHeader: "القران الكريم (استماع)")
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        viewModel = AlbumReciterViewModel()
-        coordinator = ListAyatSpesficReciterCooridnator(viewController: self)
-        viewModel?.registTableViewCell(nibName: "AlbumReciterTableViewCell", tableView: tableView)
+    func initTafsirList() {
+        switch self.delgateQuarnListenProtcol?.reciterId {
+        case 1:
+            folderName = "almuyassar"
+          break
+        case 2:
+            folderName = "almukhtasar"
+          break
+        case 3:
+            folderName = "alsidi"
+          break
+        case 4:
+            folderName = "aljalalayn"
+          break
+        case 5:
+            folderName = "alsiraaj"
+          break
+        case 6:
+            folderName = "almuyassar-g"
+          break
+        case 7:
+            folderName = "ibn-juzay"
+          break
+      
+        default: break
+        }
+        for index in stride(from: 1, to: 114, by: +1) {
+            var linkBuilder = "https://mirrors.quranicaudio.com/tafsir.one/"+folderName!+"/"
+            var surahNumber = ""
+            var suraName = KeyAndValue.SURA_NAME[index].name
+//            if index > 0 {
+           
+                if index < 10 {
+                    surahNumber = "00" + "\(index)"
+                } else if index < 100 {
+                    surahNumber = "0" + "\(index)"
+                } else {
+                    surahNumber = "\(index)" + ""
+                }
+//            }
+          
+//            + 1
+            linkBuilder = linkBuilder + surahNumber + ".mp3"
+            self.audioList.append(AudioList(id: index + 1, name: " سورة" + suraName , audioLink: linkBuilder, viewsNumber: "", audioTime: ""))
+            }
+               
         
+        results.append(ResultAlbumReciter(id: 1, name: self.delgateQuarnListenProtcol?.nameReciter!, itemsNumber: "114", viewsNumber: "", audioList: self.audioList))
+    }
+    func displayContentListenQuranFromServer() {
         viewModel?.getAlbumReciter(page: 1, reciterID: delgateQuarnListenProtcol?.reciterId ?? 0, completionHandler: { (albumReciterObjectModel) in
             self.albumReciterModel = albumReciterObjectModel
             self.headerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -88,6 +134,45 @@ class AlbumReciterViewController: BaseViewController {
                 self.tableView.reloadData()
             }
         })
+    }
+    func displayContentListenTafisrBook() {
+        self.headerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                   self.headerView.imageView.makeRounded()
+        self.headerView.imageView.imageFromURL(urlString: (self.delgateQuarnListenProtcol?.imageReciter)!)
+        self.headerView.titleLabel.text = self.delgateQuarnListenProtcol?.nameReciter
+        self.headerView.scrollView = self.tableView
+        self.headerView.frame = CGRect(
+            x: 0,
+            y: self.tableView.safeAreaInsets.top,
+            width: self.view.frame.width,
+            height: 250)
+        
+        self.tableView.backgroundView = UIView()
+        self.tableView.backgroundView?.addSubview(self.headerView)
+        self.tableView.contentInset = UIEdgeInsets(
+            top: 200,
+            left: 0,
+            bottom: 0,
+            right: 0)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        viewModel = AlbumReciterViewModel()
+        KeyAndValue.getSura_Name()
+        coordinator = ListAyatSpesficReciterCooridnator(viewController: self)
+        viewModel?.registTableViewCell(nibName: "AlbumReciterTableViewCell", tableView: tableView)
+        if /*Mark:- In the case listen quran*/
+            self.statusListen == "QuranListen" {
+            displayContentListenQuranFromServer()
+        } else if /*Mark:- In the case listen tafisr*/
+            self.statusListen == "TafsirListen" {
+            displayContentListenTafisrBook()
+            initTafsirList()
+        }
         
         banner = GADBannerView(adSize: kGADAdSizeBanner)
         //Banner One

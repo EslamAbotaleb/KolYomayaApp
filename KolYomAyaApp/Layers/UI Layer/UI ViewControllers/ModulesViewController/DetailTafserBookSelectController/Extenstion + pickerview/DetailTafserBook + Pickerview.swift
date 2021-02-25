@@ -47,13 +47,11 @@ extension DetailTafserBookSelectViewController: UIPickerViewDelegate, UIPickerVi
            
         } else if pickerView == numberOfAyaList {
                 
-            return   "\(self.numberAyat.uniques[row])"
+            return "\(self.numberAyat.uniques[row])"
 
         } else if pickerView == pageNumberContent {
                 return "\(self.CounterPageNumber[row])"
-            
-
-                      
+                   
         } else {
             return ""
         }
@@ -62,19 +60,26 @@ extension DetailTafserBookSelectViewController: UIPickerViewDelegate, UIPickerVi
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 
         if pickerView == ayaNameList {
-
-            self.ayaNameTextField.text = KeyAndValue.SURA_NAME[row].name
+            pageNumberSelected = false
+              ayaNameSelected = true
+            ayaNumberSelected = false
+            DetailTafserBookSelectViewController.ayaNameTextField.text = KeyAndValue.SURA_NAME[row].name
             
         } else if pickerView == pageNumberContent {
             self.pageNumber = row
-            self.pageNumberTextField.text = nil
             pageNumberSelected = true
+          ayaNumberSelected = false
+          ayaNameSelected = false
+//            DetailTafserBookSelectViewController.pageNumberTextField.text = nil
   
-            self.pageNumberTextField.text = "\(self.CounterPageNumber[row])"
+            DetailTafserBookSelectViewController.pageNumberTextField.text = "\(self.CounterPageNumber[row])"
             
         } else if pickerView == numberOfAyaList {
-            pageNumberSelected = false
-            self.numberAyatTextField.text = "\(self.numberAyat.uniques[row])"
+            numberRowAya = row + 1
+              pageNumberSelected = false
+              ayaNameSelected = false
+              ayaNumberSelected = true
+            DetailTafserBookSelectViewController.numberAyatTextField.text = "\(self.numberAyat.uniques[numberRowAya])"
 
         }
     }
@@ -90,79 +95,196 @@ extension DetailTafserBookSelectViewController: ToolbarPickerViewDelegate {
         self.ayaNameList.selectRow(row, inComponent: 0, animated: false)
         self.numberOfAyaList.selectRow(rowNumberAyat, inComponent: 0, animated: false)
         self.pageNumberContent.selectRow(rowPageNumber, inComponent: 0, animated: false)
-        self.ayaNameTextField.text = KeyAndValue.SURA_NAME[row].name
-        self.numberAyatTextField.resignFirstResponder()
-        self.ayaNameTextField.resignFirstResponder()
-        self.pageNumberTextField.resignFirstResponder()
-        if row == 0 {
-            self.surahIdNumber = 1
-            self.ayahNumber = 1
-        } else {
-            self.surahIdNumber = row + 1
-        }
+        DetailTafserBookSelectViewController.ayaNameTextField.text = KeyAndValue.SURA_NAME[row].name
+        DetailTafserBookSelectViewController.numberAyatTextField.resignFirstResponder()
+        DetailTafserBookSelectViewController.ayaNameTextField.resignFirstResponder()
+        DetailTafserBookSelectViewController.pageNumberTextField.resignFirstResponder()
+//        if row == 0 {
+//            self.surahIdNumber = 1
+//            self.ayahNumber = 1
+//        } else {
+//            self.surahIdNumber = row + 1
+//        }
         
-        self.numberRowAya = self.numberAyat.uniques[rowNumberAyat]
+//        self.numberRowAya = self.numberAyat[rowNumberAyat]
        
-        if pageNumberSelected ==  false {
-            self.numberAyatTextField.text = "\(self.numberRowAya)"
-        }
-        self.viewModel?.detailTafserBookBySurahAndAyah(bookId: (self.delgateBook?.bookId)!, surahId: (self.surahIdNumber)!, ayah: self.numberAyat.uniques[rowNumberAyat], completionHandler: { [weak self] (bookTafsirBySurahAndAyah) in
-            self?.bookByPageNumberModel = bookTafsirBySurahAndAyah
-            if self?.pageNumberSelected ==  false {
-                       if let pageNum = self?.bookByPageNumberModel?.page?.pageNumber {
-                                     self?.pageNumberTextField.text  = "\(pageNum)"
-                                 }
-                
-            }
-          
-                    if self?.bookByPageNumberModel?.previousPage == nil {
-                        self?.previousPageBtn.isHidden = true
-                    } else {
-                        self?.previousPageBtn.isHidden = false
-            }
-            self?.pageContentLbl.text = self?.bookByPageNumberModel?.page?.pageContent
-            self?.tafsirContentLbl.text = self?.bookByPageNumberModel?.page?.tafsir
-            
-            for indexAya in 0..<(self?.bookByPageNumberModel?.page?.surahList!.count)! {
-                self?.surahIdNumber = self?.bookByPageNumberModel?.page?.surahList?[indexAya].id
-                self?.numberAyat.append(contentsOf: (self?.bookByPageNumberModel?.page?.surahList?[indexAya].ayat)!)
-            }
-            self?.ayaNameList.reloadAllComponents()
-            self?.numberOfAyaList.reloadAllComponents()
-            self?.pageNumberContent.reloadAllComponents()
-        })
-        self.pageNumber = CounterPageNumber[rowPageNumber]
+//        if pageNumberSelected ==  false {
+//            DetailTafserBookSelectViewController.numberAyatTextField.text = "\(self.numberRowAya)"
+//        }
+//        self.viewModel?.detailTafserBookBySurahAndAyah(bookId: (self.delgateBook?.bookId)!, surahId: (self.surahIdNumber)!, ayah: self.numberAyat[rowNumberAyat], completionHandler: { [weak self] (bookTafsirBySurahAndAyah) in
+//            self?.bookByPageNumberModel = bookTafsirBySurahAndAyah
+//            if self?.pageNumberSelected ==  false {
+//                       if let pageNum = self?.bookByPageNumberModel?.page?.pageNumber {
+//                        DetailTafserBookSelectViewController.pageNumberTextField.text  = "\(pageNum)"
+//                                 }
+//
+//            }
+//
+//                    if self?.bookByPageNumberModel?.previousPage == nil {
+//                        DetailTafserBookSelectViewController.previousPageBtn.isHidden = true
+//                    } else {
+//                        DetailTafserBookSelectViewController.previousPageBtn.isHidden = false
+//            }
+//            DetailTafserBookSelectViewController.pageContentLbl.text = self?.bookByPageNumberModel?.page?.pageContent
+//            DetailTafserBookSelectViewController.tafsirContentLbl.text = self?.bookByPageNumberModel?.page?.tafsir
+//
+//            for indexAya in 0..<(self?.bookByPageNumberModel?.page?.surahList!.count ?? 0) {
+//                self?.surahIdNumber = self?.bookByPageNumberModel?.page?.surahList?[indexAya].id
+//                self?.numberAyat.append(contentsOf: (self?.bookByPageNumberModel?.page?.surahList?[indexAya].ayat?.uniques)!)
+//            }
+//            self?.ayaNameList.reloadAllComponents()
+//            self?.numberOfAyaList.reloadAllComponents()
+//            self?.pageNumberContent.reloadAllComponents()
+//        })
+//        self.pageNumber = CounterPageNumber[rowPageNumber]
 
         if pageNumberSelected == true {
+            ayaNameSelected = false
+            ayaNumberSelected = false
+            self.pageNumber = CounterPageNumber[rowPageNumber]
                     self.viewModel?.detailtafserBookSelectApi(pageNumber: CounterPageNumber[rowPageNumber], bookId: (self.delgateBook?.bookId)!, completionHandler: { [weak self] (resultTafsirBookPageByPageNumber) in
                         self?.bookByPageNumberModel = resultTafsirBookPageByPageNumber
-                        self?.pageContentLbl.text = self?.bookByPageNumberModel?.page?.pageContent
-                        self?.tafsirContentLbl.text = self?.bookByPageNumberModel?.page?.tafsir
+
+                        DetailTafserBookSelectViewController.pageContentLbl.text = self?.bookByPageNumberModel?.page?.pageContent
+                        DetailTafserBookSelectViewController.titleQuranLbl.text =
+                            self?.bookByPageNumberModel?.page?.title ?? ""
+//                           self?.bookByPageNumberModel?.page?.title =  nil ? "" : self?.bookByPageNumberModel?.page?.title
+                        DetailTafserBookSelectViewController.tafsirContentLbl.text = self?.bookByPageNumberModel?.page?.tafsir
                         if let numberPage = self?.CounterPageNumber[rowPageNumber] {
-                            self?.pageNumberTextField.text = "\(numberPage)"
+                            DetailTafserBookSelectViewController.pageNumberTextField.text = "\(numberPage)"
 
                         }
                         self?.bookByPageNumberModel?.page?.surahList?.forEach { surahObject in
-                            
-                            self?.ayaNameTextField.text = surahObject.name
+                            self?.ayaNameList.selectRow(surahObject.id! - 1, inComponent: 0, animated: true)
+                            self?.surahIdNumber = surahObject.id!
+
+                            DetailTafserBookSelectViewController.ayaNameTextField.text = surahObject.name
                             if let numberAya = surahObject.ayat?[0] {
-                                self?.numberAyatTextField.text = "\(numberAya)"
+                                DetailTafserBookSelectViewController.numberAyatTextField.text = "\(numberAya)"
+                                self?.numberOfAyaList.selectRow(numberAya + 1, inComponent: 0, animated: true)
                             }
                         }
+                        DispatchQueue.main.async {
                         self?.ayaNameList.reloadAllComponents()
                         self?.numberOfAyaList.reloadAllComponents()
                         self?.pageNumberContent.reloadAllComponents()
+                        }
                     })
         }
+        else if ayaNameSelected == true {
+            pageNumberSelected  = false
+            ayaNumberSelected = false
+            if pageNumberSelected != true  {
+                if row == 0 {
+                    self.surahIdNumber = 1
+                    self.ayahNumber = 1
+                } else {
+                     self.surahIdNumber = row + 1
 
+                }
+            }
+            
+            
+            self.viewModel?.detailTafserBookBySurahAndAyah(bookId: (delgateBook?.bookId)!, surahId: self.surahIdNumber!, ayah: 1, completionHandler: { [weak self] (resultTafsirBookPageByPageNumber) in
+                self?.bookByPageNumberModel = resultTafsirBookPageByPageNumber
+                if let pageNum = self?.bookByPageNumberModel?.page?.pageNumber {
+                    if row == 0 {
+                        DetailTafserBookSelectViewController.pageNumberTextField.text  = "\(pageNum)"
+                        self?.pageNumberContent.selectRow(pageNum, inComponent: 0, animated: false)
+
+                    } else {
+                        DetailTafserBookSelectViewController.pageNumberTextField.text  = "\(pageNum )"
+                        self?.pageNumberContent.selectRow(pageNum , inComponent: 0, animated: false)
+                    }
+                    DetailTafserBookSelectViewController.pageContentLbl.text = self?.bookByPageNumberModel?.page?.pageContent
+                    DetailTafserBookSelectViewController.tafsirContentLbl.text = self?.bookByPageNumberModel?.page?.tafsir
+                    DetailTafserBookSelectViewController.titleQuranLbl.text = self?.bookByPageNumberModel?.page?.title
+                    
+                    if let ayaNumber = self?.numberAyat[0] {
+                        DetailTafserBookSelectViewController.numberAyatTextField.text = "\(ayaNumber)"
+
+                    }
+                    
+                    for indexAya in 0..<(self?.bookByPageNumberModel?.page?.surahList?.count ?? 0) {
+                        self?.surahIdNumber = self?.bookByPageNumberModel?.page?.surahList?[indexAya].id
+                        
+                        self?.bookByPageNumberModel?.page?.surahList?.forEach {
+                            surahObject in
+                            DetailTafserBookSelectViewController.ayaNameTextField.text = surahObject.name
+                        }
+                    }
+                    self?.viewModelAllSurah?.getAllSurahApi(completionHandler: { [weak self] (resultGetAllSurahModel) in
+                        self?.allSurahModel = resultGetAllSurahModel
+                        self?.allSurahModel?.results.forEach {
+                            
+                        surahObject in
+                        if self?.surahIdNumber == surahObject.id {
+                            if (self?.numberAyat.count ?? 0 > 0) {self?.numberAyat.removeAll()}
+                            self?.numberAyat.append(contentsOf: (surahObject.ayat)!)
+                        }
+                        }
+                        DispatchQueue.main.async {
+                            self?.numberOfAyaList.reloadAllComponents()
+                            }
+                    })
+                }
+                DispatchQueue.main.async {
+                    self?.ayaNameList.reloadAllComponents()
+//                    self?.numberOfAyaList.reloadAllComponents()
+                    self?.pageNumberContent.reloadAllComponents()
+                }
+            })
+            
+        } else if ayaNumberSelected == true {
+            ayaNameSelected = false
+            pageNumberSelected = false
+
+            if row == 0 {
+                self.surahIdNumber = 1
+                self.ayahNumber = 1
+                
+            } else {
+                 self.surahIdNumber = row + 1
+
+            }
+            
+            self.viewModel?.detailTafserBookBySurahAndAyah(bookId: (delgateBook?.bookId)!, surahId: self.surahIdNumber!, ayah: rowNumberAyat + 1, completionHandler: { [weak self] (resultTafsirBookPageByPageNumber) in
+                self?.bookByPageNumberModel = resultTafsirBookPageByPageNumber
+              
+                if self?.pageNumberSelected == false {
+                    self?.pageNumberContent.selectRow((self?.bookByPageNumberModel?.page?.pageNumber)! - 1, inComponent: 0, animated: false)
+                    
+                    if let pageNum = self?.bookByPageNumberModel?.page?.pageNumber {
+                        DetailTafserBookSelectViewController.pageNumberTextField.text = "\(pageNum)"
+                        DetailTafserBookSelectViewController.pageContentLbl.text = self?.bookByPageNumberModel?.page?.pageContent
+                        DetailTafserBookSelectViewController.tafsirContentLbl.text = self?.bookByPageNumberModel?.page?.tafsir
+                        DetailTafserBookSelectViewController.titleQuranLbl.text = self?.bookByPageNumberModel?.page?.title
+                    }
+                } else {
+                    DetailTafserBookSelectViewController.pageContentLbl.text = self?.bookByPageNumberModel?.page?.pageContent
+                    DetailTafserBookSelectViewController.tafsirContentLbl.text = self?.bookByPageNumberModel?.page?.tafsir
+                    DetailTafserBookSelectViewController.titleQuranLbl.text = self?.bookByPageNumberModel?.page?.title
+                }
+                
+                if let ayaNumber = self?.numberAyat[rowNumberAyat] {
+                    DetailTafserBookSelectViewController.numberAyatTextField.text = "\(ayaNumber)"
+
+                }
+                DispatchQueue.main.async {
+                    self?.ayaNameList.reloadAllComponents()
+                    self?.numberOfAyaList.reloadAllComponents()
+                    self?.pageNumberContent.reloadAllComponents()
+                }
+            })
+        }
     }
 
     func didTapCancel() {
 //        self.ayaNameTextField.text = nil
-        self.ayaNameTextField.resignFirstResponder()
+        DetailTafserBookSelectViewController.ayaNameTextField.resignFirstResponder()
 //        self.numberAyatTextField.text = nil
-        self.numberAyatTextField.resignFirstResponder()
+        DetailTafserBookSelectViewController.numberAyatTextField.resignFirstResponder()
 //        self.pageNumberTextField.text = nil
-        self.pageNumberTextField.resignFirstResponder()
+        DetailTafserBookSelectViewController.pageNumberTextField.resignFirstResponder()
     }
 }

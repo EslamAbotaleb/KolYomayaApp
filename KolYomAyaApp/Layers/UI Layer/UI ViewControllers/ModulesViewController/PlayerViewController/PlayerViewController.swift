@@ -20,7 +20,6 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var holder: UIView!
     var player: AVPlayer? = AVPlayer()
       var isPlaying: Bool = false
-
     
     func playAudioBackground() {
             do {
@@ -37,7 +36,7 @@ class PlayerViewController: UIViewController {
         super.viewDidLoad()
         
         let audios = self.audioLinks?[position]
-        
+        print("audiososos\(audios?.audioLink)")
         initPlayer(url: (audios?.audioLink)!)
         
         setupRemoteTransportControls()
@@ -52,7 +51,7 @@ class PlayerViewController: UIViewController {
                 nameSuraLabel.text = audios?.name
         self.nameReciterLabel.text = getaNameReciter
         self.imageReciter.makeRounded()
-        self.imageReciter.imageFromURL(urlString: self.getaImageReciter!)
+        self.imageReciter.imageFromURL(urlString: self.getaImageReciter ?? "")
       
         playPauseButton.addTarget(self, action: #selector(didTapPlayPauseButton(_:)), for: .touchUpInside)
         nextAya.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)
@@ -331,7 +330,7 @@ return .success
         // Player Controls
         self.nameReciterLabel.text = getaNameReciter
         self.imageReciter.makeRounded()
-        self.imageReciter.imageFromURL(urlString: self.getaImageReciter!)
+        self.imageReciter.imageFromURL(urlString: self.getaImageReciter ?? "")
         
         playPauseButton.addTarget(self, action: #selector(didTapPlayPauseButton(_:)), for: .touchUpInside)
         nextAya.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)

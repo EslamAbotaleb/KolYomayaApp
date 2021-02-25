@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TafserBookViewController" customModule="كل_يوم_آية" customModuleProvider="target">
             <connections>
+                <outlet property="bannerHeighjt" destination="bqA-aG-BVf" id="BRZ-4E-bet"/>
                 <outlet property="bannerView" destination="Ktq-0l-Ajl" id="LF5-19-2tl"/>
                 <outlet property="collectionView" destination="0Nc-ur-fOv" id="f0j-hC-iax"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -54,7 +55,7 @@
                 <constraint firstItem="Ktq-0l-Ajl" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="hoq-ux-rhx"/>
                 <constraint firstItem="0Nc-ur-fOv" firstAttribute="top" secondItem="Ktq-0l-Ajl" secondAttribute="bottom" constant="8" symbolic="YES" id="qSn-fq-jVQ"/>
             </constraints>
-            <point key="canvasLocation" x="-486.95652173913049" y="144.64285714285714"/>
+            <point key="canvasLocation" x="-817" y="-27"/>
         </view>
     </objects>
     <resources>

@@ -1,0 +1,109 @@
+
+private void initTafsirObject() {
+        List<Reciters> results = new ArrayList<>();
+        results.add(new Reciters(
+                1,
+                "التفسير الميسر",
+                "https://read.tafsir.one/assets/images/almuyassar.jpg",
+                "",
+                ""
+        ));
+        results.add(new Reciters(
+                2,
+                "المختصر في التفسير",
+                "https://read.tafsir.one/assets/images/almukhtasar.jpg",
+                "",
+                ""
+        ));
+        results.add(new Reciters(
+                3,
+                "تفسير السعدي",
+                "https://read.tafsir.one/assets/images/alsidi.jpg",
+                "",
+                ""
+        ));
+        results.add(new Reciters(
+                4,
+                "تفسير الجلالين",
+                "https://read.tafsir.one/assets/images/aljalalayn.jpg",
+                "",
+                ""
+        ));
+        results.add(new Reciters(
+                5,
+                "السراج في غريب القرآن",
+                "https://read.tafsir.one/assets/images/alsiraaj.jpg",
+                "",
+                ""
+        ));
+        results.add(new Reciters(
+                6,
+                "الميسر في غريب القرآن",
+                "https://read.tafsir.one/assets/images/almuyassar-g.jpg",
+                "",
+                ""
+        ));
+        results.add(new Reciters(
+                7,
+                "تفسير ابن جُزي",
+                "https://read.tafsir.one/assets/images/ibn-juzay.jpg",
+                "",
+                ""
+        ));
+        RecitersListResponse response = new RecitersListResponse(200, "", 1, results);
+        this.onResponse(response);
+}
+
+////
+
+private void initTafsirList() {
+        String folderName = "";
+        switch(reciterId) {
+            case 1:
+                folderName = "almuyassar";
+                break;
+            case 2:
+                folderName = "almukhtasar";
+                break;
+            case 3:
+                folderName = "alsidi";
+                break;
+            case 4:
+                folderName = "aljalalayn";
+                break;
+            case 5:
+                folderName = "alsiraaj";
+                break;
+            case 6:
+                folderName = "almuyassar-g";
+                break;
+            case 7:
+                folderName = "ibn-juzay";
+                break;
+        }
+        List<Albums> results = new ArrayList<>();
+        List<Audio> audioList = new ArrayList<>();
+        for (int i = 1; i <= 114; i++) {
+            String linkBuilder = "https://mirrors.quranicaudio.com/tafsir.one/"+folderName+"/";
+            String surahNumber = "";
+            if (i < 10) {
+                surahNumber = "00" + i;
+            } else if (i < 100) {
+                surahNumber = "0" + i;
+            } else {
+                surahNumber = i + "";
+            }
+            linkBuilder = linkBuilder + surahNumber + ".mp3";
+            audioList.add(new Audio(
+                    i+1,
+                    "سورة " + Config.SURA_NUMBER.get(surahNumber),
+                    linkBuilder,
+                    ""
+            ));
+            Log.d("Albums - linkBuilder", linkBuilder);
+            Log.d("Albums - surahName: ", Config.SURA_NUMBER.get(surahNumber) + "");
+        }
+        results.add(new Albums(1, reciterName, "114", audioList));
+        AlbumsListResponse response = new AlbumsListResponse(200, "", 1, results);
+        this.onResponse(response);
+}

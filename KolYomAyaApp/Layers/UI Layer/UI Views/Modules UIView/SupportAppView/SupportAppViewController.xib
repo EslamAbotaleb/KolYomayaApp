@@ -33,7 +33,7 @@
                 <constraint firstItem="cYA-1t-dnb" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="IB4-GR-SO2"/>
                 <constraint firstItem="cYA-1t-dnb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="fIE-Ss-VWB"/>
             </constraints>
-            <point key="canvasLocation" x="-20" y="86"/>
+            <point key="canvasLocation" x="310" y="86"/>
         </view>
     </objects>
     <resources>

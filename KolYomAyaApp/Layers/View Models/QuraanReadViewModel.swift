@@ -28,11 +28,10 @@ final class QuraanReadViewModel {
         }
     }
     
-    func quraanReadBySurahAndAyah( surahId: Int,ayah: Int, completionHandler: @escaping(QuraanPageModel) -> ()) {
-           quraanReadService.request(.readQuraanBySurahAndAya(ayaNumber: ayah, surahId: surahId)) { (result) in
+    func quraanReadBySurahAndAyah( surahId: Int,ayah: Int? = 0, completionHandler: @escaping(QuraanPageModel) -> ()) {
+           quraanReadService.request(.readQuraanBySurahAndAya(ayaNumber: ayah ?? 1, surahId: surahId)) { (result) in
                switch result {
                case .success(let response):
-                print("fksifhjewohfwehfgwef\(response)")
                    DispatchQueue.main.async {
                        let readQuraanViewModel = try!
                            JSONDecoder().decode(QuraanPageModel.self, from: response.data)

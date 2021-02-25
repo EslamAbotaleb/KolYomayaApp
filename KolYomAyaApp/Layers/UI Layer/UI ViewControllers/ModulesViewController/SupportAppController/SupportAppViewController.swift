@@ -8,34 +8,38 @@
 
 import UIKit
 import GoogleMobileAds
-
-extension UILabel {
-
-    func heightForLabel(text:String, font:UIFont, width:CGFloat) -> CGFloat {
-        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
-        label.numberOfLines = 0
-        label.lineBreakMode = NSLineBreakMode.byWordWrapping
-        label.font = font
-        label.text = text
-
-        label.sizeToFit()
-        return label.frame.height
-    }
-
-}
-
 class SupportAppViewController: BaseViewController, GADRewardedAdDelegate {
    
    
-
+    let scrollView = UIScrollView()
+      let contentView = UIView()
     var rewardedAd: GADRewardedAd?
-    
+    func setupScrollView(){
+          scrollView.translatesAutoresizingMaskIntoConstraints = false
+          contentView.translatesAutoresizingMaskIntoConstraints = false
+          
+          view.addSubview(scrollView)
+          scrollView.addSubview(contentView)
+          
+          scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+          scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+          scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+          scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+          
+          contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+          contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+          contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+          contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+      }
+      
+ 
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         self.initializeNavigationBarAppearanceWithBack(viewController: HomeViewController(), titleHeader: "كل يوم آية")
     }
 
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,6 +48,8 @@ class SupportAppViewController: BaseViewController, GADRewardedAdDelegate {
 //        GADRewardedAd.init(adUnitID: Keys.adsRewarded)
         
 //        createAndLoadRewardedAd()
+        setupScrollView()
+              
     }
 
     /// creating the rewarded ad

@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BookGetAllByPageNumberViewController" customModule="KolYoumAya" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BookGetAllByPageNumberViewController" customModule="كل_يوم_آية" customModuleProvider="target">
             <connections>
+                <outlet property="bannerView" destination="bBr-nk-ZQ9" id="fRK-v7-tf1"/>
                 <outlet property="collectionView" destination="dIT-ne-1G4" id="UJG-y4-aNd"/>
+                <outlet property="heightBanner" destination="cFd-C2-lgt" id="1wv-De-6ZJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,8 +23,8 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="dIT-ne-1G4">
-                    <rect key="frame" x="2" y="44" width="410" height="818"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <rect key="frame" x="2" y="104" width="410" height="758"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Rtg-DH-jIm">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -29,16 +32,31 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bBr-nk-ZQ9" customClass="GADBannerView">
+                    <rect key="frame" x="0.0" y="44" width="414" height="60"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="cFd-C2-lgt"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-            <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dIT-ne-1G4" secondAttribute="trailing" constant="2" id="4O7-Nv-kML"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="dIT-ne-1G4" secondAttribute="bottom" id="7r6-rl-Ojq"/>
-                <constraint firstItem="dIT-ne-1G4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="2" id="kQf-zq-xEJ"/>
-                <constraint firstItem="dIT-ne-1G4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="tr2-bW-I2I"/>
-            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="154"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="bBr-nk-ZQ9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="145-mZ-0al"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dIT-ne-1G4" secondAttribute="trailing" constant="2" id="4O7-Nv-kML"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bBr-nk-ZQ9" secondAttribute="trailing" id="5ZU-cv-yAW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="dIT-ne-1G4" secondAttribute="bottom" id="7r6-rl-Ojq"/>
+                <constraint firstItem="dIT-ne-1G4" firstAttribute="top" secondItem="bBr-nk-ZQ9" secondAttribute="bottom" id="feC-CD-ilQ"/>
+                <constraint firstItem="bBr-nk-ZQ9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jmZ-1a-WUf"/>
+                <constraint firstItem="dIT-ne-1G4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="2" id="kQf-zq-xEJ"/>
+            </constraints>
+            <point key="canvasLocation" x="-236" y="258"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

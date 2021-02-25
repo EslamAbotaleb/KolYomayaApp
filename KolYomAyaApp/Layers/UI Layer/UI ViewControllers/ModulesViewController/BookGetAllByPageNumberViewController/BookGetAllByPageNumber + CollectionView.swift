@@ -12,14 +12,23 @@ extension BookGetAllByPageNumberViewController: UICollectionViewDelegate, UIColl
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.numberOfRows() ?? 0
+        return results.count
+//            viewModel?.numberOfRows() ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookGetAllByPageNumberCollectionViewCell.reuseIdentifier, for: indexPath) as? BookGetAllByPageNumberCollectionViewCell else {
             fatalError("Not found cell called get all books")
         }
-        cell.configure(viewModel: (self.viewModel?.getAllBooksModel?.results[indexPath.row])!)
+        cell.configure(viewModel: results[indexPath.row])
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        coordinator?.statusListen = "TafsirListen"
+        coordinator?.reciterId = self.results[indexPath.row].id
+        coordinator?.imageReciter = self.results[indexPath.row].image
+        coordinator?.nameReciter = self.results[indexPath.row].name
+        
+        coordinator?.start()
     }
 }
 extension BookGetAllByPageNumberViewController: UICollectionViewDelegateFlowLayout {
