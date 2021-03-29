@@ -28,7 +28,9 @@ extension ElsharawyViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         coordinator?.programId = self.elsharawyProgramModel?.programsList[indexPath.row].id
         coordinator?.programName = self.elsharawyProgramModel?.programsList[indexPath.row].programName
-
+        UserDefaults.standard.setValue(coordinator?.programId, forKeyPath: "programId")
+        UserDefaults.standard.setValue(coordinator?.programName, forKeyPath: "programName")
+        UserDefaults.standard.synchronize()
         coordinator?.start()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

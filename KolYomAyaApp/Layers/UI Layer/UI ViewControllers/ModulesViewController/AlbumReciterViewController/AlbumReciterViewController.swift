@@ -7,18 +7,31 @@
 //
 
 import UIKit
+import AVFoundation
 import GoogleMobileAds
 protocol DelegateAudioListProtocol {
     var audioListReciter: [AudioList]? {get set}
     var nameReciter: String? {get set}
     var imageReciter: String? {get set}
-
 }
+
+struct InputDetails {
+    static var details: InputDetails = InputDetails()
+
+    var statusPl: Bool? = false
+    var player: AVPlayer? = AVPlayer()
+ 
+}
+
 class AlbumReciterViewController: BaseViewController {
+    @IBOutlet weak var heightBanner: NSLayoutConstraint!
     @IBOutlet weak var bannerView: GADBannerView!
     var statusListen: String?
     var banner: GADBannerView!
     var interstitial: GADInterstitial!
+    var reciterId: Int?
+    var imageReciter: String?
+    var nameReciter: String?
     @IBOutlet weak var tableView: UITableView!
     var folderName: String? = ""
     var audioList = [AudioList]()
@@ -27,6 +40,9 @@ class AlbumReciterViewController: BaseViewController {
     var viewModel: AlbumReciterViewModel?
     var albumReciterModel: AlbumReciterModel?
     var coordinator: ListAyatSpesficReciterCooridnator?
+    var coordinatortest: DetailTafserBookSelectCoordinator?
+
+    var coordinatorAlbum: AlbumReciterCoordinator?
     var headerView: HeaderView = {
         let nib = UINib(nibName: "HeaderView", bundle: nil)
         return nib.instantiate(withOwner: self, options: nil).first as! HeaderView
@@ -40,7 +56,7 @@ class AlbumReciterViewController: BaseViewController {
             }
         }
     }
- 
+     
     private func displayAd() {
         print(#function, "ad ready", interstitial.isReady)
         if (interstitial.isReady) {
@@ -56,9 +72,30 @@ class AlbumReciterViewController: BaseViewController {
         return interstitial
     }
     override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.initializeNavigationBarAppearanceWithBack(viewController: QuarnListenViewController(), titleHeader: "القران الكريم (استماع)")
+        super.viewWillAppear(animated)
+
+        if statusListen == "QuranListen" {
+            self.initializeNavigationBarAppearanceWithBack(viewController: QuarnListenViewController(), titleHeader: "القرآن الكريم (استماع)")
+        } else {
+            self.initializeNavigationBarAppearanceWithBack(viewController: BookGetAllByPageNumberViewController(), titleHeader:"تفسير القرآن الكريم (استماع)")
+
+        }
+        
+        
+        print("statusPlaying\(statusAppearView)")
+        bottomViewPlayer(isHidden: statusAppearView)
+
+        heightBanner.constant = 0.0
+
     }
+    
+    @objc func notificationReceived(_ notification: Notification) {
+//        guard let statusPlayerWhenAppear = notification.userInfo?["statusAppearView"] as? Bool else { return }
+//        print ("statusPlayerWhenAppear: \(statusPlayerWhenAppear)")
+        print("notificationnotification\(notification.userInfo)") //[AnyHashable("key"): "Value"]
+
+    }
+    
     func initTafsirList() {
         switch self.delgateQuarnListenProtcol?.reciterId {
         case 1:
@@ -104,41 +141,65 @@ class AlbumReciterViewController: BaseViewController {
             linkBuilder = linkBuilder + surahNumber + ".mp3"
             self.audioList.append(AudioList(id: index + 1, name: " سورة" + suraName , audioLink: linkBuilder, viewsNumber: "", audioTime: ""))
             }
-               
-        
-        results.append(ResultAlbumReciter(id: 1, name: self.delgateQuarnListenProtcol?.nameReciter!, itemsNumber: "114", viewsNumber: "", audioList: self.audioList))
-    }
-    func displayContentListenQuranFromServer() {
-        viewModel?.getAlbumReciter(page: 1, reciterID: delgateQuarnListenProtcol?.reciterId ?? 0, completionHandler: { (albumReciterObjectModel) in
-            self.albumReciterModel = albumReciterObjectModel
-            self.headerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                       self.headerView.imageView.makeRounded()
-            self.headerView.imageView.imageFromURL(urlString: (self.delgateQuarnListenProtcol?.imageReciter!)!)
-            
-            self.headerView.titleLabel.text = self.delgateQuarnListenProtcol?.nameReciter
-                             self.headerView.scrollView = self.tableView
-                             self.headerView.frame = CGRect(
-                                 x: 0,
-                                 y: self.tableView.safeAreaInsets.top,
-                                 width: self.view.frame.width,
-                                 height: 250)
+        nameReciter = SavingManager.shared.getValue("nameReciter")
+        imageReciter = SavingManager.shared.getValue("imageReciter")
 
-                             self.tableView.backgroundView = UIView()
-                             self.tableView.backgroundView?.addSubview(self.headerView)
-                             self.tableView.contentInset = UIEdgeInsets(
-                                 top: 200,
-                                 left: 0,
-                                 bottom: 0,
-                                 right: 0)
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
+        if self.delgateQuarnListenProtcol?.nameReciter == nil {
+            print("nameReciternameReciter\(nameReciter)")
+            results.append(ResultAlbumReciter(id: 1, name: nameReciter, itemsNumber: "114", viewsNumber: "", audioList: self.audioList))
+        } else {
+            print("vkdmgklrjljrlgrg\(self.delgateQuarnListenProtcol?.nameReciter!)")
+            results.append(ResultAlbumReciter(id: 1, name: self.delgateQuarnListenProtcol?.nameReciter!, itemsNumber: "114", viewsNumber: "", audioList: self.audioList))
+        }
+        
+    
+    }
+    
+
+    func displayContentListenQuranFromServer() {
+        
+        if delgateQuarnListenProtcol?.reciterId == nil {
+            reciterId =  SavingManager.shared.getIntgerValue("reciterId")
+             imageReciter = SavingManager.shared.getValue("imageReciter")
+             nameReciter = SavingManager.shared.getValue("nameReciter")
+        } else {
+            reciterId = delgateQuarnListenProtcol?.reciterId
+            imageReciter = delgateQuarnListenProtcol?.imageReciter
+            nameReciter = delgateQuarnListenProtcol?.nameReciter
+        }
+           
+        viewModel?.getAlbumReciter(page: 1, reciterID: reciterId! , completionHandler: { (albumReciterObjectModel) in
+                self.albumReciterModel = albumReciterObjectModel
+                self.headerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                           self.headerView.imageView.makeRounded()
+            self.headerView.imageView.imageFromURL(urlString: self.imageReciter ?? "")
+
+            self.headerView.titleLabel.text = self.nameReciter
+                self.headerView.scrollView = self.tableView
+                self.headerView.frame = CGRect(
+                    x: 0,
+                    y: self.tableView.safeAreaInsets.top,
+                    width: self.view.frame.width,
+                    height: 250)
+                
+                self.tableView.backgroundView = UIView()
+                self.tableView.backgroundView?.addSubview(self.headerView)
+                self.tableView.contentInset = UIEdgeInsets(
+                    top: 200,
+                    left: 0,
+                    bottom: 0,
+                    right: 0)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            })
+
+    
     }
     func displayContentListenTafisrBook() {
         self.headerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                    self.headerView.imageView.makeRounded()
-        self.headerView.imageView.imageFromURL(urlString: (self.delgateQuarnListenProtcol?.imageReciter)!)
+        self.headerView.imageView.imageFromURL(urlString: (self.delgateQuarnListenProtcol?.imageReciter) ?? "")
         self.headerView.titleLabel.text = self.delgateQuarnListenProtcol?.nameReciter
         self.headerView.scrollView = self.tableView
         self.headerView.frame = CGRect(
@@ -162,11 +223,25 @@ class AlbumReciterViewController: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         viewModel = AlbumReciterViewModel()
+        viewModel?.getAlbumReciter(page: 1, reciterID: 14, completionHandler: { (getAlbumReciterModel) in
+            self.albumReciterModel = getAlbumReciterModel
+            print(self.albumReciterModel?.results)
+        })
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: NSNotification.Name(rawValue: "statusAppearViewIdentifier"), object: nil)
+
+//        guard let appearView =  UserDefaults.standard.value(forKey: "statusAppearingView") as? Bool else {
+//            fatalError("view player not appearing")
+//            
+//        }
+        
         KeyAndValue.getSura_Name()
-        coordinator = ListAyatSpesficReciterCooridnator(viewController: self)
+        coordinator =  ListAyatSpesficReciterCooridnator(viewController: ListAyatSpesficReciterViewController())
+        
+        coordinatorAlbum = AlbumReciterCoordinator(viewController: self, statusListen: self.statusListen!)
         viewModel?.registTableViewCell(nibName: "AlbumReciterTableViewCell", tableView: tableView)
         if /*Mark:- In the case listen quran*/
             self.statusListen == "QuranListen" {
+            
             displayContentListenQuranFromServer()
         } else if /*Mark:- In the case listen tafisr*/
             self.statusListen == "TafsirListen" {
@@ -253,8 +328,15 @@ extension AlbumReciterViewController: GADBannerViewDelegate {
     func adView(_ bannerView: GADBannerView,
                 didFailToReceiveAdWithError error: GADRequestError) {
         print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+        heightBanner.constant = 0.0
+
     }
-    
+    /// Tells the delegate an ad request loaded an ad.
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("adViewDidReceiveAd")
+        heightBanner.constant = 60.0
+        self.bannerView.addSubview(banner)
+    }
     /// Tells the delegate that a full-screen view will be presented in response
     /// to the user clicking on an ad.
     func adViewWillPresentScreen(_ bannerView: GADBannerView) {
@@ -276,4 +358,5 @@ extension AlbumReciterViewController: GADBannerViewDelegate {
     func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
         print("adViewWillLeaveApplication")
     }
+    
 }

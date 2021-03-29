@@ -10,6 +10,7 @@ import UIKit
 
 class ListAyatSpesficReciterTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var downloadAudioBtn: UIButton!
     @IBOutlet weak var suraNameLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
     override func awakeFromNib() {
@@ -26,5 +27,9 @@ class ListAyatSpesficReciterTableViewCell: UITableViewCell {
     func configure(viewModel: AudioList) {
      
         self.suraNameLabel.text = viewModel.name
+        
+        
     }
+    
+    
 }

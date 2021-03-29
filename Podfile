@@ -14,4 +14,8 @@ target 'KolYomAyaApp' do
    pod 'Firebase/Core'
    pod 'Firebase/Messaging'
    pod 'Google-Mobile-Ads-SDK'
+   pod 'Firebase/Crashlytics'
+   pod 'Firebase/Analytics'
+
+
 end

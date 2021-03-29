@@ -26,7 +26,9 @@ final class PreviousAyatTableViewCell: UITableViewCell {
     func configure(viewModel: AyaObjectViewModel) {
         
         self.surNameLabel.text = "سورة:" + viewModel.suraName
-        self.ayaNumberLabel.text =  "آية:" + "\(viewModel.ayaNumber)"
+        self.ayaNumberLabel.text =  "آية:" + "\(viewModel.ayaNumber)".convertToPersianNum()
+        self.ayaLabel.font = UIFont(name: "kitab_b", size: 30)
+
         self.ayaLabel.text = viewModel.aya
     }
 }

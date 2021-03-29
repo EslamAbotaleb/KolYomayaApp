@@ -11,6 +11,7 @@ import GoogleMobileAds
 class SupportAppViewController: BaseViewController, GADRewardedAdDelegate {
    
    
+    @IBOutlet weak var hyperlinkSupport: UITextView!
     let scrollView = UIScrollView()
       let contentView = UIView()
     var rewardedAd: GADRewardedAd?
@@ -32,7 +33,20 @@ class SupportAppViewController: BaseViewController, GADRewardedAdDelegate {
           contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
       }
       
- 
+    func updateTextView() {
+        let path = "https://bit.ly/3iui8zv"
+        let text = hyperlinkSupport.text ?? ""
+        let attributedString = NSAttributedString.makeHyperlink(for: path, in: text, as: "https://bit.ly/3iui8zv")
+        let font = hyperlinkSupport.font
+//        let textColor = hyperlinkSupport.textColor
+        
+        hyperlinkSupport.linkTextAttributes = [NSAttributedString.Key(rawValue: NSAttributedString.Key.underlineStyle.rawValue): NSUnderlineStyle.single.rawValue] as [NSAttributedString.Key: Any]?
+
+        
+        hyperlinkSupport.attributedText = attributedString
+        hyperlinkSupport.font = font
+        hyperlinkSupport.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+    }
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
@@ -48,10 +62,18 @@ class SupportAppViewController: BaseViewController, GADRewardedAdDelegate {
 //        GADRewardedAd.init(adUnitID: Keys.adsRewarded)
         
 //        createAndLoadRewardedAd()
-        setupScrollView()
+//        let attributedString = NSMutableAttributedString(string: "Advbd venjnebj ebgjkbegwb")
+//              attributedString.addAttribute(.link, value: "https://bit.ly/3iui8zv", range: NSRange(location: 10, length: 40))
+//            
+//              hyperlinkSupport.attributedText = attributedString
+//        setupScrollView()
+//        self.hyperlinkSupport.underlined()
+
+        updateTextView()
+
               
     }
-
+    
     /// creating the rewarded ad
     func createAndLoadRewardedAd() {
 

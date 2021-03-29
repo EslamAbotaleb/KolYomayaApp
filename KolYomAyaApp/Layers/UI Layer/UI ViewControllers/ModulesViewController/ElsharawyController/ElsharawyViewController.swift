@@ -15,6 +15,7 @@ protocol DelegateElsharawayMediaSelect {
 }
 
 class ElsharawyViewController: BaseViewController, UIScrollViewDelegate,GADBannerViewDelegate  {
+    @IBOutlet weak var heightBanner: NSLayoutConstraint!
     var banner: GADBannerView!
     var coordinator: ElsharawyMediaProgramIdCoordinator?
     var viewModel: ElsharawySectionProgramViewModel?
@@ -30,6 +31,7 @@ class ElsharawyViewController: BaseViewController, UIScrollViewDelegate,GADBanne
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.initializeNavigationBarAppearanceWithBack(viewController: HomeViewController(), titleHeader: "كل يوم آية")
+        heightBanner.constant = 0.0
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +101,7 @@ class ElsharawyViewController: BaseViewController, UIScrollViewDelegate,GADBanne
     /// Tells the delegate an ad request loaded an ad.
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
         print("adViewDidReceiveAd")
+        heightBanner.constant = 60.0
         self.bannerView.addSubview(banner)
         
     }
@@ -106,6 +109,7 @@ class ElsharawyViewController: BaseViewController, UIScrollViewDelegate,GADBanne
     /// Tells the delegate an ad request failed.
     func adView(_ bannerView: GADBannerView,
                 didFailToReceiveAdWithError error: GADRequestError) {
+        heightBanner.constant = 0.0
         print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
     }
     

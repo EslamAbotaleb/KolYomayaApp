@@ -89,7 +89,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         GADMobileAds.sharedInstance().start(completionHandler: nil)
      
         GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers =
-            [ "e9065fe7c6def84f2f1923ff90933c95" ]
+            [ "bf7edd76c1aa23ae4d6ee5644fc75909" ]
+        //bf7edd76c1aa23ae4d6ee5644fc75909
+        //080bd50602ef043f9b1c40f3d4c6c308
       //  d8e301fd8e1586814a4929564ce8b288
 //        2077ef9a63d2b398840261c8221a0c9b
         FirebaseApp.configure()
@@ -161,6 +163,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
 
         let audioSession = AVAudioSession.sharedInstance()
         do {
+            
             try audioSession.setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default)
         } catch let error as NSError {
             print("Setting category to AVAudioSessionCategoryPlayback failed: \(error)")

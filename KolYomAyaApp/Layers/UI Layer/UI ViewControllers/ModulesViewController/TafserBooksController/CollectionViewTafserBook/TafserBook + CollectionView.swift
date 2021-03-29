@@ -24,6 +24,7 @@ extension TafserBookViewController: UICollectionViewDelegate, UICollectionViewDa
         return viewModel.numberOfRows()
 
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TafserBookCollectionViewCell.reuseIdentifier, for: indexPath) as? TafserBookCollectionViewCell else {
             fatalError("Cannot found tafser book cell")
@@ -41,12 +42,54 @@ extension TafserBookViewController: UICollectionViewDelegate, UICollectionViewDa
         coordinator?.bookName = tafserBooksModel[indexPath.row].title
         coordinator?.start()
     }
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        switch kind {
+//
+//            case UICollectionView.elementKindSectionHeader:
+//
+//                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath)
+//
+//                headerView.backgroundColor = UIColor.blue
+//                return headerView
+//
+//            case UICollectionView.elementKindSectionFooter:
+//                let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Footer", for: indexPath)
+//
+//                footerView.backgroundColor = UIColor.green
+//                return footerView
+//
+//            default:
+//
+//                assert(false, "Unexpected element kind")
+//            }
+//    }
+//    private func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+//
+//        switch kind {
+//
+//        case UICollectionView.elementKindSectionHeader:
+//
+//            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath)
+//
+//            headerView.backgroundColor = UIColor.blue
+//            return headerView
+//
+//        case UICollectionView.elementKindSectionFooter:
+//            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Footer", for: indexPath)
+//
+//            footerView.backgroundColor = UIColor.green
+//            return footerView
+//
+//        default:
+//
+//            assert(false, "Unexpected element kind")
+//        }
 }
 extension TafserBookViewController: UICollectionViewDelegateFlowLayout {
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.calculateWith()
-        return CGSize(width: width  , height: width + 30.0)
+        return CGSize(width: width  , height: width + 70.0)
     }
     func calculateWith() -> CGFloat {
              let estimatedWidth = CGFloat(estimateWidth)

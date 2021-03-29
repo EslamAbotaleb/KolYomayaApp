@@ -8,16 +8,21 @@
 
 import UIKit
 
-class DetailMediaProgramSelectedController: BaseViewController {
+class DetailMediaProgramSelectedController: BaseViewController  {
+    var delegateElsharawyProgramId: DelegateElsharawayMediaSelect?
+
+    
     @IBOutlet weak var videoCoverImage: UIImageView!
     @IBOutlet weak var playBuuton: UIButton!
     @IBOutlet weak var sourceLbl: UILabel!
     @IBOutlet weak var titleEpsiodeLbl: UILabel!
     var viewModel: MediaList?
-    
+    //(self.viewModel?.program!.programName)!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.initializeNavigationBarAppearanceWithBack(viewController: ElsharawyMediaProgramIdViewController(), titleHeader: (self.viewModel?.program!.programName)!)
+        
+        self.initializeNavigationBarAppearanceWithBack(viewController: ElsharawyMediaProgramIdViewController(), titleHeader: delegateElsharawyProgramId?.programName ?? "كل يوم آية"
+        )
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +31,7 @@ class DetailMediaProgramSelectedController: BaseViewController {
         self.titleEpsiodeLbl.text = viewModel?.title
         self.playBuuton.addTarget(self, action: #selector(openYoutube(sender:)), for: .touchUpInside)
         // Do any additional setup after loading the view.
+       
     }
     func playInYoutube(youtubeId: String) {
         if let youtubeURL = URL(string: "youtube://\(youtubeId)"),

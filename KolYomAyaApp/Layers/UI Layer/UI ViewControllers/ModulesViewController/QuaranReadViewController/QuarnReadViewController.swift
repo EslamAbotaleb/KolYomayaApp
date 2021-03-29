@@ -228,7 +228,7 @@ class QuarnReadViewController: BaseViewController {
                 }
                 
                 self.surahIdNumber = resultQuraanPageModel.quraanPage?.id
-                self.ayaNameList.selectRow(self.surahIdNumber! - 1 , inComponent: 0, animated: false)
+                self.ayaNameList.selectRow(self.surahIdNumber ?? 1  - 1 , inComponent: 0, animated: false)
                 
                 for index in 0..<(self.quraanReadModel?.quraanPage?.surahList!.count ?? 0) {
 //                               KeyAndValue.SURA_NAME[0].name = self.quraanReadModel!.quraanPage!.surahList![index].name!

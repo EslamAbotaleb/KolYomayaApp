@@ -26,7 +26,7 @@ class ElsharawyTableViewCell: UITableViewCell {
     
     func configure(viewModel: ProgramsList) {
         self.nameProgamText.text = viewModel.programName
-        self.numberOfEpisodesLbl.text = "\(viewModel.mediaNumber)"
+        self.numberOfEpisodesLbl.text = "\(viewModel.mediaNumber)".convertToPersianNum()
     }
     
 }

@@ -20,7 +20,14 @@ extension QuarnListenViewController: UICollectionViewDataSource, UICollectionVie
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuarnListenCollectionViewCell.reuseIdentifier, for: indexPath) as? QuarnListenCollectionViewCell else {
             fatalError("Not found QuarnListen cell ")
         }
-        cell.configure(viewModel: (self.recitersModel?.results[indexPath.row])!)
+        if indexPath.row < self.recitersModel?.results.count ?? 0 {
+            cell.configure(viewModel: (self.recitersModel?.results[indexPath.row])!)
+
+        } else if self.recitersModel?.results.count ?? 0 < 0 {
+            
+        } else {
+            
+        }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

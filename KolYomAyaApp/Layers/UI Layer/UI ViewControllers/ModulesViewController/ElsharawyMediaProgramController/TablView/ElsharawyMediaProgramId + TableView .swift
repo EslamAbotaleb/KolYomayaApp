@@ -28,6 +28,10 @@ extension ElsharawyMediaProgramIdViewController: UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         coordinator?.viewModel = self.elsharawyMediaModel?.mediaList?[indexPath.row]
+        coordinator?.programId = self.elsharawyMediaModel?.mediaList?[indexPath.row].id
+        coordinator?.programName = self.elsharawyMediaModel?.mediaList?[indexPath.row].program?.programName
+//        coordinator?.programName =  self.elsharawyProgramModel?.programsList[indexPath.row].programName
+        
         coordinator?.start()
     }
 }

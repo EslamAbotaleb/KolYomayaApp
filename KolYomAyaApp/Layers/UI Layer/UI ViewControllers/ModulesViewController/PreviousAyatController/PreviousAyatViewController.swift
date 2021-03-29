@@ -12,6 +12,7 @@ class PreviousAyatViewController: BaseViewController {
     var isDataLoading:Bool=false
     var previousAyaListModel: PreviousAyatListViewModel?
     var pageNumber: Int = 1
+    @IBOutlet weak var heightBanner: NSLayoutConstraint!
     var banner: GADBannerView!
     var previousAyaModel: PreviousAyatModel?
     var coordinator: DetailAyaCoordiantor?
@@ -21,6 +22,7 @@ class PreviousAyatViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.initializeNavigationBarAppearanceWithBack(viewController: HomeViewController(), titleHeader: "كل يوم آية")
+        heightBanner.constant = 0.0
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +81,7 @@ extension PreviousAyatViewController: GADBannerViewDelegate {
     /// Tells the delegate an ad request loaded an ad.
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
         print("adViewDidReceiveAd")
+        heightBanner.constant = 60.0
         self.bannerView.addSubview(banner)
         
     }
@@ -87,6 +90,7 @@ extension PreviousAyatViewController: GADBannerViewDelegate {
     func adView(_ bannerView: GADBannerView,
                 didFailToReceiveAdWithError error: GADRequestError) {
         print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+        heightBanner.constant = 0.0
     }
     
     /// Tells the delegate that a full-screen view will be presented in response

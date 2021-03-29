@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TafserBookCollectionViewCell" customModule="KolYoumAya" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="216" height="249"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TafserBookCollectionViewCell" customModule="kolyoumaya" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="216" height="290"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="216" height="249"/>
+                <rect key="frame" x="0.0" y="0.0" width="216" height="290"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view opaque="NO" clipsSubviews="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="Owe-g5-L6h">
-                        <rect key="frame" x="0.0" y="0.0" width="216" height="249"/>
+                        <rect key="frame" x="0.0" y="0.0" width="216" height="290"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NSE-Gw-KaJ" customClass="CardView" customModule="KolYoumAya" customModuleProvider="target">
-                                <rect key="frame" x="2" y="2" width="212" height="245"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NSE-Gw-KaJ">
+                                <rect key="frame" x="5" y="2" width="206" height="286"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bjL-Le-REg">
-                                        <rect key="frame" x="0.0" y="0.0" width="212" height="238"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="206" height="279"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gxI-6g-WFV">
-                                                <rect key="frame" x="0.0" y="0.0" width="212" height="209.66666666666666"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="206" height="246"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التفسير" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dO-Y8-B54">
-                                                <rect key="frame" x="0.0" y="217.66666666666666" width="212" height="20.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="254" width="206" height="25"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="20.5" id="6XD-W5-bF3"/>
+                                                    <constraint firstAttribute="height" constant="25" id="6XD-W5-bF3"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -52,33 +52,36 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
                                         <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="NSE-Gw-KaJ" secondAttribute="trailing" constant="2" id="ZGT-NT-SUh"/>
-                            <constraint firstItem="NSE-Gw-KaJ" firstAttribute="leading" secondItem="Owe-g5-L6h" secondAttribute="leading" constant="2" id="cb1-kK-wO0"/>
+                            <constraint firstAttribute="trailing" secondItem="NSE-Gw-KaJ" secondAttribute="trailing" constant="5" id="ZGT-NT-SUh"/>
+                            <constraint firstItem="NSE-Gw-KaJ" firstAttribute="leading" secondItem="Owe-g5-L6h" secondAttribute="leading" constant="5" id="cb1-kK-wO0"/>
                             <constraint firstItem="NSE-Gw-KaJ" firstAttribute="top" secondItem="Owe-g5-L6h" secondAttribute="top" constant="2" id="ezz-Ds-Fi3"/>
                             <constraint firstAttribute="bottom" secondItem="NSE-Gw-KaJ" secondAttribute="bottom" constant="2" id="hI1-nc-TYz"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Owe-g5-L6h" secondAttribute="bottom" id="9NQ-7C-dKD"/>
                 <constraint firstAttribute="trailing" secondItem="Owe-g5-L6h" secondAttribute="trailing" id="UCx-h9-QrY"/>
                 <constraint firstItem="Owe-g5-L6h" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WZ8-E2-884"/>
                 <constraint firstItem="Owe-g5-L6h" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fye-8R-QWs"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="216" height="249"/>
+            <size key="customSize" width="216" height="290"/>
             <connections>
                 <outlet property="imageBook" destination="gxI-6g-WFV" id="EVN-t9-Kcu"/>
                 <outlet property="subTitleBookTafserLbl" destination="9dO-Y8-B54" id="czC-T5-W3e"/>
                 <outlet property="viewTafserBook" destination="NSE-Gw-KaJ" id="aMg-MN-iKi"/>
             </connections>
-            <point key="canvasLocation" x="-378.26086956521743" y="80.298913043478265"/>
+            <point key="canvasLocation" x="-378.26086956521743" y="97.010869565217405"/>
         </collectionViewCell>
     </objects>
 </document>

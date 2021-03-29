@@ -9,10 +9,17 @@
 import UIKit
 import AVFoundation
 import Toast_Swift
+protocol DelegateStatusPlay {
+    var statusPlaying: Bool? {get set}
+    var  player: AVPlayer? {get set}
+
+}
 class BaseViewController: UIViewController {
-    
+//    var delegatePlayAudio: DelegateStatusPlay?
+
     var playerPass = AVPlayer()
     var isPlayingPass: Bool = false
+    var statusAppearView: Bool = true
     var viewController = UIViewController()
 
     func bottomViewPlayer(isHidden: Bool = true, playFunction:  (() -> Void)? = nil , pauseFunction:  (() -> Void)? = nil) {
@@ -76,10 +83,12 @@ class BaseViewController: UIViewController {
         super.viewWillAppear(animated)
 //        print("gwemlighew;ighewil;hgieowhgew\(animated)")
 //        if animated == false {
-//            bottomViewPlayer(isHidden: false)
+        
+
+            bottomViewPlayer(isHidden: statusAppearView)
 //
 //        } else {
-            bottomViewPlayer(isHidden: animated)
+//            bottomViewPlayer(isHidden: animated)
 
 //        }
 //       bottomViewPlayer(isHidden: false)
@@ -106,14 +115,19 @@ class BaseViewController: UIViewController {
         iconMenu.addTarget(self, action: #selector(toggleMenu), for: .touchUpInside)
         
         let titleMenuKolYoumAya = UILabel()
+        titleMenuKolYoumAya.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
+
+        //titleMenuKolYoumAya.font = UIFont(name: "Monadi", size: 20)
+//        titleMenuKolYoumAya.font = UIFont.systemFont(ofSize: 20.0)
+//        titleMenuKolYoumAya.font = UIFont.boldSystemFont(ofSize: 20.0)
+       //GE SS Two
+        titleMenuKolYoumAya.font = UIFont(name:"Monadi", size: 20.0)//S
+        titleMenuKolYoumAya.font = UIFont.boldSystemFont(ofSize: 20.0)
+
         titleMenuKolYoumAya.text = "   كل يوم آية"
 
         titleMenuKolYoumAya.textColor = UIColor.white
-//        titleMenuKolYoumAya.font = titleMenuKolYoumAya.font.withSize(20)
-        titleMenuKolYoumAya.font = UIFont(name: "monadi", size: 40)
 
-//             anothericonMenu.setImage(UIImage(named: "icons8-menu-24"), for: .normal)
-             titleMenuKolYoumAya.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
 //             anothericonMenu.addTarget(self, action: #selector(toggleMenu), for: .touchUpInside)
         
         let buttonBar = UIBarButtonItem(customView: iconMenu)
@@ -194,7 +208,8 @@ class BaseViewController: UIViewController {
         let titleMenuKolYoumAya = UILabel(frame: CGRect(x: 100, y: 400, width: 550, height: 50))
         titleMenuKolYoumAya.text = titleHeader
         titleMenuKolYoumAya.textColor = UIColor.white
-        titleMenuKolYoumAya.font = UIFont(name: "barselona", size: 40)
+        titleMenuKolYoumAya.font = UIFont(name:"Monadi", size: 20.0)//S
+        titleMenuKolYoumAya.font = UIFont.boldSystemFont(ofSize: 20.0)
 //        titleMenuKolYoumAya.font = titleMenuKolYoumAya.font.withSize(20)
         //             anothericonMenu.setImage(UIImage(named: "icons8-menu-24"), for: .normal)
 //        titleMenuKolYoumAya.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
@@ -231,6 +246,8 @@ class BaseViewController: UIViewController {
                 button.addTarget(self, action: #selector(navigateBack), for: .touchUpInside)
             } else if viewController is QuarnListenViewController {
                 button.addTarget(self, action: #selector(navigateBack), for: .touchUpInside)
+            } else if viewController is BookGetAllByPageNumberViewController {
+                button.addTarget(self, action: #selector(navigateBack), for: .touchUpInside)
             }
         let buttonBar = UIBarButtonItem(customView: button)
         
@@ -254,7 +271,7 @@ class BaseViewController: UIViewController {
                    sideMenuController.toggleLeftMenu()
                }
            } else {
-            print("jgslrghrkuhgurhgrughu")
+            print("")
 
         }
        }
@@ -275,7 +292,6 @@ class BaseViewController: UIViewController {
 //        var coordinator: HomeCoordinator?
 
         @objc func navigateBack() {
-            print("ccjnck")
             
             
                  if self.viewController is HomeViewController {
@@ -298,8 +314,23 @@ class BaseViewController: UIViewController {
                      let coordinator = DetailAyaCoordiantor(viewController: DetailAyaViewController())
                      coordinator.start()
                  } else if viewController is AlbumReciterViewController {
-                    let coordinator = AlbumReciterCoordinator(viewController: AlbumReciterViewController(), statusListen: "")
-                     coordinator.start()
+                    //QuranListen
+                    
+//                    QuranTafsir
+//                    UserDefaults.standard.setValue(statusListen, forKey: "QuranListen")
+//
+                    if UserDefaults.standard.value(forKey: "QuranListen") != nil {
+                        let coordinator = AlbumReciterCoordinator(viewController: AlbumReciterViewController(), statusListen: "QuranListen")
+                        print("QuranListenQuranListen")
+                        coordinator.start()
+                    } else {
+                        let coordinator = AlbumReciterCoordinator(viewController: AlbumReciterViewController(), statusListen: "TafsirListen")
+                        print("TafsirListenTafsirListen")
+                        coordinator.start()
+
+                    }
+                   
+                    
                  } else if viewController is ListAyatSpesficReciterViewController {
                      let coordinator = ListAyatSpesficReciterCooridnator(viewController: ListAyatSpesficReciterViewController())
                      coordinator.start()
@@ -311,6 +342,9 @@ class BaseViewController: UIViewController {
                      let coordinator =  QuarnListenCoordinator(viewController: QuarnListenViewController())
                               coordinator.start()
                      
+                 } else if viewController is BookGetAllByPageNumberViewController {
+                    let coordinator =  GetAllBooksPageCoordinator(viewController: BookGetAllByPageNumberViewController())
+                             coordinator.start()
                  }
 //
 //

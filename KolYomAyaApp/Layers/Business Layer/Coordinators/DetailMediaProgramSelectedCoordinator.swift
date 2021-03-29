@@ -7,8 +7,9 @@
 //
 
 import UIKit
-final class DetailMediaProgramSelectedCoordinator: Coordinator {
-    
+final class DetailMediaProgramSelectedCoordinator: Coordinator, DelegateElsharawayMediaSelect {
+    var programId: Int?
+    var programName: String?
    private(set) var childCoordinators: [Coordinator] = []
     var parentCoordinator: Coordinator?
     var viewModel: MediaList?
@@ -23,6 +24,9 @@ final class DetailMediaProgramSelectedCoordinator: Coordinator {
     }
     func start() {
         let viewController = DetailMediaProgramSelectedController.init(nibName: "DetailMediaProgramSelectedController", bundle: nil)
+        viewController.delegateElsharawyProgramId = self
+        viewController.delegateElsharawyProgramId?.programId = programId
+        viewController.delegateElsharawyProgramId?.programName = programName
         viewController.viewModel = viewModel
         let detaiLMediaProgramCoordinator = DetailMediaProgramSelectedCoordinator(viewController: viewController)
         childCoordinators.append(detaiLMediaProgramCoordinator)

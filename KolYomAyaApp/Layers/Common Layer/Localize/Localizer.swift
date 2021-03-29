@@ -6,9 +6,7 @@
 //  Copyright © 2020 Islam Abotaleb. All rights reserved.
 //
 
-import Foundation
 
-import Foundation
 import UIKit
 
 class Localizer: NSObject {

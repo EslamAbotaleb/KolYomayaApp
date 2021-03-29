@@ -27,6 +27,8 @@ import UIKit
 
     func configure(_ viewModel: SideMenuItemPresentable) -> (Void) {
         imageItem.image = viewModel.imagename
+        titleLabel.font = UIFont(name: "ge_ss_two_medium", size: 40)
+
         titleLabel.text = viewModel.name
     }
 }

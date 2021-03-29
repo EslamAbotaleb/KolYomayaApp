@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4Q4-tt-qpy" customClass="BookGetAllByPageNumberCollectionViewCell" customModule="KolYoumAya" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="253" height="198"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4Q4-tt-qpy" customClass="BookGetAllByPageNumberCollectionViewCell" customModule="kolyoumaya" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="206" height="286"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="253" height="198"/>
+                <rect key="frame" x="0.0" y="0.0" width="206" height="286"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CVh-KK-psG">
-                        <rect key="frame" x="0.0" y="0.0" width="253" height="198"/>
+                        <rect key="frame" x="0.0" y="0.0" width="206" height="286"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ewd-zl-40L" customClass="CardView" customModule="KolYoumAya" customModuleProvider="target">
-                                <rect key="frame" x="5" y="4" width="243" height="190"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ewd-zl-40L">
+                                <rect key="frame" x="5" y="4" width="196" height="278"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageSplash" translatesAutoresizingMaskIntoConstraints="NO" id="HjH-k1-uzU">
-                                        <rect key="frame" x="0.0" y="0.0" width="243" height="166"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HjH-k1-uzU">
+                                        <rect key="frame" x="0.0" y="0.0" width="196" height="239"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcf-ng-Xa9">
-                                        <rect key="frame" x="2" y="168" width="239" height="20"/>
+                                        <rect key="frame" x="10" y="241" width="176" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="UJK-Se-iva"/>
+                                            <constraint firstAttribute="height" constant="35" id="UJK-Se-iva"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtc-qy-rUW">
-                                        <rect key="frame" x="5" y="131" width="30" height="30"/>
+                                        <rect key="frame" x="5" y="204" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="gb6-83-wXT"/>
                                             <constraint firstAttribute="height" constant="30" id="ukW-10-xjQ"/>
@@ -44,24 +44,24 @@
                                         <state key="normal" image="play_btn"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.98999999999999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="hcf-ng-Xa9" firstAttribute="top" secondItem="HjH-k1-uzU" secondAttribute="bottom" constant="2" id="4pu-BS-UpE"/>
                                     <constraint firstItem="HjH-k1-uzU" firstAttribute="top" secondItem="Ewd-zl-40L" secondAttribute="top" id="Chm-vR-nbu"/>
                                     <constraint firstAttribute="trailing" secondItem="HjH-k1-uzU" secondAttribute="trailing" id="Meu-fq-Mdb"/>
                                     <constraint firstAttribute="bottom" secondItem="hcf-ng-Xa9" secondAttribute="bottom" constant="2" id="Pom-bI-5p7"/>
-                                    <constraint firstItem="hcf-ng-Xa9" firstAttribute="leading" secondItem="Ewd-zl-40L" secondAttribute="leading" constant="2" id="TXe-ca-c7b"/>
+                                    <constraint firstItem="hcf-ng-Xa9" firstAttribute="leading" secondItem="Ewd-zl-40L" secondAttribute="leading" constant="10" id="TXe-ca-c7b"/>
                                     <constraint firstItem="gtc-qy-rUW" firstAttribute="bottom" secondItem="HjH-k1-uzU" secondAttribute="bottom" constant="-5" id="fUs-3m-N96"/>
                                     <constraint firstItem="HjH-k1-uzU" firstAttribute="leading" secondItem="Ewd-zl-40L" secondAttribute="leading" id="hf5-di-hF8"/>
                                     <constraint firstItem="gtc-qy-rUW" firstAttribute="leading" secondItem="Ewd-zl-40L" secondAttribute="leading" constant="5" id="s7v-hy-I9R"/>
-                                    <constraint firstAttribute="trailing" secondItem="hcf-ng-Xa9" secondAttribute="trailing" constant="2" id="xdh-by-EXs"/>
+                                    <constraint firstAttribute="trailing" secondItem="hcf-ng-Xa9" secondAttribute="trailing" constant="10" id="xdh-by-EXs"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
                                         <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -84,24 +84,24 @@
                     </view>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="zYW-gw-Yp0"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="CVh-KK-psG" secondAttribute="bottom" id="Dyg-Ab-90j"/>
                 <constraint firstItem="CVh-KK-psG" firstAttribute="top" secondItem="4Q4-tt-qpy" secondAttribute="top" id="Ze8-gW-Zh4"/>
                 <constraint firstAttribute="trailing" secondItem="CVh-KK-psG" secondAttribute="trailing" id="hyf-ss-eWe"/>
                 <constraint firstItem="CVh-KK-psG" firstAttribute="leading" secondItem="4Q4-tt-qpy" secondAttribute="leading" id="iDO-7S-LwD"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="zYW-gw-Yp0"/>
             <size key="customSize" width="253" height="198"/>
             <connections>
+                <outlet property="cardViewItem" destination="Ewd-zl-40L" id="tfB-iO-4yL"/>
                 <outlet property="imageBook" destination="HjH-k1-uzU" id="W3L-uw-Dv9"/>
                 <outlet property="nameBookLabel" destination="hcf-ng-Xa9" id="cAu-gz-pIn"/>
                 <outlet property="playButton" destination="gtc-qy-rUW" id="pv2-iT-vvC"/>
             </connections>
-            <point key="canvasLocation" x="-95" y="102"/>
+            <point key="canvasLocation" x="-519" y="-11"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="imageSplash" width="512" height="512"/>
         <image name="play_btn" width="512" height="512"/>
     </resources>
 </document>

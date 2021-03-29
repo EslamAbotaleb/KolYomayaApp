@@ -20,9 +20,13 @@ final class HomeViewModel {
             switch (result) {
             case .success(let response):
                 DispatchQueue.main.async {  [weak self] in
+                    do {
+                        let todayAyaModel = try JSONDecoder().decode(TodayAyaViewModel.self, from: response.data)
+                        completionHandler(todayAyaModel)
+                    } catch {
+                        
+                    }
                     
-                    let todayAyaModel = try! JSONDecoder().decode(TodayAyaViewModel.self, from: response.data)
-                    completionHandler(todayAyaModel)
                 }
             case .failure(let error):
                 print(error)

@@ -25,8 +25,8 @@ class AlbumReciterTableViewCell: UITableViewCell {
     }
     
     func configure(viewModel: ResultAlbumReciter) {
-        self.numberOfEpisodesLbl.text = "\(viewModel.itemsNumber!)"
-        self.nameProgamText.text = viewModel.name
+        self.numberOfEpisodesLbl.text = "\(viewModel.itemsNumber!)".convertToPersianNum()
+        self.nameProgamText.text =  "  " + viewModel.name! + "  "
         
     }
 }

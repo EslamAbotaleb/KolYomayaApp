@@ -17,6 +17,8 @@ class SideMenuViewController: BaseViewController {
         super.viewWillAppear(animated)
         self.tableView.insetsContentViewsToSafeArea = false
         self.tableView.contentInsetAdjustmentBehavior = .never
+        print("statusAppearView\(statusAppearView)")
+        bottomViewPlayer(isHidden: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

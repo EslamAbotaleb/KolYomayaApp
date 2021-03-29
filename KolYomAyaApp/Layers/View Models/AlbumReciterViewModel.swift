@@ -16,6 +16,7 @@ final class AlbumReciterViewModel {
         albumReciterService.request(.albumReciterPage(page: page, reciterId: reciterID)) { (result) in
             switch result {
             case .success(let response):
+                print("responseresponse")
                 DispatchQueue.main.async {
                     let albumReciterObject = try! JSONDecoder().decode(AlbumReciterModel.self, from: response.data)
                     self.albumReciterModel = albumReciterObject
@@ -23,6 +24,7 @@ final class AlbumReciterViewModel {
                 }
                 
             case .failure(let error):
+                print("errororororororo")
                 print(error)
                 break
             }

@@ -12,7 +12,8 @@ final class ListAyatSpesficReciterCooridnator: Coordinator, DelegateAudioListPro
     var imageReciter: String?
     
     var nameReciter: String?
-    
+    var reciterId: Int?
+    var statusListen: String?
     private(set) var childCoordinators: [Coordinator] = []
     var viewController: UIViewController?
     var parentCoodinator: Coordinator?
@@ -28,9 +29,11 @@ final class ListAyatSpesficReciterCooridnator: Coordinator, DelegateAudioListPro
     func start() {
         let viewController = ListAyatSpesficReciterViewController.init(nibName: "ListAyatSpesficReciterViewController", bundle: nil)
         viewController.delegateAudioListProtocol = self
+        viewController.reciterId = reciterId
         viewController.delegateAudioListProtocol?.audioListReciter = audioListReciter
         viewController.delegateAudioListProtocol?.nameReciter = self.nameReciter
         viewController.delegateAudioListProtocol?.imageReciter = self.imageReciter
+        viewController.statusListen = self.statusListen
         let listAyatCoordinator = ListAyatSpesficReciterCooridnator(viewController: viewController)
         childCoordinators.append(listAyatCoordinator)
         let navigationController = UINavigationController(rootViewController: viewController)

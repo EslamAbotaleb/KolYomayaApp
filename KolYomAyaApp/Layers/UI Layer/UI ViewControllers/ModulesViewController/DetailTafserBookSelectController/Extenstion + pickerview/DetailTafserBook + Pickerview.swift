@@ -187,6 +187,14 @@ extension DetailTafserBookSelectViewController: ToolbarPickerViewDelegate {
             
             self.viewModel?.detailTafserBookBySurahAndAyah(bookId: (delgateBook?.bookId)!, surahId: self.surahIdNumber!, ayah: 1, completionHandler: { [weak self] (resultTafsirBookPageByPageNumber) in
                 self?.bookByPageNumberModel = resultTafsirBookPageByPageNumber
+                
+                if self?.bookByPageNumberModel?.previousPage == nil {
+                    DetailTafserBookSelectViewController.previousPageBtn.isHidden = true
+                } else {
+                    DetailTafserBookSelectViewController.previousPageBtn.isHidden = false
+                }
+                
+                
                 if let pageNum = self?.bookByPageNumberModel?.page?.pageNumber {
                     if row == 0 {
                         DetailTafserBookSelectViewController.pageNumberTextField.text  = "\(pageNum)"

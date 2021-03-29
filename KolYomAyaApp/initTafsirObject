@@ -1,4 +1,11 @@
 
+/*
+1. all headers mondi font
+
+2. space sidemenu
+
+
+*/
 private void initTafsirObject() {
         List<Reciters> results = new ArrayList<>();
         results.add(new Reciters(

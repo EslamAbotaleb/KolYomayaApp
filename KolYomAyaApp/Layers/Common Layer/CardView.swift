@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 @IBDesignable class CardView: UIView {
 
     @IBInspectable var cornerradius : CGFloat = 4

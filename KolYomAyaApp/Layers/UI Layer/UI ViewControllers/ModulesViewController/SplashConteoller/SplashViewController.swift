@@ -12,6 +12,8 @@ class SplashViewController: UIViewController {
     var coordinator: HomeCoordinator?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         coordinator = HomeCoordinator(viewController: self)
         // Do any additional setup after loading the view.
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {

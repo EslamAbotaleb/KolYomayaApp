@@ -15,9 +15,17 @@ class ElsharawyMediaProgramIdViewController: BaseViewController {
     var elsharawyMediaModel: ElsharawyMediaProgramIDModel?
     var coordinator: DetailMediaProgramSelectedCoordinator?
     var interstitial: GADInterstitial!
+    var idProgram: Int = 0
+    //    init(programName: String?, programId: Int?) {
+    //
+    //        delegateElsharawyProgramId?.programName = programName
+    //        delegateElsharawyProgramId?.programId = programId
+    //    }
+    //
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.initializeNavigationBarAppearanceWithBack(viewController: ElsharawyViewController(), titleHeader: delegateElsharawyProgramId?.programName ?? "كل يوم آية")
+        self.initializeNavigationBarAppearanceWithBack(viewController: ElsharawyViewController(), titleHeader: delegateElsharawyProgramId?.programName ?? UserDefaults.standard.value(forKey: "programName") as! String)
     }
     private var shouldDisplayAd = true
     
@@ -28,7 +36,7 @@ class ElsharawyMediaProgramIdViewController: BaseViewController {
             }
         }
     }
- 
+    
     private func displayAd() {
         print(#function, "ad ready", interstitial.isReady)
         if (interstitial.isReady) {
@@ -47,33 +55,41 @@ class ElsharawyMediaProgramIdViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         viewModel = ElsharawyMediaProgramIdViewModel()
         coordinator = DetailMediaProgramSelectedCoordinator(viewController: self)
         viewModel?.registTableViewCell(nibName: "ElsharawyMediaProgramIdTableViewCell", tableView: tableView)
-     
-        viewModel?.getElsharawyMediaProgram(programId: delegateElsharawyProgramId?.programId ?? 0, completionHandler: { (elsharawyMediaProgramIDModel) in
-            self.elsharawyMediaModel = elsharawyMediaProgramIDModel
-            self.tableView.reloadData()
-        })
+        
+        if delegateElsharawyProgramId?.programId != nil {
+            idProgram = (delegateElsharawyProgramId?.programId)!
+        } else {
+            if let programId = UserDefaults.standard.value(forKey: "programId") as? Int {
+                idProgram = programId
+            }
+        }
+        viewModel?.getElsharawyMediaProgram(programId: idProgram, completionHandler: { (elsharawyMediaProgramIDModel) in
+                                                self.elsharawyMediaModel = elsharawyMediaProgramIDModel
+                                                DispatchQueue.main.async {
+                                                    self.tableView.reloadData()
+                                                }        })
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-5809306835538408/9594496790")
         interstitial.delegate = self
         let request = GADRequest()
         interstitial.load(request)
         print(#function, "shouldDisplayAd", self.shouldDisplayAd, "isAdReady", self.isAdReady)
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension ElsharawyMediaProgramIdViewController: GADInterstitialDelegate {

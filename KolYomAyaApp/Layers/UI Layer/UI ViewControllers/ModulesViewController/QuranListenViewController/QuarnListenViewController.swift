@@ -20,6 +20,7 @@ class QuarnListenViewController: BaseViewController {
     var isDataLoading: Bool = false
     var pageNumber: Int = 1
     var footerView:CustomFooterView?
+    @IBOutlet weak var heightBanner: NSLayoutConstraint!
     let footerViewReuseIdentifier = "RefreshFooterView"
     var recitersModel: ReciterModel?
     var recitersListViewModel: RecitersPageListViewModel?
@@ -53,6 +54,7 @@ class QuarnListenViewController: BaseViewController {
                 self.collectionView.reloadData()
             }
         })
+        heightBanner.constant = 0.0
         banner = GADBannerView(adSize: kGADAdSizeBanner)
         //Banner One
         self.bannerView.addSubview(banner)
@@ -88,8 +90,9 @@ extension QuarnListenViewController: GADBannerViewDelegate {
     /// Tells the delegate an ad request loaded an ad.
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
         print("adViewDidReceiveAd")
-        self.bannerView.addSubview(banner)
-        
+//        self.bannerView.addSubview(banner)
+//        bannerView.heightAnchor.constraint(equalToConstant:  60.0).isActive = true
+        heightBanner.constant = 60.0
     }
     
     /// Tells the delegate an ad request failed.

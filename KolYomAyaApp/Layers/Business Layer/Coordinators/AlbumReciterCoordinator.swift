@@ -34,9 +34,10 @@ final class AlbumReciterCoordinator: Coordinator, DelegateQuarnListenProtcol {
         viewController.delgateQuarnListenProtcol?.reciterId = reciterId
         viewController.delgateQuarnListenProtcol?.imageReciter = imageReciter
         viewController.delgateQuarnListenProtcol?.nameReciter = nameReciter
-        let albumReciterCoordinator = AlbumReciterCoordinator(viewController: viewController, statusListen: self.statusListen!)
+        let albumReciterCoordinator = AlbumReciterCoordinator(viewController: viewController, statusListen: viewController.statusListen!)
         childCoordinators.append(albumReciterCoordinator)
         let navigationController = UINavigationController(rootViewController: viewController)
+        appDelegate.window?.rootViewController = nil
         appDelegate.window?.rootViewController = navigationController
         
     }

@@ -1,10 +1,15 @@
 PODS:
   - Alamofire (4.9.1)
+  - Firebase/Analytics (6.27.0):
+    - Firebase/Core
   - Firebase/Core (6.27.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.6.1)
   - Firebase/CoreOnly (6.27.0):
     - FirebaseCore (= 6.8.0)
+  - Firebase/Crashlytics (6.27.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 4.2.0)
   - Firebase/Messaging (6.27.0):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 4.5.0)
@@ -26,6 +31,13 @@ PODS:
     - GoogleUtilities/Environment (~> 6.5)
     - GoogleUtilities/Logger (~> 6.5)
     - nanopb (~> 1.30905.0)
+  - FirebaseCrashlytics (4.2.0):
+    - FirebaseCore (~> 6.8)
+    - FirebaseInstallations (~> 1.1)
+    - GoogleDataTransport (~> 6.1)
+    - GoogleDataTransportCCTSupport (~> 3.1)
+    - nanopb (~> 1.30905.0)
+    - PromisesObjC (~> 1.2)
   - FirebaseInstallations (1.4.0):
     - FirebaseCore (~> 6.8)
     - GoogleUtilities/Environment (~> 6.6)
@@ -98,7 +110,9 @@ PODS:
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
+  - Firebase/Analytics
   - Firebase/Core
+  - Firebase/Crashlytics
   - Firebase/Messaging
   - Google-Mobile-Ads-SDK
   - Kingfisher
@@ -114,6 +128,7 @@ SPEC REPOS:
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseCrashlytics
     - FirebaseInstallations
     - FirebaseInstanceID
     - FirebaseMessaging
@@ -139,6 +154,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 0ea640473474f036cabbc2576e20c2d63671c92f
   FirebaseCore: feda061cb1ee6d8ad4824f4a4a8ffbcfe284f595
   FirebaseCoreDiagnostics: 4505e4d4009b1d93f605088ee7d7764d5f0d1c84
+  FirebaseCrashlytics: 7d0fa02ea8842cc4b2ab07b0735edafde1ad77d6
   FirebaseInstallations: 293f567159b6d66d1c990f13bb868066096c94ec
   FirebaseInstanceID: 3b119bfe90e904851218159c9a4ecb847cc51d18
   FirebaseMessaging: ad9e1a80ea64905e01a0ce1b3eb76a2944544151
@@ -158,6 +174,6 @@ SPEC CHECKSUMS:
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 1621ce01cdb5917d2affe05753efd642c8b0f888
+PODFILE CHECKSUM: 5357d0fe19e260f1cc2c24ec4eb226dfcd134e5e
 
 COCOAPODS: 1.9.3

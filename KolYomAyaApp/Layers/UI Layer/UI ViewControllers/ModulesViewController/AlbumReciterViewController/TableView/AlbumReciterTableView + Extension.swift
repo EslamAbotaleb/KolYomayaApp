@@ -9,6 +9,14 @@
 import UIKit
 extension AlbumReciterViewController: UITableViewDelegate, UITableViewDataSource {
     
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+////        self.tableView.isScrollEnabled = false
+//        return "Section \(section)"
+//    }
+
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 40
+//    }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -28,10 +36,19 @@ extension AlbumReciterViewController: UITableViewDelegate, UITableViewDataSource
         if statusListen == "QuranListen" {
             
             cell.configure(viewModel: (self.albumReciterModel?.results?[indexPath.row])!)
+            
+            
         } else if statusListen == "TafsirListen" {
             print("TafsirListenTafsirListen")
-            cell.numberOfEpisodesLbl.text = "114"
-            cell.nameProgamText.text = self.delgateQuarnListenProtcol?.nameReciter
+            cell.numberOfEpisodesLbl.text = "114".convertToPersianNum()
+            if self.delgateQuarnListenProtcol?.nameReciter == nil {
+            cell.nameProgamText.text = nameReciter
+                self.headerView.imageView.imageFromURL(urlString: self.imageReciter ?? "")
+
+            } else {
+                cell.nameProgamText.text = self.delgateQuarnListenProtcol?.nameReciter
+
+            }
         }
         return cell
     }
@@ -39,16 +56,41 @@ extension AlbumReciterViewController: UITableViewDelegate, UITableViewDataSource
         return 70.0
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+//        let playerViewController =  PlayerViewController.init(nibName: "PlayerViewController", bundle: nil)
+//        
+//        playerViewController.position = indexPath.row
+//        playerViewController.getaNameReciter = self.delegateAudioListProtocol?.nameReciter
+//        playerViewController.getaImageReciter = self.delegateAudioListProtocol?.imageReciter
+//        playerViewController.audioLinks = self.delegateAudioListProtocol?.audioListReciter
+//        playerViewController.delegatePlayAudio = self
+//        
+        
         if statusListen == "QuranListen" {
             //MARK:- will pass audioList spesfic reciter
+            coordinator?.reciterId = delgateQuarnListenProtcol?.reciterId
             coordinator?.audioListReciter = self.albumReciterModel?.results?[indexPath.row].audioList
             coordinator?.nameReciter = self.albumReciterModel?.results?[indexPath.row].name
             coordinator?.imageReciter = self.delgateQuarnListenProtcol?.imageReciter
+            
+            SavingManager.shared.saveValue((self.delgateQuarnListenProtcol?.imageReciter) ?? "" as String, key: "imageReciter")
+            SavingManager.shared.saveValue((self.delgateQuarnListenProtcol?.reciterId) ?? 0  as Int, key: "reciterId")
+            SavingManager.shared.saveValue((coordinator?.nameReciter)  ?? "" as String, key: "nameReciter")
+
+            
             //MARK:- start to audiolist coordinator
         } else if statusListen == "TafsirListen" {
             coordinator?.nameReciter = self.delgateQuarnListenProtcol?.nameReciter
+            coordinator?.imageReciter = self.delgateQuarnListenProtcol?.imageReciter
             coordinator?.audioListReciter = self.audioList
+            SavingManager.shared.saveValue((self.delgateQuarnListenProtcol?.imageReciter) ?? "" as String, key: "imageReciter")
+            SavingManager.shared.saveValue((self.delgateQuarnListenProtcol?.reciterId) ?? 0 as Int, key: "reciterId")
+            SavingManager.shared.saveValue((coordinator?.nameReciter) ?? "" as String, key: "nameReciter")
+
         }
+//        playerViewController.delegatePlayAudio?.statusPlaying = true
+//        coordinator?.statusPlayingAudio = playerViewController.delegatePlayAudio?.statusPlaying
+        coordinator?.statusListen = statusListen
         coordinator?.start()
 
     }
