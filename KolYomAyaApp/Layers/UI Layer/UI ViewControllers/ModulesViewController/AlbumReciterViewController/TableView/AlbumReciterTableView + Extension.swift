@@ -68,16 +68,25 @@ extension AlbumReciterViewController: UITableViewDelegate, UITableViewDataSource
         
         if statusListen == "QuranListen" {
             //MARK:- will pass audioList spesfic reciter
-            coordinator?.reciterId = delgateQuarnListenProtcol?.reciterId
-            coordinator?.audioListReciter = self.albumReciterModel?.results?[indexPath.row].audioList
-            coordinator?.nameReciter = self.albumReciterModel?.results?[indexPath.row].name
-            coordinator?.imageReciter = self.delgateQuarnListenProtcol?.imageReciter
             
-            SavingManager.shared.saveValue((self.delgateQuarnListenProtcol?.imageReciter) ?? "" as String, key: "imageReciter")
-            SavingManager.shared.saveValue((self.delgateQuarnListenProtcol?.reciterId) ?? 0  as Int, key: "reciterId")
-            SavingManager.shared.saveValue((coordinator?.nameReciter)  ?? "" as String, key: "nameReciter")
-
-            
+            if ((self.delgateQuarnListenProtcol?.nameReciter?.isEmpty) != nil) {
+                coordinator?.reciterId = delgateQuarnListenProtcol?.reciterId
+                coordinator?.audioListReciter = self.albumReciterModel?.results?[indexPath.row].audioList
+                coordinator?.nameReciter =  self.delgateQuarnListenProtcol?.nameReciter
+    //          coordinator?.nameReciter =  self.albumReciterModel?.results?[indexPath.row].name
+                coordinator?.imageReciter = self.delgateQuarnListenProtcol?.imageReciter
+                SavingManager.shared.saveValue((self.delgateQuarnListenProtcol?.imageReciter) ?? "" as String, key: "imageReciter")
+                SavingManager.shared.saveValue((self.delgateQuarnListenProtcol?.reciterId) ?? 0  as Int, key: "reciterId")
+                SavingManager.shared.saveValue((coordinator?.nameReciter)  ?? "" as String, key: "nameReciter")
+            } else {
+                coordinator?.reciterId = SavingManager.shared.getIntgerValue("reciterId")
+                coordinator?.audioListReciter = self.albumReciterModel?.results?[indexPath.row].audioList
+                coordinator?.nameReciter =  SavingManager.shared.getValue("nameReciter")
+    //          coordinator?.nameReciter =  self.albumReciterModel?.results?[indexPath.row].name
+                coordinator?.imageReciter = SavingManager.shared.getValue("imageReciter")
+               
+            }
+      
             //MARK:- start to audiolist coordinator
         } else if statusListen == "TafsirListen" {
             coordinator?.nameReciter = self.delgateQuarnListenProtcol?.nameReciter

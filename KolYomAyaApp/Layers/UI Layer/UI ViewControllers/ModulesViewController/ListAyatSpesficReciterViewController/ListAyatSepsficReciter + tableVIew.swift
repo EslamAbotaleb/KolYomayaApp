@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 extension ListAyatSpesficReciterViewController: UITableViewDelegate, UITableViewDataSource {
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -39,9 +40,10 @@ extension ListAyatSpesficReciterViewController: UITableViewDelegate, UITableView
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ListAyatSpesficReciterTableViewCell.reuseIdentifier, for: indexPath) as? ListAyatSpesficReciterTableViewCell else {
             fatalError("Not Found List Ayat Cell")
         }
+//        cell.downloadAudioBtn.tag = indexPath.row
+//        cell.downloadAudioBtn.addTarget(self, action: #selector(downloadAudioPressed), for: .touchUpInside)
         
         cell.configure(viewModel: (delegateAudioListProtocol?.audioListReciter?[indexPath.row])!)
-//        cell.downloadAudioBtn.addTarget(self, action: #selector(downloadAudio), for: .touchUpInside)
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,9 +61,11 @@ extension ListAyatSpesficReciterViewController: UITableViewDelegate, UITableView
 
         let playerViewController =  PlayerViewController.init(nibName: "PlayerViewController", bundle: nil)
         playerViewController.position = indexPath.row
+        
         playerViewController.getaNameReciter = self.delegateAudioListProtocol?.nameReciter
         playerViewController.getaImageReciter = self.delegateAudioListProtocol?.imageReciter
         playerViewController.audioLinks = self.delegateAudioListProtocol?.audioListReciter
+//        playerViewController.audioLinkPlay = playerViewController.audioLinks?[indexPath.row].audioLink
         playerViewController.suraName = self.delegateAudioListProtocol?.audioListReciter?[indexPath.row].name
 //        playerViewController.delegatePlayAudio = self
         
@@ -99,42 +103,6 @@ extension ListAyatSpesficReciterViewController: UITableViewDelegate, UITableView
 
     }
     
-    @objc func playOrPauseAudio(_ sender: UIButton) {
-        
-    }
+  
+   
 }
-//class MusicPlayer {
-//    public static var instance = MusicPlayer()
-//    var player = AVPlayer()
-//    var isPlaying: Bool = false
-//    func initPlayer(url : String) {
-//        guard let url = URL.init(string: url) else { return }
-//        let playerItem = AVPlayerItem.init(url: url)
-//        player = AVPlayer.init(playerItem: playerItem)
-//        playAudioBackground()
-//    }
-//    
-//    func playAudioBackground() {
-//        do {
-//            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default, options: [.mixWithOthers, .allowAirPlay])
-//            print("Playback OK")
-//            try AVAudioSession.sharedInstance().setActive(true)
-//            print("Session is Active")
-//        } catch {
-//            print(error)
-//        }
-//    }
-//    
-//   @objc func pause(_ sender: UIButton){
-//        isPlaying = true
-//        print("Audio Pause")
-//
-//        player.pause()
-//    }
-//    
-//    @objc func play(_ sender: UIButton) {
-//        isPlaying = false
-//        print("Audio Play")
-//        player.play()
-//    }
-//}

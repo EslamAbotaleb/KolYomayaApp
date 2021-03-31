@@ -42,7 +42,9 @@ class QuarnListenViewController: BaseViewController {
         recitersListViewModel = RecitersPageListViewModel()
         coordinator = AlbumReciterCoordinator(viewController: self, statusListen: "QuranListen")
         recitersListViewModel?.registerCollectionViewCell(nibName: "QuarnListenCollectionViewCell", collectionView: collectionView!)
+        
             self.collectionView.register(UINib(nibName: "CustomFooterView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerViewReuseIdentifier)
+        
         recitersListViewModel?.getReciters(pageNumber: pageNumber, completionHandler: { (reciterResult) in
 //            self.recitersModel = reciterResult
             if self.recitersModel?.results != nil {
@@ -50,9 +52,9 @@ class QuarnListenViewController: BaseViewController {
             } else {
                 self.recitersModel = reciterResult
             }
-            DispatchQueue.main.async {
+//            DispatchQueue.main.async {
                 self.collectionView.reloadData()
-            }
+//            }
         })
         heightBanner.constant = 0.0
         banner = GADBannerView(adSize: kGADAdSizeBanner)
@@ -65,13 +67,16 @@ class QuarnListenViewController: BaseViewController {
     }
     
     func loadMoreReciters() {
-        self.recitersModel?.results.removeAll()
+//        if self.recitersModel?.results.count > 0 {
+//            self.recitersModel?.results.removeAll()
+//        }
+      self.recitersModel?.results.removeAll()
         self.pageNumber += 1
-        recitersListViewModel?.getReciters(pageNumber: pageNumber, completionHandler: { (resultReciter) in
+        recitersListViewModel?.getReciters(pageNumber: self.pageNumber, completionHandler: { (resultReciter) in
             self.recitersModel?.results.append(contentsOf: resultReciter.results)
-            DispatchQueue.main.async {
+//            DispatchQueue.main.async {
                 self.collectionView.reloadData()
-            }
+//            }
         })
     }
 

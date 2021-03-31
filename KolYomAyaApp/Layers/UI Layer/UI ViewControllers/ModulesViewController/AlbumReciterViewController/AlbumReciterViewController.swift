@@ -145,10 +145,8 @@ class AlbumReciterViewController: BaseViewController {
         imageReciter = SavingManager.shared.getValue("imageReciter")
 
         if self.delgateQuarnListenProtcol?.nameReciter == nil {
-            print("nameReciternameReciter\(nameReciter)")
             results.append(ResultAlbumReciter(id: 1, name: nameReciter, itemsNumber: "114", viewsNumber: "", audioList: self.audioList))
         } else {
-            print("vkdmgklrjljrlgrg\(self.delgateQuarnListenProtcol?.nameReciter!)")
             results.append(ResultAlbumReciter(id: 1, name: self.delgateQuarnListenProtcol?.nameReciter!, itemsNumber: "114", viewsNumber: "", audioList: self.audioList))
         }
         
@@ -162,19 +160,24 @@ class AlbumReciterViewController: BaseViewController {
             reciterId =  SavingManager.shared.getIntgerValue("reciterId")
              imageReciter = SavingManager.shared.getValue("imageReciter")
              nameReciter = SavingManager.shared.getValue("nameReciter")
+            self.headerView.imageView.imageFromURL(urlString: SavingManager.shared.getValue("imageReciter"))
+             
+            self.headerView.titleLabel.text = SavingManager.shared.getValue("nameReciter")
         } else {
             reciterId = delgateQuarnListenProtcol?.reciterId
             imageReciter = delgateQuarnListenProtcol?.imageReciter
             nameReciter = delgateQuarnListenProtcol?.nameReciter
+            self.headerView.imageView.imageFromURL(urlString: self.delgateQuarnListenProtcol?.imageReciter ?? "")
+
+            self.headerView.titleLabel.text = self.delgateQuarnListenProtcol?.nameReciter ?? ""
         }
            
         viewModel?.getAlbumReciter(page: 1, reciterID: reciterId! , completionHandler: { (albumReciterObjectModel) in
                 self.albumReciterModel = albumReciterObjectModel
                 self.headerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                            self.headerView.imageView.makeRounded()
-            self.headerView.imageView.imageFromURL(urlString: self.imageReciter ?? "")
-
-            self.headerView.titleLabel.text = self.nameReciter
+            
+        
                 self.headerView.scrollView = self.tableView
                 self.headerView.frame = CGRect(
                     x: 0,
@@ -189,9 +192,9 @@ class AlbumReciterViewController: BaseViewController {
                     left: 0,
                     bottom: 0,
                     right: 0)
-                DispatchQueue.main.async {
+//                DispatchQueue.main.async {
                     self.tableView.reloadData()
-                }
+//                }
             })
 
     

@@ -321,6 +321,7 @@ class BaseViewController: UIViewController {
 //
                     if UserDefaults.standard.value(forKey: "QuranListen") != nil {
                         let coordinator = AlbumReciterCoordinator(viewController: AlbumReciterViewController(), statusListen: "QuranListen")
+                        
                         print("QuranListenQuranListen")
                         coordinator.start()
                     } else {

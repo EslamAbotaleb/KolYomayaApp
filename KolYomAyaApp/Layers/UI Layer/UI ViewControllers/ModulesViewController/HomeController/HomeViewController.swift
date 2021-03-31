@@ -229,7 +229,7 @@ class HomeViewController: BaseViewController, GADBannerViewDelegate {
 
         stackViewForPlayAndShareButton.topAnchor.constraint(equalTo: self.lineViewBetweenAyaAndButton.bottomAnchor, constant: 5.0).isActive = true
 
-        stackViewForPlayAndShareButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.48).isActive = true
+        stackViewForPlayAndShareButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.57).isActive = true
 
         stackViewForPlayAndShareButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
 
@@ -321,26 +321,14 @@ class HomeViewController: BaseViewController, GADBannerViewDelegate {
         self.intialnavigationBarAppearaceWithmenu(checkflag: false)
       
     }
-    lazy var v1:UIView = {
-            let v = UIView()
-        v.backgroundColor = .blue
-            return v
-    }()
-        
-    lazy var v2:UIView = {
-            let v = UIView()
-        v.backgroundColor = .blue
-            return v
-    }()
-        
-
-    
+  
+   
     let stackViewForPlayAndShareButton: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.alignment = .center
+        stackView.alignment = .fill
         stackView.distribution = .fillEqually
-        stackView.spacing = 17.0
+        stackView.spacing = 35.0
 
 //        var expandHittableAreaAmt: CGFloat = 10
 //            var buttonWidth: CGFloat = 20
@@ -358,25 +346,31 @@ class HomeViewController: BaseViewController, GADBannerViewDelegate {
 
         HomeViewController.playPauseButton.setImage(UIImage(named: "play_icon"), for: .normal)
         HomeViewController.playPauseButton.imageView?.contentMode = .scaleAspectFit
-        HomeViewController.playPauseButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: -5.0, bottom: 0, right: 110.0)
+        
+        HomeViewController.playPauseButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: -1.0, bottom: 0, right: 110.0)
 //        HomeViewController.playPauseButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: -2.0, bottom: 0, right: 105.0)
-//        let textLabel = UILabel()
-//        textLabel.backgroundColor = UIColor.green
-//        textLabel.widthAnchor.constraint(equalToConstant: 190.0).isActive = true
-//        textLabel.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
+        let textLabel = UILabel()
+        textLabel.translatesAutoresizingMaskIntoConstraints = false
+        textLabel.backgroundColor = UIColor.clear
+        textLabel.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
+        textLabel.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
 
-//        textLabel.textAlignment = .center
+        textLabel.textAlignment = .center
+        textLabel.sizeToFit()
+        textLabel.numberOfLines = 0
+        textLabel.text = "ejfeiwlhgwilhwe"
+        textLabel.textColor = .clear
         HomeViewController.playPauseButton.setTitle("تشغيل" + "", for: .normal)
         HomeViewController.shareButton.translatesAutoresizingMaskIntoConstraints = false
         HomeViewController.shareButton.setImage(UIImage(named: "share"), for: .normal)
         HomeViewController.shareButton.imageView?.contentMode = .scaleAspectFit
 
-        HomeViewController.shareButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: -5.0, bottom: 0, right: 110.0)
+        HomeViewController.shareButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: -1.0, bottom: 0, right: 110.0)
 //        HomeViewController.shareButton.imageEdgeInsets = UIEdgeInsets(top: 1.0, left: -3.0, bottom: 0, right: 105.0)
         HomeViewController.shareButton.setTitle(  "مشاركة" + "", for: .normal)
 
-
         stackView.addArrangedSubview(shareButton)
+
 //        stackView.addArrangedSubview(textLabel)
 
         stackView.addArrangedSubview(playPauseButton)

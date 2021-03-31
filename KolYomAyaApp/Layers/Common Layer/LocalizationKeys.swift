@@ -22,5 +22,6 @@ struct LocalizationKeys {
         static let settings = "settings"
         static let TermsAndCondition = "TermsAndCondition"
         static let privacypolice = "privacypolice"
+        static let downloadAudio = "DownloadAudio"
     }
 }

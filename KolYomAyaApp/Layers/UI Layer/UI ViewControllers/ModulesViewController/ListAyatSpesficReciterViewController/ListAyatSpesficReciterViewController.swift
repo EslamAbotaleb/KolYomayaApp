@@ -8,13 +8,16 @@
 
 import UIKit
 import AVFoundation
-
+import CoreData
 class ListAyatSpesficReciterViewController: BaseViewController,DelegateStatusPlay {
     var statusPlaying: Bool?
     var player: AVPlayer?
     var reciterId: Int?
     var statusListen: String?
-    
+    var isDownload = true
+    var favoritesArray: [OfflineAudioModel]?
+    var context:NSManagedObjectContext!
+
  var delegateAudioListProtocol: DelegateAudioListProtocol?
 //    var delegatePlayAudio: DelegateStatusPlay?
     @IBOutlet weak var tableView: UITableView!
@@ -71,11 +74,25 @@ left: 0, bottom: 0, right: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("nameReciteerrrewr\(self.delegateAudioListProtocol?.nameReciter)")
         // Do any additional setup after loading the view.
         let nib = UINib(nibName: "ListAyatSpesficReciterTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: ListAyatSpesficReciterTableViewCell.reuseIdentifier)
-        self.headerView.titleLabel.text = self.delegateAudioListProtocol?.nameReciter
+        
+//        SavingManager.shared.saveValue((self.delgateQuarnListenProtcol?.imageReciter) ?? "" as String, key: "imageReciter")
+//        SavingManager.shared.saveValue((self.delgateQuarnListenProtcol?.reciterId) ?? 0  as Int, key: "reciterId")
+//        SavingManager.shared.saveValue((coordinator?.nameReciter)  ?? "" as String, key: "nameReciter")
+
+        if self.delegateAudioListProtocol?.nameReciter == nil {
+            self.headerView.titleLabel.text = SavingManager.shared.getValue("nameReciter")
+            
+            SavingManager.shared.saveValue(self.headerView.titleLabel.text!, key: "nameReciter")
+
+        } else {
+            self.headerView.titleLabel.text = self.delegateAudioListProtocol?.nameReciter
+            SavingManager.shared.saveValue(self.headerView.titleLabel.text!, key: "nameReciter")
+        }
+        
                           self.headerView.scrollView = self.tableView
                           self.headerView.frame = CGRect(
                               x: 0,
@@ -96,30 +113,14 @@ left: 0, bottom: 0, right: 0)
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
+        
+        openDatabse()
     }
 
 //     var player = AVPlayer()
      var isPlaying: Bool = false
                 
-//     func initPlayer(url : String) {
-//         guard let url = URL.init(string: url) else { return }
-//         let playerItem = AVPlayerItem.init(url: url)
-//
-//
-//         player = AVPlayer.init(playerItem: playerItem)
-//        self.playerPass = self.delegatePlayAudio?.player!
-//
-////        playAudioBackground()
-//  play()
-//
-////        if isPlaying == false {
-////            playAudioBackground()
-////
-////        } else {
-////            pause()
-////        }
-////
-//     }
+
   
      func playAudioBackground() {
          do {
@@ -131,127 +132,65 @@ left: 0, bottom: 0, right: 0)
              print(error)
          }
      }
-    @objc func downloadAudio(audioLink: String) {
-        
-        let audioUrl = URL(string: audioLink)!
-
-        do {
-                   try audioUrl.download(to: .documentDirectory) { url, error in
-                       guard let url = url else { return }
-//                       self.player = AVPlayer(url: url)
-//                       self.player.play()
-                   }
-               } catch {
-                   print(error)
-               }
+    @objc func downloadAudioPressed(sender: UIButton) {
+//        downloadAudio()
     }
-     
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        pause()
-//
-//        self.delegateAudioListProtocol = nil
-//
-//    }
-//    
-//    func pause(){
-//           isPlaying = false
-//           print("Audio Pause")
-//        self.delegatePlayAudio?.player.pause()
-//       }
-//       
-//       func play() {
-//        
-////           isPlaying = true
-//           print("Audio Play")
-//        self.delegatePlayAudio?.player.play()
-//          
-//       }
+    func openDatabse()
+      {
+      
+       guard let appDelegate =
+         UIApplication.shared.delegate as? AppDelegate else {
+           return
+       }
+       
+      context = appDelegate.persistentContainer.viewContext
+          
+      }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-//  @objc func downloadAndSaveAudioFile(_ audioFile: String, completion: @escaping (String) -> Void) {
+//    func downloadAudio() {
+//        if (isDownload) {
+//            //Display the alert for what happens
+//            let alertController = UIAlertController(title: "Downlaod", message: "This article has been added to the favorites tab", preferredStyle: .alert)
+//            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+//            alertController.addAction(okAction)
+//            self.present(alertController, animated: true, completion: nil)
+//            
+//            //save the article here when button pressed - Core Data
+//            
 //
-//            //Create directory if not present
-//            let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
-//            let documentDirectory = paths.first! as NSString
-//            let soundDirPathString = documentDirectory.appendingPathComponent("Sounds")
-//
+//            //Prepares the button for undoing if tapped again
+//            isDownload = false
+//            let entity = NSEntityDescription.entity(forEntityName: "OfflineAudioModel", in: (self.context)!)
+//            let articleObject = NSManagedObject(entity: entity!, insertInto: self.context)
+//            
+//            articleObject.setValue(self.delegateAudioListProtocol?.nameReciter, forKey: "suraName")
+//            
+//            self.delegateAudioListProtocol?.audioListReciter?.forEach {
+//                elemnt in
+//                articleObject.setValue(elemnt.audioLink, forKey: "audioLink")
+//              
+//            }
+//           
+//            
+//            print("Storing Data..")
+//            
+//           
+//           
 //            do {
-//                try FileManager.default.createDirectory(atPath: soundDirPathString, withIntermediateDirectories: true, attributes:nil)
-//                print("directory created at \(soundDirPathString)")
-//            } catch let error as NSError {
-//                print("error while creating dir : \(error.localizedDescription)");
+//                
+//                try context.save()
+//                
+//            } catch {
+//                print("Storing data Failed")
 //            }
-//
-//            if let audioUrl = URL(string: audioFile) {     //http://freetone.org/ring/stan/iPhone_5-Alarm.mp3
-//                // create your document folder url
-//                let documentsUrl =  FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first! as URL
-//                let documentsFolderUrl = documentsUrl.appendingPathComponent("Sounds")
-//                // your destination file url
-//                let destinationUrl = documentsFolderUrl.appendingPathComponent(audioUrl.lastPathComponent)
-//
-//                print(destinationUrl)
-//                // check if it exists before downloading it
-//                if FileManager().fileExists(atPath: destinationUrl.path) {
-//                    print("The file already exists at path")
-//                } else {
-//                    //  if the file doesn't exist
-//                    //  just download the data from your url
-//                    DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async(execute: {
-//                        if let myAudioDataFromUrl = try? Data(contentsOf: audioUrl){
-//                            // after downloading your data you need to save it to your destination url
-//                            if (try? myAudioDataFromUrl.write(to: destinationUrl, options: [.atomic])) != nil {
-//                                print("file saved")
-//                                completion(destinationUrl.absoluteString)
-//                            } else {
-//                                print("error saving file")
-//                                completion("")
-//                            }
-//                        }
-//                    })
-//                }
-//            }
+//        } else {
+//            let alertController2 = UIAlertController(title: "UnDownlaod", message: "This article has been removed from the favorites tab", preferredStyle: .alert)
+//            let okAction2 = UIAlertAction(title: "Ok", style: .default, handler: nil)
+//            alertController2.addAction(okAction2)
+//            self.present(alertController2, animated: true, completion: nil)
+//            
+//            isDownload = true
 //        }
-}
-extension URL {
-    func download(to directory: FileManager.SearchPathDirectory, using fileName: String? = nil, overwrite: Bool = false, completion: @escaping (URL?, Error?) -> Void) throws {
-        let directory = try FileManager.default.url(for: directory, in: .userDomainMask, appropriateFor: nil, create: true)
-        let destination: URL
-        if let fileName = fileName {
-            destination = directory
-                .appendingPathComponent(fileName)
-                .appendingPathExtension(self.pathExtension)
-        } else {
-            destination = directory
-            .appendingPathComponent(lastPathComponent)
-        }
-        if !overwrite, FileManager.default.fileExists(atPath: destination.path) {
-            completion(destination, nil)
-            return
-        }
-        URLSession.shared.downloadTask(with: self) { location, _, error in
-            guard let location = location else {
-                completion(nil, error)
-                return
-            }
-            do {
-                if overwrite, FileManager.default.fileExists(atPath: destination.path) {
-                    try FileManager.default.removeItem(at: destination)
-                }
-                try FileManager.default.moveItem(at: location, to: destination)
-                completion(destination, nil)
-            } catch {
-                print(error)
-            }
-        }.resume()
-    }
+//    }
+
 }

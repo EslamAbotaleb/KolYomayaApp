@@ -9,8 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="kolyoumaya" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayAudioOfflineViewController" customModule="kolyoumaya" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="ypn-g4-JBd" id="pBJ-tq-srn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,9 +19,21 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ypn-g4-JBd">
+                    <rect key="frame" x="0.0" y="49" width="414" height="813"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="-3975.36231884058" y="156.69642857142856"/>
+            <constraints>
+                <constraint firstItem="ypn-g4-JBd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="5" id="7Pq-zI-U5e"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ypn-g4-JBd" secondAttribute="trailing" id="Cnh-j8-ZcE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ypn-g4-JBd" secondAttribute="bottom" id="Pty-oQ-akN"/>
+                <constraint firstItem="ypn-g4-JBd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ggR-4R-38a"/>
+            </constraints>
+            <point key="canvasLocation" x="122" y="100"/>
         </view>
     </objects>
     <resources>

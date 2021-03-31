@@ -18,9 +18,14 @@ final class AlbumReciterViewModel {
             case .success(let response):
                 print("responseresponse")
                 DispatchQueue.main.async {
-                    let albumReciterObject = try! JSONDecoder().decode(AlbumReciterModel.self, from: response.data)
-                    self.albumReciterModel = albumReciterObject
-                    completionHandler(self.albumReciterModel!)
+                    do {
+                        let albumReciterObject = try JSONDecoder().decode(AlbumReciterModel.self, from: response.data)
+                        self.albumReciterModel = albumReciterObject
+                        completionHandler(self.albumReciterModel!)
+                    } catch {
+                        
+                    }
+                  
                 }
                 
             case .failure(let error):

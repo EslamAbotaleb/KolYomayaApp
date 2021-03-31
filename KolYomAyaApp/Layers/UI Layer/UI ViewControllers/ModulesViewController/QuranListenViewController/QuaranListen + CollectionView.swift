@@ -31,11 +31,12 @@ extension QuarnListenViewController: UICollectionViewDataSource, UICollectionVie
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+      
          coordinator?.statusListen = "QuranListen"
         coordinator?.reciterId = self.recitersModel?.results[indexPath.row].id
         coordinator?.imageReciter = self.recitersModel?.results[indexPath.row].image
         coordinator?.nameReciter = self.recitersModel?.results[indexPath.row].name
-        
+            
         coordinator?.start()
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {

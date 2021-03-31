@@ -40,7 +40,12 @@ class SavingManager{
         }
         return ""
     }
-    
+    func getBoolValue(_ key: String) -> Bool {
+        if let value =  UserDefaults.standard.value(forKey: key) {
+            return value as! Bool
+        }
+        return false
+    }
     func getIntgerValue(_ key: String) -> Int {
         if let value =  UserDefaults.standard.value(forKey: key) {
             return value as! Int

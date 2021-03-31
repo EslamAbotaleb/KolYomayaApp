@@ -30,6 +30,11 @@
 		A6116C9B25EBE8FD001C3346 /* Extension + NumberLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6116C9A25EBE8FD001C3346 /* Extension + NumberLanguage.swift */; };
 		A6116CBD25EBF4A5001C3346 /* ge_ss_two_medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A6116CBB25EBF4A4001C3346 /* ge_ss_two_medium.otf */; };
 		A6116CBE25EBF4A5001C3346 /* ge_ss_two_bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A6116CBC25EBF4A4001C3346 /* ge_ss_two_bold.otf */; };
+		A61275712612786800B18B8E /* PlayAudioOfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A612756F2612786800B18B8E /* PlayAudioOfflineViewController.swift */; };
+		A61275722612786800B18B8E /* PlayAudioOfflineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A61275702612786800B18B8E /* PlayAudioOfflineViewController.xib */; };
+		A6127577261278FC00B18B8E /* PlayAudioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6127575261278FC00B18B8E /* PlayAudioTableViewCell.swift */; };
+		A6127578261278FC00B18B8E /* PlayAudioTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6127576261278FC00B18B8E /* PlayAudioTableViewCell.xib */; };
+		A612757B26127CC200B18B8E /* DownloadAudioCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A612757A26127CC200B18B8E /* DownloadAudioCoordinator.swift */; };
 		A61304E624CB175200CE00B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61304E524CB175200CE00B3 /* AppDelegate.swift */; };
 		A61304EA24CB175200CE00B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61304E924CB175200CE00B3 /* ViewController.swift */; };
 		A61304ED24CB175200CE00B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61304EB24CB175200CE00B3 /* Main.storyboard */; };
@@ -100,6 +105,7 @@
 		A61305BF24CB176200CE00B3 /* AyaObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A613056D24CB176200CE00B3 /* AyaObjectModel.swift */; };
 		A61305C124CB176200CE00B3 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A613057124CB176200CE00B3 /* BaseModel.swift */; };
 		A61305C624CB17B200CE00B3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A61305C824CB17B200CE00B3 /* Localizable.strings */; };
+		A61707AD2613BF8E0092144C /* OfflineAudio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A61707AB2613BF8E0092144C /* OfflineAudio.xcdatamodeld */; };
 		A6255B3824CE0175008BC6AD /* ElsharawyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6255B3624CE0175008BC6AD /* ElsharawyViewController.swift */; };
 		A6255B3924CE0175008BC6AD /* ElsharawyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6255B3724CE0175008BC6AD /* ElsharawyViewController.xib */; };
 		A6255B3D24CE064B008BC6AD /* ElsharawyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6255B3B24CE064B008BC6AD /* ElsharawyTableViewCell.swift */; };
@@ -237,6 +243,11 @@
 		A6116C9A25EBE8FD001C3346 /* Extension + NumberLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + NumberLanguage.swift"; sourceTree = "<group>"; };
 		A6116CBB25EBF4A4001C3346 /* ge_ss_two_medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ge_ss_two_medium.otf; path = "../../../../Downloads/New Folder With Items/AyaResources 2/font/ge_ss_two_medium.otf"; sourceTree = "<group>"; };
 		A6116CBC25EBF4A4001C3346 /* ge_ss_two_bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ge_ss_two_bold.otf; path = "../../../../Downloads/New Folder With Items/AyaResources 2/font/ge_ss_two_bold.otf"; sourceTree = "<group>"; };
+		A612756F2612786800B18B8E /* PlayAudioOfflineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAudioOfflineViewController.swift; sourceTree = "<group>"; };
+		A61275702612786800B18B8E /* PlayAudioOfflineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayAudioOfflineViewController.xib; sourceTree = "<group>"; };
+		A6127575261278FC00B18B8E /* PlayAudioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAudioTableViewCell.swift; sourceTree = "<group>"; };
+		A6127576261278FC00B18B8E /* PlayAudioTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayAudioTableViewCell.xib; sourceTree = "<group>"; };
+		A612757A26127CC200B18B8E /* DownloadAudioCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadAudioCoordinator.swift; sourceTree = "<group>"; };
 		A61304E224CB175200CE00B3 /* kolyoumaya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kolyoumaya.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61304E524CB175200CE00B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A61304E924CB175200CE00B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -309,6 +320,7 @@
 		A613056D24CB176200CE00B3 /* AyaObjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AyaObjectModel.swift; sourceTree = "<group>"; };
 		A613057124CB176200CE00B3 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		A61305C724CB17B200CE00B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A61707AC2613BF8E0092144C /* OfflineAudio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OfflineAudio.xcdatamodel; sourceTree = "<group>"; };
 		A6255B3624CE0175008BC6AD /* ElsharawyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElsharawyViewController.swift; sourceTree = "<group>"; };
 		A6255B3724CE0175008BC6AD /* ElsharawyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ElsharawyViewController.xib; sourceTree = "<group>"; };
 		A6255B3B24CE064B008BC6AD /* ElsharawyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElsharawyTableViewCell.swift; sourceTree = "<group>"; };
@@ -531,6 +543,24 @@
 			path = "Extension + LabelAndTextField";
 			sourceTree = "<group>";
 		};
+		A612756D2612783C00B18B8E /* PlayAudioOfflineViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A612756F2612786800B18B8E /* PlayAudioOfflineViewController.swift */,
+			);
+			path = PlayAudioOfflineViewController;
+			sourceTree = "<group>";
+		};
+		A612756E2612784D00B18B8E /* PlayAudioOfflineView */ = {
+			isa = PBXGroup;
+			children = (
+				A61275702612786800B18B8E /* PlayAudioOfflineViewController.xib */,
+				A6127575261278FC00B18B8E /* PlayAudioTableViewCell.swift */,
+				A6127576261278FC00B18B8E /* PlayAudioTableViewCell.xib */,
+			);
+			path = PlayAudioOfflineView;
+			sourceTree = "<group>";
+		};
 		A61304D924CB175200CE00B3 = {
 			isa = PBXGroup;
 			children = (
@@ -564,6 +594,7 @@
 				A61304F324CB175400CE00B3 /* Info.plist */,
 				A61305C824CB17B200CE00B3 /* Localizable.strings */,
 				A6457DDE25DD47B200595EAB /* initTafsirObject */,
+				A61707AB2613BF8E0092144C /* OfflineAudio.xcdatamodeld */,
 			);
 			path = KolYomAyaApp;
 			sourceTree = "<group>";
@@ -615,6 +646,7 @@
 				A6D8F41825DA863900F3C219 /* PrivacyPoliceCoordiantor.swift */,
 				A6D8F41B25DA866400F3C219 /* TermsAndConditionCoordinator.swift */,
 				A6D8F42F25DA907300F3C219 /* SupportAppCoordiantor.swift */,
+				A612757A26127CC200B18B8E /* DownloadAudioCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -682,6 +714,7 @@
 		A613050D24CB176200CE00B3 /* ModulesViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A612756D2612783C00B18B8E /* PlayAudioOfflineViewController */,
 				A6D8F42725DA902E00F3C219 /* SupportAppController */,
 				A6D8F41E25DA869400F3C219 /* TermsAndCondtionController */,
 				A6D8F41025DA820C00F3C219 /* PrivacyPolicyController */,
@@ -769,6 +802,7 @@
 		A613051D24CB176200CE00B3 /* Modules UIView */ = {
 			isa = PBXGroup;
 			children = (
+				A612756E2612784D00B18B8E /* PlayAudioOfflineView */,
 				A6D8F42825DA903700F3C219 /* SupportAppView */,
 				A6D8F41F25DA869E00F3C219 /* TermsAndConditionView */,
 				A6D8F40F25DA81F800F3C219 /* PrivacyPolicyView */,
@@ -1620,6 +1654,7 @@
 				A6330BCA24CEDD6D000075EF /* QuarnListenCollectionViewCell.xib in Resources */,
 				A61304EF24CB175400CE00B3 /* Assets.xcassets in Resources */,
 				A613058924CB176200CE00B3 /* HomeViewController.xib in Resources */,
+				A6127578261278FC00B18B8E /* PlayAudioTableViewCell.xib in Resources */,
 				A6B03E9625DE8532001CED58 /* barselona.ttf in Resources */,
 				A606FC6F24CB18ED00C80D9E /* LaunchScreen.storyboard in Resources */,
 				A6330BF024CF0861000075EF /* AlbumReciterTableViewCell.xib in Resources */,
@@ -1654,6 +1689,7 @@
 				A6255B5624CE20AE008BC6AD /* ElsharawyMediaProgramIdViewController.xib in Resources */,
 				A6255B9624CE4B81008BC6AD /* QiblaLocationViewController.xib in Resources */,
 				A6F1DEE724E14A2900F18D08 /* PlayerViewController.xib in Resources */,
+				A61275722612786800B18B8E /* PlayAudioOfflineViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1746,6 +1782,7 @@
 				A6FE5C9924D06369001A2F3F /* GetAllBooksPageCoordiantor.swift in Sources */,
 				A61305BE24CB176200CE00B3 /* Result.swift in Sources */,
 				A61305A124CB176200CE00B3 /* Extension + ViewController.swift in Sources */,
+				A61707AD2613BF8E0092144C /* OfflineAudio.xcdatamodeld in Sources */,
 				A6C2F38025E6B4FE001A0300 /* getAllSurahViewModel.swift in Sources */,
 				A606FC7424CB1D9500C80D9E /* PreviousAyatViewController.swift in Sources */,
 				A6330C0324CF1C08000075EF /* ListAyatSpesficReciterCoordinator.swift in Sources */,
@@ -1797,6 +1834,7 @@
 				A6D8F41925DA863900F3C219 /* PrivacyPoliceCoordiantor.swift in Sources */,
 				A61305BF24CB176200CE00B3 /* AyaObjectModel.swift in Sources */,
 				A613058E24CB176200CE00B3 /* LocalizationKeys.swift in Sources */,
+				A612757B26127CC200B18B8E /* DownloadAudioCoordinator.swift in Sources */,
 				A613058224CB176200CE00B3 /* TafserBookCollectionViewCell.swift in Sources */,
 				A613057824CB176200CE00B3 /* SideMenuCoordinator.swift in Sources */,
 				A6F1DEE624E14A2900F18D08 /* PlayerViewController.swift in Sources */,
@@ -1844,6 +1882,7 @@
 				A6330BE224CF05E4000075EF /* AudioList.swift in Sources */,
 				A6255B9924CE4C42008BC6AD /* QiblaLocationCoordinator.swift in Sources */,
 				A61305B524CB176200CE00B3 /* ErrorServiceLocalizations.swift in Sources */,
+				A6127577261278FC00B18B8E /* PlayAudioTableViewCell.swift in Sources */,
 				A613058524CB176200CE00B3 /* SplashViewController.swift in Sources */,
 				A61305A324CB176200CE00B3 /* exetension  for tableVieeCell + collectionviewcell.swift in Sources */,
 				A613059024CB176200CE00B3 /* Keys.swift in Sources */,
@@ -1889,6 +1928,7 @@
 				A61305A424CB176200CE00B3 /* extension + resuable fortableview + collectionview.swift in Sources */,
 				A61305B324CB176200CE00B3 /* viewshadow.swift in Sources */,
 				A61305B624CB176200CE00B3 /* ErrorService.swift in Sources */,
+				A61275712612786800B18B8E /* PlayAudioOfflineViewController.swift in Sources */,
 				A606FC7924CB1EB900C80D9E /* PreviousAyatTableViewCell.swift in Sources */,
 				A61305BC24CB176200CE00B3 /* TodayAyaModel.swift in Sources */,
 				A61305C124CB176200CE00B3 /* BaseModel.swift in Sources */,
@@ -2055,7 +2095,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shehabsalah.aya;
 				PRODUCT_NAME = kolyoumaya;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2082,7 +2122,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shehabsalah.aya;
 				PRODUCT_NAME = kolyoumaya;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2114,6 +2154,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A61707AB2613BF8E0092144C /* OfflineAudio.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A61707AC2613BF8E0092144C /* OfflineAudio.xcdatamodel */,
+			);
+			currentVersion = A61707AC2613BF8E0092144C /* OfflineAudio.xcdatamodel */;
+			path = OfflineAudio.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A61304DA24CB175200CE00B3 /* Project object */;
 }

@@ -98,7 +98,7 @@
                 <outlet property="nameReciterLabel" destination="MFx-fh-UD6" id="GkY-U2-ksA"/>
                 <outlet property="playButton" destination="PTg-Y2-Z5b" id="wS4-YD-6nn"/>
             </connections>
-            <point key="canvasLocation" x="182" y="101"/>
+            <point key="canvasLocation" x="-122" y="99"/>
         </collectionViewCell>
     </objects>
     <resources>
