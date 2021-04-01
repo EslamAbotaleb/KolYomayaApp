@@ -40,7 +40,7 @@ class PlayerViewController: BaseViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("audioLinks\(self.audioLinks)")
 //        let audios = self.audioLinks?[position]
         
         initPlayer(url: (audioLinkPlay)!)
@@ -440,7 +440,6 @@ class PlayerViewController: BaseViewController {
             let totalSeconds = CMTimeGetSeconds(duration)
             let value = Float64(sliderAudio!.value) * totalSeconds
             if value.isNaN {
-                print("nanannannanananananana")
                 sliderAudio.isContinuous = false
                 slider.isEnabled = false
             } else {

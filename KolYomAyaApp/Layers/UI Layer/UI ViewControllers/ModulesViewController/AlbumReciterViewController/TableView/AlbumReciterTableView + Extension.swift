@@ -68,10 +68,13 @@ extension AlbumReciterViewController: UITableViewDelegate, UITableViewDataSource
         
         if statusListen == "QuranListen" {
             //MARK:- will pass audioList spesfic reciter
-            
+            coordinator?.audioListReciter = []
+
             if ((self.delgateQuarnListenProtcol?.nameReciter?.isEmpty) != nil) {
                 coordinator?.reciterId = delgateQuarnListenProtcol?.reciterId
+                
                 coordinator?.audioListReciter = self.albumReciterModel?.results?[indexPath.row].audioList
+                
                 coordinator?.nameReciter =  self.delgateQuarnListenProtcol?.nameReciter
     //          coordinator?.nameReciter =  self.albumReciterModel?.results?[indexPath.row].name
                 coordinator?.imageReciter = self.delgateQuarnListenProtcol?.imageReciter
@@ -100,6 +103,7 @@ extension AlbumReciterViewController: UITableViewDelegate, UITableViewDataSource
 //        playerViewController.delegatePlayAudio?.statusPlaying = true
 //        coordinator?.statusPlayingAudio = playerViewController.delegatePlayAudio?.statusPlaying
         coordinator?.statusListen = statusListen
+      
         coordinator?.start()
 
     }

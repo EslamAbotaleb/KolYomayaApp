@@ -347,7 +347,7 @@ class HomeViewController: BaseViewController, GADBannerViewDelegate {
         HomeViewController.playPauseButton.setImage(UIImage(named: "play_icon"), for: .normal)
         HomeViewController.playPauseButton.imageView?.contentMode = .scaleAspectFit
         
-        HomeViewController.playPauseButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: -1.0, bottom: 0, right: 110.0)
+        HomeViewController.playPauseButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: 5.0, bottom: 0, right: 110.0)
 //        HomeViewController.playPauseButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: -2.0, bottom: 0, right: 105.0)
         let textLabel = UILabel()
         textLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -365,7 +365,7 @@ class HomeViewController: BaseViewController, GADBannerViewDelegate {
         HomeViewController.shareButton.setImage(UIImage(named: "share"), for: .normal)
         HomeViewController.shareButton.imageView?.contentMode = .scaleAspectFit
 
-        HomeViewController.shareButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: -1.0, bottom: 0, right: 110.0)
+        HomeViewController.shareButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: 5.0, bottom: 0, right: 110.0)
 //        HomeViewController.shareButton.imageEdgeInsets = UIEdgeInsets(top: 1.0, left: -3.0, bottom: 0, right: 105.0)
         HomeViewController.shareButton.setTitle(  "مشاركة" + "", for: .normal)
 

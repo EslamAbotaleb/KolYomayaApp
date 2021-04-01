@@ -67,10 +67,8 @@ class QuarnListenViewController: BaseViewController {
     }
     
     func loadMoreReciters() {
-//        if self.recitersModel?.results.count > 0 {
-//            self.recitersModel?.results.removeAll()
-//        }
-      self.recitersModel?.results.removeAll()
+
+      self.recitersModel?.results = []
         self.pageNumber += 1
         recitersListViewModel?.getReciters(pageNumber: self.pageNumber, completionHandler: { (resultReciter) in
             self.recitersModel?.results.append(contentsOf: resultReciter.results)

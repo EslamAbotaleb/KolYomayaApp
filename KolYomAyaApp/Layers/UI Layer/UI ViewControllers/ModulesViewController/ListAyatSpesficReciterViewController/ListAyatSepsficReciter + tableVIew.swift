@@ -62,11 +62,25 @@ extension ListAyatSpesficReciterViewController: UITableViewDelegate, UITableView
         let playerViewController =  PlayerViewController.init(nibName: "PlayerViewController", bundle: nil)
         playerViewController.position = indexPath.row
         
-        playerViewController.getaNameReciter = self.delegateAudioListProtocol?.nameReciter
-        playerViewController.getaImageReciter = self.delegateAudioListProtocol?.imageReciter
-        playerViewController.audioLinks = self.delegateAudioListProtocol?.audioListReciter
-//        playerViewController.audioLinkPlay = playerViewController.audioLinks?[indexPath.row].audioLink
-        playerViewController.suraName = self.delegateAudioListProtocol?.audioListReciter?[indexPath.row].name
+        if ((self.delegateAudioListProtocol?.nameReciter?.isEmpty) != nil) {
+            print("wassss e,mrkewl;kjwe;")
+
+            playerViewController.getaNameReciter = self.delegateAudioListProtocol?.nameReciter
+            playerViewController.getaImageReciter = self.delegateAudioListProtocol?.imageReciter
+            playerViewController.audioLinks = self.delegateAudioListProtocol?.audioListReciter
+//            playerViewController.audioLinkPlay = playerViewController.audioLinks?[indexPath.row].audioLink
+            playerViewController.suraName = self.delegateAudioListProtocol?.audioListReciter?[indexPath.row].name
+            
+        } else {
+            print("delegate audio not emopttytt")
+
+            playerViewController.getaNameReciter = SavingManager.shared.getValue("nameReciter")
+            playerViewController.getaImageReciter = SavingManager.shared.getValue("imageReciter")
+            playerViewController.audioLinks = self.delegateAudioListProtocol?.audioListReciter
+//            playerViewController.audioLinkPlay = playerViewController.audioLinks?[indexPath.row].audioLink
+            playerViewController.suraName = self.delegateAudioListProtocol?.audioListReciter?[indexPath.row].name
+        }
+       
 //        playerViewController.delegatePlayAudio = self
         
         

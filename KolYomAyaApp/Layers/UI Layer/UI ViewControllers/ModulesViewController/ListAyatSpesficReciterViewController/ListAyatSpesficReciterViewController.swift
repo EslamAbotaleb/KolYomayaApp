@@ -74,7 +74,7 @@ left: 0, bottom: 0, right: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("nameReciteerrrewr\(self.delegateAudioListProtocol?.nameReciter)")
+        print("audioListReciteraudioListReciter\(self.delegateAudioListProtocol?.audioListReciter)")
         // Do any additional setup after loading the view.
         let nib = UINib(nibName: "ListAyatSpesficReciterTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: ListAyatSpesficReciterTableViewCell.reuseIdentifier)
