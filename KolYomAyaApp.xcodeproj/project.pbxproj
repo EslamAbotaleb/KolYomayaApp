@@ -28,8 +28,6 @@
 		A606FC9E24CB7A8A00C80D9E /* DetailTafserBookSelectedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A606FC9D24CB7A8A00C80D9E /* DetailTafserBookSelectedCoordinator.swift */; };
 		A606FCA024CB7D1D00C80D9E /* DetailTafserBookSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A606FC9F24CB7D1D00C80D9E /* DetailTafserBookSelectViewModel.swift */; };
 		A6116C9B25EBE8FD001C3346 /* Extension + NumberLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6116C9A25EBE8FD001C3346 /* Extension + NumberLanguage.swift */; };
-		A6116CBD25EBF4A5001C3346 /* ge_ss_two_medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A6116CBB25EBF4A4001C3346 /* ge_ss_two_medium.otf */; };
-		A6116CBE25EBF4A5001C3346 /* ge_ss_two_bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A6116CBC25EBF4A4001C3346 /* ge_ss_two_bold.otf */; };
 		A61275712612786800B18B8E /* PlayAudioOfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A612756F2612786800B18B8E /* PlayAudioOfflineViewController.swift */; };
 		A61275722612786800B18B8E /* PlayAudioOfflineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A61275702612786800B18B8E /* PlayAudioOfflineViewController.xib */; };
 		A6127577261278FC00B18B8E /* PlayAudioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6127575261278FC00B18B8E /* PlayAudioTableViewCell.swift */; };
@@ -241,8 +239,6 @@
 		A606FC9D24CB7A8A00C80D9E /* DetailTafserBookSelectedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTafserBookSelectedCoordinator.swift; sourceTree = "<group>"; };
 		A606FC9F24CB7D1D00C80D9E /* DetailTafserBookSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTafserBookSelectViewModel.swift; sourceTree = "<group>"; };
 		A6116C9A25EBE8FD001C3346 /* Extension + NumberLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + NumberLanguage.swift"; sourceTree = "<group>"; };
-		A6116CBB25EBF4A4001C3346 /* ge_ss_two_medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ge_ss_two_medium.otf; path = "../../../../Downloads/New Folder With Items/AyaResources 2/font/ge_ss_two_medium.otf"; sourceTree = "<group>"; };
-		A6116CBC25EBF4A4001C3346 /* ge_ss_two_bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ge_ss_two_bold.otf; path = "../../../../Downloads/New Folder With Items/AyaResources 2/font/ge_ss_two_bold.otf"; sourceTree = "<group>"; };
 		A612756F2612786800B18B8E /* PlayAudioOfflineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAudioOfflineViewController.swift; sourceTree = "<group>"; };
 		A61275702612786800B18B8E /* PlayAudioOfflineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayAudioOfflineViewController.xib; sourceTree = "<group>"; };
 		A6127575261278FC00B18B8E /* PlayAudioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAudioTableViewCell.swift; sourceTree = "<group>"; };
@@ -320,6 +316,7 @@
 		A613056D24CB176200CE00B3 /* AyaObjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AyaObjectModel.swift; sourceTree = "<group>"; };
 		A613057124CB176200CE00B3 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		A61305C724CB17B200CE00B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A616392626163D7B005ECD5D /* ge_ss_two_medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ge_ss_two_medium.otf; path = ../../../../Downloads/ge_ss_two_medium.otf; sourceTree = "<group>"; };
 		A61707AC2613BF8E0092144C /* OfflineAudio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OfflineAudio.xcdatamodel; sourceTree = "<group>"; };
 		A6255B3624CE0175008BC6AD /* ElsharawyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElsharawyViewController.swift; sourceTree = "<group>"; };
 		A6255B3724CE0175008BC6AD /* ElsharawyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ElsharawyViewController.xib; sourceTree = "<group>"; };
@@ -1416,8 +1413,7 @@
 		A6B03E9225DE84F7001CED58 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				A6116CBC25EBF4A4001C3346 /* ge_ss_two_bold.otf */,
-				A6116CBB25EBF4A4001C3346 /* ge_ss_two_medium.otf */,
+				A616392626163D7B005ECD5D /* ge_ss_two_medium.otf */,
 				A6B03EED25DE95B7001CED58 /* monadi.ttf */,
 				A6B03E9325DE8531001CED58 /* barselona.ttf */,
 				A6B03E9425DE8532001CED58 /* ge_ss_two_light.otf */,
@@ -1643,7 +1639,6 @@
 				A6D4A29124D0315700769AB5 /* QuarnReadViewController.xib in Resources */,
 				A6B03E9825DE8532001CED58 /* kitab_b.ttf in Resources */,
 				A6457DDF25DD47B200595EAB /* initTafsirObject in Resources */,
-				A6116CBE25EBF4A5001C3346 /* ge_ss_two_bold.otf in Resources */,
 				A6330BDC24CEF6E8000075EF /* CustomFooterView.xib in Resources */,
 				A6FE5C9624D06170001A2F3F /* BookGetAllByPageNumberCollectionViewCell.xib in Resources */,
 				A61305C624CB17B200CE00B3 /* Localizable.strings in Resources */,
@@ -1671,7 +1666,6 @@
 				A606FC7A24CB1EB900C80D9E /* PreviousAyatTableViewCell.xib in Resources */,
 				A6330BFB24CF19F7000075EF /* ListAyatSpesficReciterViewController.xib in Resources */,
 				A613058B24CB176200CE00B3 /* SideMenuViewController.xib in Resources */,
-				A6116CBD25EBF4A5001C3346 /* ge_ss_two_medium.otf in Resources */,
 				A6255B5D24CE20FF008BC6AD /* ElsharawyMediaProgramIdTableViewCell.xib in Resources */,
 				A6B03E9725DE8532001CED58 /* ge_ss_two_light.otf in Resources */,
 				A61304ED24CB175200CE00B3 /* Main.storyboard in Resources */,
@@ -2095,7 +2089,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9;
+				MARKETING_VERSION = 1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shehabsalah.aya;
 				PRODUCT_NAME = kolyoumaya;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2122,7 +2116,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9;
+				MARKETING_VERSION = 1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shehabsalah.aya;
 				PRODUCT_NAME = kolyoumaya;
 				PROVISIONING_PROFILE_SPECIFIER = "";

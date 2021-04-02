@@ -143,13 +143,13 @@ class DetailAyaViewController: BaseViewController {
         stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
-        stackView.spacing = 20.0
+        stackView.spacing = 35.0
         DetailAyaViewController.playPauseButton.translatesAutoresizingMaskIntoConstraints = false
 
         
         DetailAyaViewController.playPauseButton.setImage(UIImage(named: "play_icon"), for: .normal)
         DetailAyaViewController.playPauseButton.imageView?.contentMode = .scaleAspectFit
-        DetailAyaViewController.playPauseButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: 0.0, bottom: 0, right: 104.0)
+        DetailAyaViewController.playPauseButton.imageEdgeInsets =  UIEdgeInsets(top: 2.0, left: 5.0, bottom: 0, right: 110.0)
       
         
         DetailAyaViewController.playPauseButton.setTitle("تشغيل", for: .normal)
@@ -157,7 +157,7 @@ class DetailAyaViewController: BaseViewController {
         DetailAyaViewController.shareButton.setImage(UIImage(named: "share"), for: .normal)
         DetailAyaViewController.shareButton.translatesAutoresizingMaskIntoConstraints = false
         DetailAyaViewController.shareButton.imageView?.contentMode = .scaleAspectFit
-        DetailAyaViewController.shareButton.imageEdgeInsets = UIEdgeInsets(top: 1.0, left: 0.0, bottom: 0, right: 104.0)
+        DetailAyaViewController.shareButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: 5.0, bottom: 0, right: 110.0)
         DetailAyaViewController.shareButton.setTitle("مشاركة", for: .normal)
 
 
@@ -228,7 +228,7 @@ class DetailAyaViewController: BaseViewController {
 
             stackViewForPlayAndShareButton.topAnchor.constraint(equalTo: self.lineViewBetweenAyaAndButton.bottomAnchor, constant: 10.0).isActive = true
 
-            stackViewForPlayAndShareButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.48).isActive = true
+            stackViewForPlayAndShareButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.57).isActive = true
 
             stackViewForPlayAndShareButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
 
@@ -246,7 +246,7 @@ class DetailAyaViewController: BaseViewController {
             
             DetailAyaViewController.playPauseButton.setImage(UIImage(named: "pause_icon"), for: .normal)
             DetailAyaViewController.playPauseButton.imageView?.contentMode = .scaleAspectFit
-            DetailAyaViewController.playPauseButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: -1.0, bottom: 0, right: 103.0)
+            DetailAyaViewController.playPauseButton.imageEdgeInsets =  UIEdgeInsets(top: 2.0, left: 5.0, bottom: 0, right: 110.0)
             DetailAyaViewController.playPauseButton.setTitle("ايقاف", for: .normal)
            
 //            self.viewModel?.todayAyaApi() { [weak self] todayAyaModel in
@@ -261,22 +261,36 @@ class DetailAyaViewController: BaseViewController {
 
                 if UserDefaults.standard.value(forKey: "getNameReciter") as? String != nil {
                     let nameReciter = UserDefaults.standard.value(forKey: "getNameReciter") as? String
-                    for indexAyaname in 0..<KeyAndValue.SURA_NAME.count {
-
-                        if  KeyAndValue.SURA_NAME[indexAyaname].name == viewModel?.suraName {
-    //                        self!.initPlayer(url: "http://212.57.192.148/ayat/mp3/\(nameReciter!)/\(KeyAndValue.SURA_NAME[indexAyaname].id)\(self!.appendNumberAya!).mp3")
-                            
-                            guard let url = URL.init(string: "http://212.57.192.148/ayat/mp3/\(nameReciter!)/\(KeyAndValue.SURA_NAME[indexAyaname].id)\(self.appendNumberAya!).mp3") else { return }
+                    
+                    KeyAndValue.SURA_NAME.forEach {
+                        element in
+                        if element.name == viewModel?.suraName {
+                            guard let url = URL.init(string: "http://212.57.192.148/ayat/mp3/\(nameReciter!)/\(element.id)\(self.appendNumberAya!).mp3") else { return }
                             let playerItem = AVPlayerItem.init(url: url)
                             NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(sender:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
                             self.player = AVPlayer.init(playerItem: playerItem)
                             self.player?.play()
-
-    //
-                            break
                         }
-
                     }
+//                    for indexAyaname in 0..<KeyAndValue.SURA_NAME.count {
+//
+//                        if  KeyAndValue.SURA_NAME[indexAyaname].name == viewModel?.suraName {
+//    //                        self!.initPlayer(url: "http://212.57.192.148/ayat/mp3/\(nameReciter!)/\(KeyAndValue.SURA_NAME[indexAyaname].id)\(self!.appendNumberAya!).mp3")
+//
+//                            guard let url = URL.init(string: "http://212.57.192.148/ayat/mp3/\(nameReciter!)/\(KeyAndValue.SURA_NAME[indexAyaname].id)\(self.appendNumberAya!).mp3") else { return }
+//                            let playerItem = AVPlayerItem.init(url: url)
+//                            NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(sender:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
+//                            self.player = AVPlayer.init(playerItem: playerItem)
+//                            self.player?.play()
+//
+//    //
+//                            break
+//                        }
+//
+//                    }
+                    
+                
+                    
 
                 } else {
                     print("")
@@ -284,25 +298,37 @@ class DetailAyaViewController: BaseViewController {
                     let readerObject = reader_Names[0] as? String
 
 
-                    for indexAyaname in 0..<KeyAndValue.SURA_NAME.count {
-                   
-                        guard let url = URL.init(string: "http://212.57.192.148/ayat/mp3/\(readerObject!)/\(KeyAndValue.SURA_NAME[indexAyaname].id)\(self.appendNumberAya!).mp3") else { return }
-                        let playerItem = AVPlayerItem.init(url: url)
-                        NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(sender:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
-                        self.player = AVPlayer.init(playerItem: playerItem)
-                        self.player?.play()
-
-                  
-                        break
+//                    for indexAyaname in 0..<KeyAndValue.SURA_NAME.count {
+//
+//                        guard let url = URL.init(string: "http://212.57.192.148/ayat/mp3/\(readerObject!)/\(KeyAndValue.SURA_NAME[indexAyaname].id)\(self.appendNumberAya!).mp3") else { return }
+//                        let playerItem = AVPlayerItem.init(url: url)
+//                        NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(sender:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
+//                        self.player = AVPlayer.init(playerItem: playerItem)
+//                        self.player?.play()
+//
+//
+//                        break
+//                    }
+                    KeyAndValue.SURA_NAME.forEach {
+                        element in
+                        if element.name == viewModel?.suraName {
+                            guard let url = URL.init(string:
+    //                                                    "http://212.57.192.148/ayat/mp3/Husary_64kbps/082002.mp3"
+                                                        "http://212.57.192.148/ayat/mp3/\(readerObject!)/\(element.id)\(self.appendNumberAya!).mp3"
+                            ) else { return }
+                            let playerItem = AVPlayerItem.init(url: url)
+                            NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(sender:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
+                            self.player = AVPlayer.init(playerItem: playerItem)
+                            self.player?.play()
+                        }
                     }
-                
             }
 
         } else {
             isPlaying = true
             DetailAyaViewController.playPauseButton.setImage(UIImage(named: "play_icon"), for: .normal)
             DetailAyaViewController.playPauseButton.imageView?.contentMode = .scaleAspectFit
-            DetailAyaViewController.playPauseButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: -1.0, bottom: 0, right: 103.0)
+            DetailAyaViewController.playPauseButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: 5.0, bottom: 0, right: 110.0)
           
             DetailAyaViewController.playPauseButton.setTitle("تشغيل", for: .normal)
             
@@ -317,36 +343,60 @@ class DetailAyaViewController: BaseViewController {
 
                 if UserDefaults.standard.value(forKey: "getNameReciter") as? String != nil {
                     let nameReciter = UserDefaults.standard.value(forKey: "getNameReciter") as? String
-                    for indexAyaname in 0..<KeyAndValue.SURA_NAME.count {
-
-                        if  KeyAndValue.SURA_NAME[indexAyaname].name == viewModel!.suraName {
-                            guard let url = URL.init(string: "http://212.57.192.148/ayat/mp3/\(nameReciter!)/\(KeyAndValue.SURA_NAME[indexAyaname].id)\(self.appendNumberAya!).mp3") else { return }
+//                    for indexAyaname in 0..<KeyAndValue.SURA_NAME.count {
+//
+//                        if  KeyAndValue.SURA_NAME[indexAyaname].name == viewModel!.suraName {
+//                            guard let url = URL.init(string: "http://212.57.192.148/ayat/mp3/\(nameReciter!)/\(KeyAndValue.SURA_NAME[indexAyaname].id)\(self.appendNumberAya!).mp3") else { return }
+//                            let playerItem = AVPlayerItem.init(url: url)
+//
+//                            self.player = AVPlayer.init(playerItem: playerItem)
+//                            self.player?.pause()
+//
+//                        break
+//                        }
+//
+//                    }
+                    KeyAndValue.SURA_NAME.forEach {
+                        element in
+                        if element.name == viewModel?.suraName {
+                            guard let url = URL.init(string:
+    //                                                    "http://212.57.192.148/ayat/mp3/Husary_64kbps/082002.mp3"
+                                                        "http://212.57.192.148/ayat/mp3/\(nameReciter!)/\(element.id)\(self.appendNumberAya!).mp3"
+                            ) else { return }
                             let playerItem = AVPlayerItem.init(url: url)
-
+                            NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(sender:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
                             self.player = AVPlayer.init(playerItem: playerItem)
                             self.player?.pause()
-
-                        break
                         }
-
                     }
-
                 } else {
                     print("")
                     let reader_Names = Bundle.main.infoDictionary!["reader_values"] as! NSArray
                     let readerObject = reader_Names[0] as? String
-
-
-                    for indexAyaname in 0..<KeyAndValue.SURA_NAME.count {
-                   
-                        
-                        guard let url = URL.init(string: "http://212.57.192.148/ayat/mp3/\(readerObject!)/\(KeyAndValue.SURA_NAME[indexAyaname].id)\(self.appendNumberAya!).mp3") else { return }
-                        let playerItem = AVPlayerItem.init(url: url)
-
-                        self.player = AVPlayer.init(playerItem: playerItem)
-                        self.player?.pause()
-                        break
+                    KeyAndValue.SURA_NAME.forEach {
+                        element in
+                        if element.name == viewModel?.suraName {
+                            guard let url = URL.init(string:
+    //                                                    "http://212.57.192.148/ayat/mp3/Husary_64kbps/082002.mp3"
+                                                        "http://212.57.192.148/ayat/mp3/\(readerObject!)/\(element.id)\(self.appendNumberAya!).mp3"
+                            ) else { return }
+                            let playerItem = AVPlayerItem.init(url: url)
+                            NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(sender:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
+                            self.player = AVPlayer.init(playerItem: playerItem)
+                            self.player?.pause()
+                        }
                     }
+
+//                    for indexAyaname in 0..<KeyAndValue.SURA_NAME.count {
+//
+//
+//                        guard let url = URL.init(string: "http://212.57.192.148/ayat/mp3/\(readerObject!)/\(KeyAndValue.SURA_NAME[indexAyaname].id)\(self.appendNumberAya!).mp3") else { return }
+//                        let playerItem = AVPlayerItem.init(url: url)
+//
+//                        self.player = AVPlayer.init(playerItem: playerItem)
+//                        self.player?.pause()
+//                        break
+//                    }
                 }
             }
 

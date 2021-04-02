@@ -39,7 +39,7 @@ final class SideMenuListViewModel {
         
         let itemdiractionElqbla = SideMenuViewModel(name: NSLocalizedString(LocalizationKeys.SideMenu.diractionElqbla, comment: ""), imagename: UIImage(named: "kaaba"))
          
-        let downloadSection = SideMenuViewModel(name: NSLocalizedString(LocalizationKeys.SideMenu.downloadAudio, comment: ""), imagename: UIImage(named: "icons8-download-50"))
+//        let downloadSection = SideMenuViewModel(name: NSLocalizedString(LocalizationKeys.SideMenu.downloadAudio, comment: ""), imagename: UIImage(named: "icons8-download-50"))
        
         let itemTermsAndCondition = SideMenuViewModel(name: NSLocalizedString(LocalizationKeys.SideMenu.TermsAndCondition, comment: ""), imagename: UIImage(named: "terms_conditions"))
         
@@ -48,7 +48,7 @@ final class SideMenuListViewModel {
         let itemsettings = SideMenuViewModel(name: NSLocalizedString(LocalizationKeys.SideMenu.settings, comment: ""), imagename:  UIImage(named: "settings_icon"))
         
         items.append(contentsOf: [itemtafserBook,itemtafserQuarn,itemquaranread,itemquaranlisten,itemkhwatarelsharawy,
-                                  itempreviousAyat,itemdiractionElqbla,downloadSection,itemsupportApp,itemsettings,itemTermsAndCondition,itemprivacypolice])
+                                  itempreviousAyat,itemdiractionElqbla,itemsupportApp,itemsettings,itemTermsAndCondition,itemprivacypolice])
         
     }
     func numberOfRows(_ section: Int) -> Int {
@@ -87,19 +87,19 @@ final class SideMenuListViewModel {
         case 6:
             let qiblaLocationCoordinator = QiblaLocationCoordinator(viewController: QiblaLocationViewController())
             qiblaLocationCoordinator.start()
+//        case 7:
+//            let downloadAudioCoordinator = DownloadAudioCoordinator(viewController: PlayAudioOfflineViewController())
+//            downloadAudioCoordinator.start()
         case 7:
-            let downloadAudioCoordinator = DownloadAudioCoordinator(viewController: PlayAudioOfflineViewController())
-            downloadAudioCoordinator.start()
-        case 8:
             let supportAppCoordinator = SupportAppCoordinator(viewController: SupportAppViewController())
             supportAppCoordinator.start()
-        case 9:
+        case 8:
             let settingsCoordinator = SettingsCoordinator(viewController: SettingsViewController())
             settingsCoordinator.start()
-        case 10:
+        case 9:
             let settingsCoordinator = TermsAndConditionsCoordinator(viewController: TermsAndConidtionViewController())
             settingsCoordinator.start()
-        case 11:
+        case 10:
             let settingsCoordinator = PrivacyPoliceCoordinator(viewController: PrivacyPoliceViewController())
             settingsCoordinator.start()
         default:
