@@ -82,6 +82,7 @@ extension AlbumReciterViewController: UITableViewDelegate, UITableViewDataSource
                 SavingManager.shared.saveValue((self.delgateQuarnListenProtcol?.reciterId) ?? 0  as Int, key: "reciterId")
                 SavingManager.shared.saveValue((coordinator?.nameReciter)  ?? "" as String, key: "nameReciter")
             } else {
+                coordinator?.audioListReciter = []
                 coordinator?.reciterId = SavingManager.shared.getIntgerValue("reciterId")
                 coordinator?.audioListReciter = self.albumReciterModel?.results?[indexPath.row].audioList
                 coordinator?.nameReciter =  SavingManager.shared.getValue("nameReciter")

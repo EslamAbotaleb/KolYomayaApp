@@ -435,7 +435,7 @@ class HomeViewController: BaseViewController, GADBannerViewDelegate {
             let errorTitle = errorServiceLocalizations.errorTitle
             let errorDescription = errorServiceLocalizations.errorDescription
             self.showErrorView(errorTitle: errorTitle, errorDescription: errorDescription)
-            self.view.isUserInteractionEnabled = false
+//            self.view.isUserInteractionEnabled = false
         }
         NetworkReachability.isReachable { _ in
             self.hideLoader()
@@ -462,7 +462,7 @@ class HomeViewController: BaseViewController, GADBannerViewDelegate {
     }
     
     func showLoader(){
-        self.view.isUserInteractionEnabled = false
+//        self.view.isUserInteractionEnabled = false
         InviaLoadingIndicator.show()
     }
     

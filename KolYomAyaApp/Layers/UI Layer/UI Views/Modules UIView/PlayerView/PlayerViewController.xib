@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerViewController" customModule="KolYoumAya" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerViewController" customModule="kolyoumaya" customModuleProvider="target">
             <connections>
                 <outlet property="endTimeLabel" destination="Md1-dZ-5cK" id="aOu-SH-kM2"/>
                 <outlet property="holder" destination="RT2-pf-2n2" id="qxj-S5-aX7"/>
@@ -47,7 +48,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name Aya" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umj-zQ-HeL">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umj-zQ-HeL">
                             <rect key="frame" x="2" y="158" width="410" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="ABP-JE-4qY"/>
@@ -91,17 +92,17 @@
                             <rect key="frame" x="8" y="302" width="398" height="70"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Md1-dZ-5cK">
-                                    <rect key="frame" x="0.0" y="0.0" width="36" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="28.5" height="70"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pKt-Pi-8v3">
-                                    <rect key="frame" x="39" y="0.0" width="320" height="71"/>
+                                    <rect key="frame" x="31.5" y="0.0" width="328" height="71"/>
                                     <color key="tintColor" red="0.0" green="0.52156862749999999" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </slider>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kh8-DQ-kMn">
-                                    <rect key="frame" x="362" y="0.0" width="36" height="70"/>
+                                    <rect key="frame" x="362.5" y="0.0" width="35.5" height="70"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -112,7 +113,7 @@
                             </constraints>
                         </stackView>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="Umj-zQ-HeL" firstAttribute="leading" secondItem="RT2-pf-2n2" secondAttribute="leading" constant="2" id="6zO-k7-75u"/>
                         <constraint firstAttribute="trailing" secondItem="svW-Fd-oGC" secondAttribute="trailing" constant="2" id="7gC-2h-QxF"/>
@@ -131,21 +132,24 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="RT2-pf-2n2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="1mJ-ps-nPW"/>
                 <constraint firstItem="RT2-pf-2n2" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="CSt-xy-Dw4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RT2-pf-2n2" secondAttribute="trailing" id="GXE-s6-f3l"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="RT2-pf-2n2" secondAttribute="bottom" id="fc2-gG-rIT"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="153.34821428571428"/>
         </view>
     </objects>
     <resources>
-        <image name="backward.fill" width="30" height="30"/>
-        <image name="forward.fill" width="30" height="30"/>
+        <image name="backward.fill" width="50" height="50"/>
+        <image name="forward.fill" width="50" height="50"/>
         <image name="imageSplash" width="512" height="512"/>
         <image name="play_btn" width="512" height="512"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

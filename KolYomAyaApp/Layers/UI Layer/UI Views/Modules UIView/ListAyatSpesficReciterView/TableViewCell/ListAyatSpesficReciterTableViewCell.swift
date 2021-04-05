@@ -16,42 +16,13 @@ class ListAyatSpesficReciterTableViewCell: UITableViewCell {
     @IBOutlet weak var playButton: UIButton!
     var viewModel: AudioList?
     var audioLinks: [String]?
+    var offlineAudios : [NSManagedObject]?
+
     let appDelegate = UIApplication.shared.delegate as! AppDelegate //Singlton instance
     var context:NSManagedObjectContext!
     override func awakeFromNib() {
         super.awakeFromNib()
-        openDatabse()
-        // Initialization code
-        // Get the document directory url
-        //        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        //
-        //        do {
-        //            // Get the directory contents urls (including subfolders urls)
-        //            let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil)
-        //            print(directoryContents)
-        //
-        //            // if you want to filter the directory contents you can do like this:
-        //            let mp3Files = directoryContents.filter{ $0.pathExtension == "mp3" }
-        //            print("mp3 urls:",mp3Files)
-        //            let mp3FileNames = mp3Files.map{ $0.deletingPathExtension().lastPathComponent }
-        //            print("mp3 list:", mp3FileNames)
-        //
-        //        } catch {
-        //            print(error)
-        //        }
-        //
-        //        let fileManager = FileManager.default
-        //        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        //        do {
-        //            let fileURLs = try fileManager.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil)
-        //            // process files
-        //
-        //
-        //
-        //            print("fewnfkjfkjewkjfwefgewk\(fileURLs)")
-        //        } catch {
-        //            print("Error while enumerating files \(documentsURL.path): \(error.localizedDescription)")
-        //        }
+      
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -60,74 +31,57 @@ class ListAyatSpesficReciterTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     // MARK: Methods to Open, Store and Fetch data
-    func openDatabse()
-    {
-        
-        guard let appDelegate =
-                UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        context =
-            appDelegate.persistentContainer.viewContext
-    }
-    @objc func deleteAudio(sender: UIButton) {
- 
-    }
-    func getManagedObjectContext() -> NSManagedObjectContext{
-        
-        let delegate = UIApplication.shared.delegate as? AppDelegate
+   
+    
+  
 
-        return delegate!.persistentContainer.viewContext
-    }
-
-    @objc func downloadAudio() {
-        
-        
-        let entity = NSEntityDescription.entity(forEntityName: "OfflineAudioModel", in: (self.context)!)
-        let articleObject = NSManagedObject(entity: entity!, insertInto: self.context)
-        articleObject.setValue(self.viewModel?.name, forKey: "suraName")
-        articleObject.setValue(self.viewModel?.audioLink, forKey: "audioLink")
-      
-        
-        print("Storing Data..")
-        articleObject.setValue(true, forKey: "is_downloaded")
-        
-        if articleObject.value(forKey: "is_downloaded") != nil  {
-            self.downloadAudioBtn.isEnabled = false
-            self.downloadAudioBtn.isSelected = false
-        } else {
-            self.downloadAudioBtn.isEnabled = true
-            self.downloadAudioBtn.isSelected = true
-
-        }
-       
-        do {
-            
-            try context.save()
-            
-        } catch {
-            print("Storing data Failed")
-        }
-        
-        //        let offlineAudioObject = NSManagedObject(entity: entity!, insertInto: "suraName")
-        //        let offlineAudioObject = NSManagedObject(entity: entity!, insertInto: "audioLink")
-        
-        //                    let articleObject = NSManagedObject(entity: entity!, insertInto: self?.context)
-        //                    articleObject.setValue(self?.allArticles![indexPath.row].title, forKey: "title")
-        //                    articleObject.setValue(self?.allArticles![indexPath.row].urlToImage, forKey: "article_image")
-        
-        //        checkAudioFileExists(withLink: (self.viewModel?.audioLink)!) {
-        //            [weak self]
-        //            downloadUrl in
-        //            guard let self = self else{
-        //                return
-        //            }
-        ////            self.audioLinks?.append(downloadUrl.path)
-        //
-        //        }
-        
-    }
+//    @objc func downloadAudio() {
+//
+//
+//        let entity = NSEntityDescription.entity(forEntityName: "OfflineAudioModel", in: (self.context)!)
+//        let articleObject = NSManagedObject(entity: entity!, insertInto: self.context)
+//        articleObject.setValue(self.viewModel?.name, forKey: "suraName")
+//        articleObject.setValue(self.viewModel?.audioLink, forKey: "audioLink")
+//
+//
+//        print("Storing Data..")
+//        articleObject.setValue(true, forKey: "is_downloaded")
+//
+//        if articleObject.value(forKey: "is_downloaded") != nil  {
+//            self.downloadAudioBtn.isEnabled = false
+//            self.downloadAudioBtn.isSelected = false
+//        } else {
+//            self.downloadAudioBtn.isEnabled = true
+//            self.downloadAudioBtn.isSelected = true
+//
+//        }
+//
+//        do {
+//
+//            try context.save()
+//
+//        } catch {
+//            print("Storing data Failed")
+//        }
+//
+//        //        let offlineAudioObject = NSManagedObject(entity: entity!, insertInto: "suraName")
+//        //        let offlineAudioObject = NSManagedObject(entity: entity!, insertInto: "audioLink")
+//
+//        //                    let articleObject = NSManagedObject(entity: entity!, insertInto: self?.context)
+//        //                    articleObject.setValue(self?.allArticles![indexPath.row].title, forKey: "title")
+//        //                    articleObject.setValue(self?.allArticles![indexPath.row].urlToImage, forKey: "article_image")
+//
+//        //        checkAudioFileExists(withLink: (self.viewModel?.audioLink)!) {
+//        //            [weak self]
+//        //            downloadUrl in
+//        //            guard let self = self else{
+//        //                return
+//        //            }
+//        ////            self.audioLinks?.append(downloadUrl.path)
+//        //
+//        //        }
+//
+//    }
     ////    func play(url: URL) {
     ////       print("playing \(url)")
     ////
@@ -195,7 +149,7 @@ class ListAyatSpesficReciterTableViewCell: UITableViewCell {
         self.suraNameLabel.text = viewModel.name
         
        
-            downloadAudioBtn.addTarget(self, action: #selector(downloadAudio), for: .touchUpInside)
+//            downloadAudioBtn.addTarget(self, action: #selector(downloadAudio), for: .touchUpInside)
      
     }
     

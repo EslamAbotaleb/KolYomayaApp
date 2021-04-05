@@ -10,15 +10,7 @@ import UIKit
 import AVFoundation
 import CoreData
 class ListAyatSpesficReciterViewController: BaseViewController,DelegateStatusPlay {
-    var statusPlaying: Bool?
-    var player: AVPlayer?
-    var reciterId: Int?
-    var statusListen: String?
-    var isDownload = true
-    var favoritesArray: [OfflineAudioModel]?
-    var context:NSManagedObjectContext!
 
- var delegateAudioListProtocol: DelegateAudioListProtocol?
 //    var delegatePlayAudio: DelegateStatusPlay?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var playButton: UIButton!
@@ -27,7 +19,17 @@ class ListAyatSpesficReciterViewController: BaseViewController,DelegateStatusPla
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var viewPlayer: UIView!
     var isSelectOnAya: Bool = false
-    
+    var idAudio: Int = 0
+    var statusPlaying: Bool?
+    var player: AVPlayer?
+    var reciterId: Int?
+    var statusListen: String?
+    var isDownload = true
+    var favoritesArray: [OfflineAudioModel]?
+    var context:NSManagedObjectContext!
+    var offlineAudios : [NSManagedObject]?
+
+ var delegateAudioListProtocol: DelegateAudioListProtocol?
     var headerView: HeaderViewReciter = {
         
         let nib = UINib(nibName: "HeaderViewReciter", bundle: nil)
@@ -71,10 +73,10 @@ left: 0, bottom: 0, right: 0)
         func scrollViewDidScroll(_ scrollView: UIScrollView) {
            headerView.updatePosition()
        }
-
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("audioListReciteraudioListReciter\(self.delegateAudioListProtocol?.audioListReciter)")
         // Do any additional setup after loading the view.
         let nib = UINib(nibName: "ListAyatSpesficReciterTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: ListAyatSpesficReciterTableViewCell.reuseIdentifier)
@@ -115,8 +117,10 @@ left: 0, bottom: 0, right: 0)
                     }
         
         openDatabse()
+       
     }
-
+ 
+    
 //     var player = AVPlayer()
      var isPlaying: Bool = false
                 
@@ -133,7 +137,44 @@ left: 0, bottom: 0, right: 0)
          }
      }
     @objc func downloadAudioPressed(sender: UIButton) {
-//        downloadAudio()
+       
+        idAudio = sender.tag
+        
+        if !self.offlineAudios!.isEmpty {
+          
+           for audio in self.offlineAudios!{
+              
+                if audio.value(forKey: "id") as? Int == idAudio {
+                    let alertController2 = UIAlertController(title: "تم تحمليها سابقا", message: "", preferredStyle: .alert)
+                    let okAction2 = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                    alertController2.addAction(okAction2)
+                    self.present(alertController2, animated: true, completion: nil)
+                    break
+                }
+                else {
+                    downloadAudio(row: sender.tag)
+                    break
+                }
+           
+          }
+        } else {
+            sender.isSelected = !sender.isSelected
+            
+            if !sender.isSelected {
+                let alertController2 = UIAlertController(title: "تم تحمليها سابقا", message: "", preferredStyle: .alert)
+                let okAction2 = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alertController2.addAction(okAction2)
+                self.present(alertController2, animated: true, completion: nil)
+            } else {
+                downloadAudio(row: sender.tag)
+            }
+           
+            
+           
+        }
+      
+      
+        
     }
     func openDatabse()
       {
@@ -144,53 +185,53 @@ left: 0, bottom: 0, right: 0)
        }
        
       context = appDelegate.persistentContainer.viewContext
-          
+        fetchData()
       }
-    
-//    func downloadAudio() {
-//        if (isDownload) {
-//            //Display the alert for what happens
-//            let alertController = UIAlertController(title: "Downlaod", message: "This article has been added to the favorites tab", preferredStyle: .alert)
-//            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-//            alertController.addAction(okAction)
-//            self.present(alertController, animated: true, completion: nil)
-//            
-//            //save the article here when button pressed - Core Data
-//            
-//
-//            //Prepares the button for undoing if tapped again
-//            isDownload = false
-//            let entity = NSEntityDescription.entity(forEntityName: "OfflineAudioModel", in: (self.context)!)
-//            let articleObject = NSManagedObject(entity: entity!, insertInto: self.context)
-//            
-//            articleObject.setValue(self.delegateAudioListProtocol?.nameReciter, forKey: "suraName")
-//            
-//            self.delegateAudioListProtocol?.audioListReciter?.forEach {
-//                elemnt in
-//                articleObject.setValue(elemnt.audioLink, forKey: "audioLink")
-//              
-//            }
-//           
-//            
-//            print("Storing Data..")
-//            
-//           
-//           
-//            do {
-//                
-//                try context.save()
-//                
-//            } catch {
-//                print("Storing data Failed")
-//            }
-//        } else {
-//            let alertController2 = UIAlertController(title: "UnDownlaod", message: "This article has been removed from the favorites tab", preferredStyle: .alert)
-//            let okAction2 = UIAlertAction(title: "Ok", style: .default, handler: nil)
-//            alertController2.addAction(okAction2)
-//            self.present(alertController2, animated: true, completion: nil)
-//            
-//            isDownload = true
-//        }
-//    }
+    func fetchData()
+      {
+       
+          let request = NSFetchRequest<NSFetchRequestResult>(entityName: "OfflineAudioModel")
+          request.returnsObjectsAsFaults = false
+          do {
+              let result = try context.fetch(request)
+            self.offlineAudios = result as? [NSManagedObject]
+            
+          } catch {
+              print("Fetching data Failed")
+          }
+      }
+    func downloadAudio(row: Int) {
+       
+       
+            //Display the alert for what happens
+            let alertController = UIAlertController(title: "تم التحميل", message: "", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+   
+            //Prepares the button for undoing if tapped again
+           
+            let entity = NSEntityDescription.entity(forEntityName: "OfflineAudioModel", in: (self.context)!)
+            let articleObject = NSManagedObject(entity: entity!, insertInto: self.context)
+        articleObject.setValue(self.delegateAudioListProtocol?.audioListReciter?[row].audioLink, forKey: "audioLink")
+        articleObject.setValue((self.delegateAudioListProtocol?.nameReciter)! + " - " + (self.delegateAudioListProtocol?.audioListReciter?[row].name)!, forKey: "suraName")
+        
+        
+        articleObject.setValue(self.delegateAudioListProtocol?.imageReciter, forKey: "image_reciter")
+
+        articleObject.setValue(true, forKey: "is_downloaded")
+        articleObject.setValue(idAudio, forKey: "id")
+
+            print("Storing Data..")
+          
+            do {
+                
+                try context.save()
+                
+            } catch {
+                print("Storing data Failed")
+            }
+        
+    }
 
 }

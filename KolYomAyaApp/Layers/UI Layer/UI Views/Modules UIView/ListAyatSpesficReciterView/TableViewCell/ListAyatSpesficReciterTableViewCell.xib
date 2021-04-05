@@ -29,18 +29,19 @@
                                 <state key="normal" image="play_btn"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nww-Vs-3PH">
-                                <rect key="frame" x="30" y="12.5" width="235" height="20.5"/>
+                                <rect key="frame" x="30" y="12.5" width="230" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZw-xq-Yk7">
-                                <rect key="frame" x="270" y="14" width="20" height="17"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZw-xq-Yk7">
+                                <rect key="frame" x="265" y="10" width="25" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="17" id="9up-TD-e9F"/>
-                                    <constraint firstAttribute="width" constant="20" id="msq-7g-wMS"/>
+                                    <constraint firstAttribute="height" constant="25" id="9up-TD-e9F"/>
+                                    <constraint firstAttribute="width" constant="25" id="msq-7g-wMS"/>
                                 </constraints>
+                                <state key="normal" image="icons8-download-30"/>
                             </button>
                         </subviews>
                         <constraints>
@@ -61,10 +62,11 @@
                 <outlet property="playButton" destination="6Qq-Zr-e25" id="9GG-51-KhI"/>
                 <outlet property="suraNameLabel" destination="Nww-Vs-3PH" id="i5T-qJ-5hM"/>
             </connections>
-            <point key="canvasLocation" x="-390" y="74"/>
+            <point key="canvasLocation" x="-423" y="-9"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="icons8-download-30" width="30" height="30"/>
         <image name="play_btn" width="512" height="512"/>
     </resources>
 </document>

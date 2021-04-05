@@ -52,24 +52,7 @@ class PlayAudioOfflineViewController: BaseViewController {
       }
     
     
-    func deletDuplicates(_ contexto: NSManagedObjectContext){
-        
-        let fetchDuplicates = NSFetchRequest<NSFetchRequestResult>(entityName: "OfflineAudioModel")
-       //
-                   do {
-                    self.offlineAudios = try! (contexto.fetch(fetchDuplicates) as! [OfflineAudioModel])
-                  } catch let error as NSError {
-                  print("Tenemos este error en los duplicados\(error.code)")
-                   }
-        
-        let rediciendArray = self.offlineAudios!.reduce(into: [:], { $0[$1,default:0] += 1})
-        print("reduce \(rediciendArray)")
-        let sorteandolos = rediciendArray.sorted(by: {$0.value > $1.value })
-        print("sorted \(sorteandolos)")
-        let map = sorteandolos.map({$0.key})
-        
-        print(" map : \(map)")
-      }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,67 +80,7 @@ class PlayAudioOfflineViewController: BaseViewController {
         //            print(error)
         //        }
     }
-    //    // check audio exits
-    //    func checkAudioFileExists(withLink link: String, completion: @escaping ((_ filePath: URL)->Void)){
-    //        let urlString = link.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-    //        if let url  = URL.init(string: urlString ?? ""){
-    //            let fileManager = FileManager.default
-    //            if let documentDirectory = try? fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create: false){
-    //
-    //                let filePath = documentDirectory.appendingPathComponent(url.lastPathComponent, isDirectory: false)
-    //
-    //                do {
-    //                    if try filePath.checkResourceIsReachable() {
-    //                        print("file exist")
-    //                        completion(filePath)
-    //
-    //                    } else {
-    //                        print("file doesnt exist")
-    ////                        downloadFile(withUrl: url, andFilePath: filePath, completion: completion)
-    //                    }
-    //                } catch {
-    //                    print("file doesnt exist")
-    ////                    downloadFile(withUrl: url, andFilePath: filePath, completion: completion)
-    //                }
-    //            }else{
-    //                print("file doesnt exist")
-    //            }
-    //        }else{
-    //            print("file doesnt exist")
-    //        }
-    //    }
-    //    func playSound(soundName: String) {
-    //
-    //        guard let url = Bundle.main.url(forResource: soundName, withExtension: "mp3") else { return }
-    //
-    //        do {
-    //            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-    //            try AVAudioSession.sharedInstance().setActive(true)
-    //
-    //            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
-    //            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-    //
-    //            /* iOS 10 and earlier require the following line:
-    //            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
-    //
-    //            guard let player = player else { return }
-    //
-    //            player.play()
-    //
-    //        } catch let error {
-    //            print(error.localizedDescription)
-    //        }
-    //    }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+
 }
 extension PlayAudioOfflineViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -181,21 +104,7 @@ extension PlayAudioOfflineViewController: UITableViewDelegate, UITableViewDataSo
         let appDel:AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.persistentContainer.viewContext
 
-//        let index = tableView.indexPathForSelectedRow?.row
-//        self.offlineAudios?.forEach({ (audioFile) in
-//            context.delete((audioFile) as NSManagedObject)
-//
-//            offlineAudios?.remove(at: sender.tag)
-//
-//                 let _ : NSError! = nil
-//                 do {
-//                     try context.save()
-//                     self.tableView.reloadData()
-//                 } catch {
-//                     print("error : \(error)")
-//                 }
-//        })
-       
+
         let index = sender.tag
 
         context.delete((self.offlineAudios?[index])! as NSManagedObject)
@@ -211,11 +120,13 @@ extension PlayAudioOfflineViewController: UITableViewDelegate, UITableViewDataSo
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        
+//        self.offlineAudios = []
         let playerViewController =  PlayerViewController.init(nibName: "PlayerViewController", bundle: nil)
         playerViewController.position = indexPath.row
         playerViewController.getaNameReciter = self.offlineAudios?[indexPath.row].value(forKey: "suraName") as? String
         
+        
+        playerViewController.getaImageReciter =  self.offlineAudios?[indexPath.row].value(forKey: "image_reciter") as? String
         playerViewController.audioLinkPlay =
             self.offlineAudios?[indexPath.row].value(forKey: "audioLink") as? String
 //        playerViewController.getaNameReciter = self.delegateAudioListProtocol?.nameReciter
