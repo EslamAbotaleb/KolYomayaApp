@@ -143,7 +143,7 @@ class ListAyatSpesficReciterTableViewCell: UITableViewCell {
     //        }else{
     //            print("file doesnt exist")
     //        }
-    //    }
+    //    }//update
     func configure(viewModel: AudioList) {
         self.viewModel = viewModel
         self.suraNameLabel.text = viewModel.name

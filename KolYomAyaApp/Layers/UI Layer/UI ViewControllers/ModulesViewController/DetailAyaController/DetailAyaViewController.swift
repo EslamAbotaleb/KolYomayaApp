@@ -10,6 +10,20 @@ import UIKit
 import AVFoundation
 import GoogleMobileAds
 
+
+extension UILabel {
+    func addTrailing(image: UIImage) {
+        let attachment = NSTextAttachment()
+        attachment.image = image
+
+        let attachmentString = NSAttributedString(attachment: attachment)
+        let string = NSMutableAttributedString(string: self.text!, attributes: [:])
+
+        string.append(attachmentString)
+        self.attributedText = string
+    }
+}
+
 class DetailAyaViewController: BaseViewController {
 
     var interstitial: GADInterstitial!
@@ -23,6 +37,9 @@ class DetailAyaViewController: BaseViewController {
     static var shareButton =  UIButton()
     static var playPauseButton =  UIButton()
     
+    static var playImage = UIImage()
+    static var pauseImage = UIImage()
+
     var scrollView = UIScrollView()
     static var drawSecondLineView = UIView()
     static var drawThirdLineView = UIView()
@@ -76,7 +93,6 @@ class DetailAyaViewController: BaseViewController {
     func setupScrollView() {
         self.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 
-//        self.scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: DeviceUsage.SCREEN_WIDTH, height: <#T##Int#>))
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -144,25 +160,35 @@ class DetailAyaViewController: BaseViewController {
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
         stackView.spacing = 35.0
-        DetailAyaViewController.playPauseButton.translatesAutoresizingMaskIntoConstraints = false
-
-        
-        DetailAyaViewController.playPauseButton.setImage(UIImage(named: "play_icon"), for: .normal)
-        DetailAyaViewController.playPauseButton.imageView?.contentMode = .scaleAspectFit
-        DetailAyaViewController.playPauseButton.imageEdgeInsets =  UIEdgeInsets(top: 2.0, left: 5.0, bottom: 0, right: 110.0)
-      
-        
-        DetailAyaViewController.playPauseButton.setTitle("تشغيل", for: .normal)
         DetailAyaViewController.shareButton.translatesAutoresizingMaskIntoConstraints = false
-        DetailAyaViewController.shareButton.setImage(UIImage(named: "share"), for: .normal)
-        DetailAyaViewController.shareButton.translatesAutoresizingMaskIntoConstraints = false
-        DetailAyaViewController.shareButton.imageView?.contentMode = .scaleAspectFit
-        DetailAyaViewController.shareButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: 5.0, bottom: 0, right: 110.0)
-        DetailAyaViewController.shareButton.setTitle("مشاركة", for: .normal)
+        
+        if #available(iOS 13.0, *) {
+            DetailAyaViewController.playPauseButton.setImage(UIImage(named: "play_icon"), for: .normal)
+            DetailAyaViewController.playPauseButton.imageView?.contentMode = .scaleAspectFit
+            
+            DetailAyaViewController.playPauseButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: 5.0, bottom: 0, right: 110.0)
+           
+            DetailAyaViewController.playPauseButton.setTitle("تشغيل" + "", for: .normal)
+            
+            DetailAyaViewController.shareButton.setImage(UIImage(named: "share"), for: .normal)
+            DetailAyaViewController.shareButton.imageView?.contentMode = .scaleAspectFit
+            
+            DetailAyaViewController.shareButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: 5.0, bottom: 0, right: 110.0)
+            //        HomeViewController.shareButton.imageEdgeInsets = UIEdgeInsets(top: 1.0, left: -3.0, bottom: 0, right: 105.0)
+            DetailAyaViewController.shareButton.setTitle(  "مشاركة" + "", for: .normal)
+            
+        } else {
+            DetailAyaViewController.playPauseButton.setTitle("تشغيل" + "", for: .normal)
+            DetailAyaViewController.shareButton.setTitle(  "مشاركة" + "", for: .normal)
 
+        }
 
-        stackView.addArrangedSubview(shareButton)
-        stackView.addArrangedSubview(playPauseButton)
+        stackView.addArrangedSubview(DetailAyaViewController.shareButton)
+        
+        
+        
+        stackView.addArrangedSubview(DetailAyaViewController.playPauseButton)
+
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -202,8 +228,9 @@ class DetailAyaViewController: BaseViewController {
             lineViewBetweenSuraNameAndFullAyaName.topAnchor.constraint(equalTo: stackViewTopSectionSpesficAyaNameAndNumber.bottomAnchor, constant: 5.0).isActive = true
 
             lineViewBetweenSuraNameAndFullAyaName.widthAnchor.constraint(equalTo: contentView.widthAnchor).isActive = true
-            lineViewBetweenSuraNameAndFullAyaName.heightAnchor.constraint(equalToConstant: 0.4).isActive = true
-          
+            lineViewBetweenSuraNameAndFullAyaName.heightAnchor.constraint(equalToConstant: 0.6).isActive = true
+        lineViewBetweenSuraNameAndFullAyaName.layer.opacity = 0.1
+
             self.contentView.addSubview(self.labelFullNameAya)
             labelFullNameAya.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
 
@@ -220,7 +247,8 @@ class DetailAyaViewController: BaseViewController {
 
 
             lineViewBetweenAyaAndButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1.0).isActive = true
-            lineViewBetweenAyaAndButton.heightAnchor.constraint(equalToConstant: 0.4).isActive = true
+            lineViewBetweenAyaAndButton.heightAnchor.constraint(equalToConstant: 0.6).isActive = true
+        lineViewBetweenAyaAndButton.layer.opacity = 0.1
 
             self.contentView.addSubview(self.stackViewForPlayAndShareButton)
 
@@ -228,29 +256,54 @@ class DetailAyaViewController: BaseViewController {
 
             stackViewForPlayAndShareButton.topAnchor.constraint(equalTo: self.lineViewBetweenAyaAndButton.bottomAnchor, constant: 10.0).isActive = true
 
-            stackViewForPlayAndShareButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.57).isActive = true
+        stackViewForPlayAndShareButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier:  0.57).isActive = true
 
-            stackViewForPlayAndShareButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+            stackViewForPlayAndShareButton.heightAnchor.constraint(equalToConstant:  50.0).isActive = true
 
         
 
-        DetailAyaViewController.playPauseButton.addTarget(self, action: #selector(playAyaBySpesficReciter(sender:)), for: .touchUpInside)
-        DetailAyaViewController.shareButton.addTarget(self, action: #selector(share), for: .touchUpInside)
+//        DetailAyaViewController.playPauseButton.addTarget(self, action: #selector(playAyaBySpesficReciter(sender:)), for: .touchUpInside)
+//        DetailAyaViewController.shareButton.addTarget(self, action: #selector(share), for: .touchUpInside)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(playAyaBySpesficReciter))
+        DetailAyaViewController.playPauseButton.isUserInteractionEnabled = true
+        DetailAyaViewController.playPauseButton.addGestureRecognizer(tap)
+        
+        
+        
+        
+        let shareTap = UITapGestureRecognizer(target: self, action: #selector(share))
+        DetailAyaViewController.shareButton.isUserInteractionEnabled = true
+        DetailAyaViewController.shareButton.addGestureRecognizer(shareTap)
+        
 
     }
-    @objc func playAyaBySpesficReciter(sender: UIButton) {
-
+    @objc func playAyaBySpesficReciter(sender: UITapGestureRecognizer) {
+        DetailAyaViewController.playPauseButton.removeFromSuperview()
         print("presssed")
         if isPlaying == true {
+            stackViewForPlayAndShareButton.addArrangedSubview(DetailAyaViewController.playPauseButton)
             isPlaying = false
             
-            DetailAyaViewController.playPauseButton.setImage(UIImage(named: "pause_icon"), for: .normal)
-            DetailAyaViewController.playPauseButton.imageView?.contentMode = .scaleAspectFit
-            DetailAyaViewController.playPauseButton.imageEdgeInsets =  UIEdgeInsets(top: 2.0, left: 5.0, bottom: 0, right: 110.0)
-            DetailAyaViewController.playPauseButton.setTitle("ايقاف", for: .normal)
-           
+//            DetailAyaViewController.playPauseButton.setImage(UIImage(named: "pause_icon"), for: .normal)
+//            DetailAyaViewController.playPauseButton.imageView?.contentMode = .scaleAspectFit
+//            DetailAyaViewController.playPauseButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: 5.0, bottom: 0, right: 110.0)
+//            DetailAyaViewController.playPauseButton.contentEdgeInsets = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 10)
+//            DetailAyaViewController.playPauseButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0,  right: -2)
+//            DetailAyaViewController.playPauseButton.setTitle("ايقاف", for: .normal)
+//
 //            self.viewModel?.todayAyaApi() { [weak self] todayAyaModel in
 
+//            UIApplication.shared.beginReceivingRemoteControlEvents()
+            if #available(iOS 13.0, *) {
+                DetailAyaViewController.playPauseButton.setImage(UIImage(named: "pause_icon"), for: .normal)
+                DetailAyaViewController.playPauseButton.imageView?.contentMode = .scaleAspectFit
+                DetailAyaViewController.playPauseButton.imageEdgeInsets =  UIEdgeInsets(top: 2.0, left: 5.0, bottom: 0, right: 110.0)
+                DetailAyaViewController.playPauseButton.setTitle("ايقاف", for: .normal)
+            } else {
+                DetailAyaViewController.playPauseButton.setTitle("ايقاف", for: .normal)
+            }
+            
             if  self.viewModel!.ayaNumber < 10 {
                 self.appendNumberAya = "00"  + "\(viewModel!.ayaNumber)"
             } else if viewModel!.ayaNumber >= 10 &&  viewModel!.ayaNumber < 100{
@@ -272,23 +325,7 @@ class DetailAyaViewController: BaseViewController {
                             self.player?.play()
                         }
                     }
-//                    for indexAyaname in 0..<KeyAndValue.SURA_NAME.count {
-//
-//                        if  KeyAndValue.SURA_NAME[indexAyaname].name == viewModel?.suraName {
-//    //                        self!.initPlayer(url: "http://212.57.192.148/ayat/mp3/\(nameReciter!)/\(KeyAndValue.SURA_NAME[indexAyaname].id)\(self!.appendNumberAya!).mp3")
-//
-//                            guard let url = URL.init(string: "http://212.57.192.148/ayat/mp3/\(nameReciter!)/\(KeyAndValue.SURA_NAME[indexAyaname].id)\(self.appendNumberAya!).mp3") else { return }
-//                            let playerItem = AVPlayerItem.init(url: url)
-//                            NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(sender:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
-//                            self.player = AVPlayer.init(playerItem: playerItem)
-//                            self.player?.play()
-//
-//    //
-//                            break
-//                        }
-//
-//                    }
-                    
+
                 
                     
 
@@ -298,17 +335,6 @@ class DetailAyaViewController: BaseViewController {
                     let readerObject = reader_Names[0] as? String
 
 
-//                    for indexAyaname in 0..<KeyAndValue.SURA_NAME.count {
-//
-//                        guard let url = URL.init(string: "http://212.57.192.148/ayat/mp3/\(readerObject!)/\(KeyAndValue.SURA_NAME[indexAyaname].id)\(self.appendNumberAya!).mp3") else { return }
-//                        let playerItem = AVPlayerItem.init(url: url)
-//                        NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(sender:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
-//                        self.player = AVPlayer.init(playerItem: playerItem)
-//                        self.player?.play()
-//
-//
-//                        break
-//                    }
                     KeyAndValue.SURA_NAME.forEach {
                         element in
                         if element.name == viewModel?.suraName {
@@ -325,13 +351,18 @@ class DetailAyaViewController: BaseViewController {
             }
 
         } else {
+            stackViewForPlayAndShareButton.addArrangedSubview(DetailAyaViewController.playPauseButton)
+
             isPlaying = true
-            DetailAyaViewController.playPauseButton.setImage(UIImage(named: "play_icon"), for: .normal)
-            DetailAyaViewController.playPauseButton.imageView?.contentMode = .scaleAspectFit
-            DetailAyaViewController.playPauseButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: 5.0, bottom: 0, right: 110.0)
-          
-            DetailAyaViewController.playPauseButton.setTitle("تشغيل", for: .normal)
-            
+            if #available(iOS 13.0, *) {
+                DetailAyaViewController.playPauseButton.setImage(UIImage(named: "play_icon"), for: .normal)
+                DetailAyaViewController.playPauseButton.imageView?.contentMode = .scaleAspectFit
+                DetailAyaViewController.playPauseButton.imageEdgeInsets =  UIEdgeInsets(top: 2.0, left: 5.0, bottom: 0, right: 110.0)
+                DetailAyaViewController.playPauseButton.setTitle("تشغيل", for: .normal)
+            } else {
+              
+                DetailAyaViewController.playPauseButton.setTitle("تشغيل", for: .normal)
+            }
 
                 if viewModel!.ayaNumber < 10 {
                     self.appendNumberAya = "00"  + "\(viewModel!.ayaNumber)"
@@ -448,7 +479,11 @@ class DetailAyaViewController: BaseViewController {
         lineView.centerXAnchor.constraint(equalTo: DetailAyaViewController.tafisrAyaView.centerXAnchor).isActive = true
 
         lineView.widthAnchor.constraint(equalTo: DetailAyaViewController.tafisrAyaView.widthAnchor, multiplier: 1.0).isActive = true
-        lineView.heightAnchor.constraint(equalToConstant: 0.8).isActive = true
+        lineView.heightAnchor.constraint(equalToConstant: 0.7).isActive = true
+        
+        lineView.layer.opacity = 0.3
+
+        
 //
         DetailAyaViewController.tafisrAyaView.addSubview(tafsirDescription)
 //
@@ -570,7 +605,6 @@ class DetailAyaViewController: BaseViewController {
         self.labelFullNameAya.textAlignment = NSTextAlignment.right
         
         
-        
 //        labelFullNameAya.text = viewModel?.aya
         
             let paragraphStyle = NSMutableParagraphStyle()
@@ -620,12 +654,18 @@ class DetailAyaViewController: BaseViewController {
 //        DetailAyaViewController.playPauseButton.setImage(UIImage(named: "play_btn"), for: .normal)
 //        DetailAyaViewController.playPauseButton.imageView?.contentMode = .scaleAspectFit
 //        DetailAyaViewController.playPauseButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
-        DetailAyaViewController.playPauseButton.setImage(UIImage(named: "play_icon"), for: .normal)
-        DetailAyaViewController.playPauseButton.imageView?.contentMode = .scaleAspectFit
-        DetailAyaViewController.playPauseButton.imageEdgeInsets = UIEdgeInsets(top: 2.0, left: -1.0, bottom: 0, right: 103.0)
-        DetailAyaViewController.playPauseButton.setTitle("تشغيل", for: .normal)
+        if #available(iOS 13.0, *) {
+            DetailAyaViewController.playPauseButton.setImage(UIImage(named: "play_icon"), for: .normal)
+            DetailAyaViewController.playPauseButton.imageView?.contentMode = .scaleAspectFit
+            DetailAyaViewController.playPauseButton.imageEdgeInsets =  UIEdgeInsets(top: 2.0, left: 5.0, bottom: 0, right: 110.0)
+            
+            DetailAyaViewController.playPauseButton.setTitle("تشغيل", for: .normal)
+        } else {
+          
+            DetailAyaViewController.playPauseButton.setTitle("تشغيل", for: .normal)
+        }
        }
-    @objc func share(sender:UIView){
+    @objc func share(sender:UITapGestureRecognizer){
         UIGraphicsBeginImageContext(view.frame.size)
         view.layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
@@ -643,7 +683,7 @@ class DetailAyaViewController: BaseViewController {
             activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.mail, UIActivity.ActivityType.postToFacebook]
             //
             
-            activityVC.popoverPresentationController?.sourceView = sender
+            activityVC.popoverPresentationController?.sourceView = sender.view
             self.present(activityVC, animated: true, completion: nil)
         }
         

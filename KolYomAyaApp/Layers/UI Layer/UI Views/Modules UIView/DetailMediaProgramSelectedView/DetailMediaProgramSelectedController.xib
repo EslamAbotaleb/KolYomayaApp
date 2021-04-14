@@ -26,20 +26,17 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n4K-gK-iVi">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="192"/>
                 </imageView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xWt-8G-PXr">
-                    <rect key="frame" x="5" y="200" width="310" height="80"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="xWt-8G-PXr">
+                    <rect key="frame" x="5" y="212" width="310" height="56"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nE0-wc-OIf">
-                            <rect key="frame" x="0.0" y="0.0" width="310" height="40"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="mgQ-Dm-HiP"/>
-                            </constraints>
+                            <rect key="frame" x="0.0" y="0.0" width="310" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fx4-fv-yrk">
-                            <rect key="frame" x="0.0" y="40" width="310" height="40"/>
+                            <rect key="frame" x="0.0" y="35.5" width="310" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -64,7 +61,7 @@
                 <constraint firstItem="xWt-8G-PXr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="WMZ-OZ-Wev"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xWt-8G-PXr" secondAttribute="trailing" constant="5" id="XoH-kg-mas"/>
                 <constraint firstItem="3qW-s2-rrA" firstAttribute="centerY" secondItem="n4K-gK-iVi" secondAttribute="centerY" id="eI5-MB-347"/>
-                <constraint firstItem="xWt-8G-PXr" firstAttribute="top" secondItem="n4K-gK-iVi" secondAttribute="bottom" constant="8" id="hMr-kF-E8L"/>
+                <constraint firstItem="xWt-8G-PXr" firstAttribute="top" secondItem="n4K-gK-iVi" secondAttribute="bottom" constant="20" id="hMr-kF-E8L"/>
                 <constraint firstItem="3qW-s2-rrA" firstAttribute="centerX" secondItem="n4K-gK-iVi" secondAttribute="centerX" id="kpK-KX-3ws"/>
                 <constraint firstItem="n4K-gK-iVi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="vOf-nw-AAN"/>
             </constraints>

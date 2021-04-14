@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18D48916261FDFA7007E7AA9 /* ge_ss_two_medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 18D48915261FDFA7007E7AA9 /* ge_ss_two_medium.otf */; };
+		18D4891A261FDFFB007E7AA9 /* ge_ss_two_bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 18D48919261FDFFB007E7AA9 /* ge_ss_two_bold.otf */; };
 		27A91F689CC1C0CF6F3A50AD /* Pods_KolYomAyaApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAD41BD82CE5C4AF4A974C9 /* Pods_KolYomAyaApp.framework */; };
 		A606FC6F24CB18ED00C80D9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A606FC6E24CB18ED00C80D9E /* LaunchScreen.storyboard */; };
 		A606FC7424CB1D9500C80D9E /* PreviousAyatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A606FC7224CB1D9500C80D9E /* PreviousAyatViewController.swift */; };
@@ -217,6 +219,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18D48915261FDFA7007E7AA9 /* ge_ss_two_medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ge_ss_two_medium.otf; sourceTree = "<group>"; };
+		18D48919261FDFFB007E7AA9 /* ge_ss_two_bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ge_ss_two_bold.otf; sourceTree = "<group>"; };
 		1B7C78C12300325AB66BC023 /* Pods-KolYomAyaApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KolYomAyaApp.release.xcconfig"; path = "Target Support Files/Pods-KolYomAyaApp/Pods-KolYomAyaApp.release.xcconfig"; sourceTree = "<group>"; };
 		A606FBFF24CB181D00C80D9E /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A606FC6E24CB18ED00C80D9E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -316,7 +320,6 @@
 		A613056D24CB176200CE00B3 /* AyaObjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AyaObjectModel.swift; sourceTree = "<group>"; };
 		A613057124CB176200CE00B3 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		A61305C724CB17B200CE00B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		A616392626163D7B005ECD5D /* ge_ss_two_medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ge_ss_two_medium.otf; path = ../../../../Downloads/ge_ss_two_medium.otf; sourceTree = "<group>"; };
 		A61707AC2613BF8E0092144C /* OfflineAudio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OfflineAudio.xcdatamodel; sourceTree = "<group>"; };
 		A6255B3624CE0175008BC6AD /* ElsharawyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElsharawyViewController.swift; sourceTree = "<group>"; };
 		A6255B3724CE0175008BC6AD /* ElsharawyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ElsharawyViewController.xib; sourceTree = "<group>"; };
@@ -1413,8 +1416,9 @@
 		A6B03E9225DE84F7001CED58 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				A616392626163D7B005ECD5D /* ge_ss_two_medium.otf */,
+				18D48915261FDFA7007E7AA9 /* ge_ss_two_medium.otf */,
 				A6B03EED25DE95B7001CED58 /* monadi.ttf */,
+				18D48919261FDFFB007E7AA9 /* ge_ss_two_bold.otf */,
 				A6B03E9325DE8531001CED58 /* barselona.ttf */,
 				A6B03E9425DE8532001CED58 /* ge_ss_two_light.otf */,
 				A6B03E9525DE8532001CED58 /* kitab_b.ttf */,
@@ -1646,6 +1650,7 @@
 				A6D8F42325DA86B600F3C219 /* TermsAndConidtionViewController.xib in Resources */,
 				A613058C24CB176200CE00B3 /* TafserBookCollectionViewCell.xib in Resources */,
 				A6330BCA24CEDD6D000075EF /* QuarnListenCollectionViewCell.xib in Resources */,
+				18D4891A261FDFFB007E7AA9 /* ge_ss_two_bold.otf in Resources */,
 				A61304EF24CB175400CE00B3 /* Assets.xcassets in Resources */,
 				A613058924CB176200CE00B3 /* HomeViewController.xib in Resources */,
 				A6127578261278FC00B18B8E /* PlayAudioTableViewCell.xib in Resources */,
@@ -1679,6 +1684,7 @@
 				A63BCD9924E5357F002CBC60 /* NameRecitersTableViewCell.xib in Resources */,
 				A613058D24CB176200CE00B3 /* TafserBookViewController.xib in Resources */,
 				A613058A24CB176200CE00B3 /* SideMenuCell.xib in Resources */,
+				18D48916261FDFA7007E7AA9 /* ge_ss_two_medium.otf in Resources */,
 				A6255B5624CE20AE008BC6AD /* ElsharawyMediaProgramIdViewController.xib in Resources */,
 				A6255B9624CE4B81008BC6AD /* QiblaLocationViewController.xib in Resources */,
 				A6F1DEE724E14A2900F18D08 /* PlayerViewController.xib in Resources */,
@@ -2071,7 +2077,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.12;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shehabsalah.aya;
 				PRODUCT_NAME = kolyoumaya;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2098,7 +2104,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.12;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shehabsalah.aya;
 				PRODUCT_NAME = kolyoumaya;
 				PROVISIONING_PROFILE_SPECIFIER = "";
